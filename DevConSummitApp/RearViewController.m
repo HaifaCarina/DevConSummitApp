@@ -63,8 +63,81 @@
     switch ( indexPath.row )
     {
         case 0: {
-            text = @"My Profile";
-            cell.textLabel.textColor = UIColorFromRGB(0x83ac25);
+            
+            UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 00, 90, 90)];
+            
+            imageView.image = [UIImage imageNamed:@"haifa.jpg"];
+            imageView.center = CGPointMake(cell.contentView.center.x-(cell.contentView.center.x * 0.20), cell.contentView.center.y + (cell.contentView.center.y * 1.50));
+            imageView.backgroundColor = [UIColor clearColor];
+            
+            
+            CAShapeLayer *circle = [CAShapeLayer layer];
+            
+            // Make a circular shape
+            UIBezierPath *circularPath=[UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, imageView.frame.size.width, imageView.frame.size.height) cornerRadius:MAX(imageView.frame.size.width, imageView.frame.size.height)];
+            circle.path = circularPath.CGPath;
+            
+            imageView.layer.mask=circle;
+            
+            
+            NSLog(@"%f",cell.contentView.center.y);
+            
+            //cell.contentView.backgroundColor = [UIColor greenColor];
+            
+            
+            cell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"myprofile-background.png"]];
+            
+            [cell.contentView addSubview:imageView];
+            
+            UILabel *name = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 200, 40)];
+            name.text = @"HAIFA CARINA BALUYOS";
+            name.center = CGPointMake(cell.contentView.center.x -(cell.contentView.center.x * 0.20), cell.contentView.center.y + (cell.contentView.center.y * 4.50) );
+            name.lineBreakMode = NSLineBreakByWordWrapping;
+            name.numberOfLines = 0;
+            name.textAlignment = NSTextAlignmentCenter;
+            name.textColor = UIColorFromRGB(0x83ac25);
+            name.font = [UIFont fontWithName:@"SourceSansPro-SemiBold" size:15];
+            [cell.contentView addSubview:name];
+            
+            // Name - Resize Frame
+            CGRect nameFrame = [name.text boundingRectWithSize:CGSizeMake(name.frame.size.width,MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName : name.font } context:nil];
+            name.frame = CGRectMake(name.frame.origin.x, name.frame.origin.y, name.frame.size.width, nameFrame.size.height);
+            
+            ///
+            UILabel *affiliation = [[UILabel alloc]initWithFrame:CGRectMake(28, name.frame.origin.y + name.frame.size.height , 200, 65)];
+            NSString *position = @"Software Engineer";
+            NSString *company = @"Developers Connect Philippines";
+            NSString *specialty = @"Objective-C";
+            NSString *location = @"Mandaluyong, Metro Manila";
+            
+            affiliation.text = [NSString stringWithFormat:@"%@ at %@ \n%@ \n%@", position, company, specialty, location ];
+            affiliation.lineBreakMode = NSLineBreakByWordWrapping;
+            affiliation.numberOfLines = 0;
+            affiliation.textAlignment = NSTextAlignmentCenter;
+            affiliation.font = [UIFont fontWithName:@"SourceSansPro-Regular" size:12];
+            [cell.contentView addSubview:affiliation];
+            
+            
+            NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithAttributedString: affiliation.attributedText];
+            // Company - Set Company Font
+            [text addAttribute:NSForegroundColorAttributeName
+                         value:UIColorFromRGB(0x83ac25)
+                         range:NSMakeRange(position.length+4, company.length)];
+            [text addAttribute:NSFontAttributeName
+                         value:[UIFont fontWithName:@"SourceSansPro-SemiBold" size:12]
+                         range:NSMakeRange(position.length+4, company.length)];
+            
+            // Specialty - Set Company Font
+            [text addAttribute:NSFontAttributeName
+                         value:[UIFont fontWithName:@"SourceSansPro-SemiBold" size:12]
+                         range:NSMakeRange(position.length+ company.length +6, specialty.length)];
+            
+            [affiliation setAttributedText: text];
+            
+            // affiliation - Resize Frame
+            CGRect affiliationFrame = [affiliation.text boundingRectWithSize:CGSizeMake(affiliation.frame.size.width,MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName : affiliation.font } context:nil];
+            affiliation.frame = CGRectMake(affiliation.frame.origin.x, affiliation.frame.origin.y, affiliation.frame.size.width, affiliationFrame.size.height);
+            
             break;
         }
         case 1: {
@@ -158,7 +231,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 50;
+    if (indexPath.row == 0) {
+        return 200;
+    } else {
+        return 50;
+    }
     
 }
 
