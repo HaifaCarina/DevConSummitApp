@@ -19,6 +19,11 @@
 		80B269CF19D73A750012F891 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B269B719D73A750012F891 /* UIKit.framework */; };
 		80B269D719D73A750012F891 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80B269D519D73A750012F891 /* InfoPlist.strings */; };
 		80B269D919D73A750012F891 /* DevConSummitAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 80B269D819D73A750012F891 /* DevConSummitAppTests.m */; };
+		80BB349A19D73CA500B2C82B /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80BB349919D73CA500B2C82B /* MainViewController.m */; };
+		80BB349E19D73CF800B2C82B /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80BB349D19D73CF800B2C82B /* SWRevealViewController.m */; };
+		80BB34A119D73D3700B2C82B /* FrontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80BB34A019D73D3700B2C82B /* FrontViewController.m */; };
+		80BB34A419D73D4700B2C82B /* RearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80BB34A319D73D4700B2C82B /* RearViewController.m */; };
+		80BB34A719D73ECC00B2C82B /* navigation-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 80BB34A619D73ECC00B2C82B /* navigation-icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +53,15 @@
 		80B269D419D73A750012F891 /* DevConSummitAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DevConSummitAppTests-Info.plist"; sourceTree = "<group>"; };
 		80B269D619D73A750012F891 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		80B269D819D73A750012F891 /* DevConSummitAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DevConSummitAppTests.m; sourceTree = "<group>"; };
+		80BB349819D73CA500B2C82B /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		80BB349919D73CA500B2C82B /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		80BB349C19D73CF800B2C82B /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		80BB349D19D73CF800B2C82B /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		80BB349F19D73D3700B2C82B /* FrontViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrontViewController.h; sourceTree = "<group>"; };
+		80BB34A019D73D3700B2C82B /* FrontViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrontViewController.m; sourceTree = "<group>"; };
+		80BB34A219D73D4700B2C82B /* RearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RearViewController.h; sourceTree = "<group>"; };
+		80BB34A319D73D4700B2C82B /* RearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RearViewController.m; sourceTree = "<group>"; };
+		80BB34A619D73ECC00B2C82B /* navigation-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation-icon.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +123,15 @@
 			children = (
 				80B269C219D73A750012F891 /* AppDelegate.h */,
 				80B269C319D73A750012F891 /* AppDelegate.m */,
+				80BB349819D73CA500B2C82B /* MainViewController.h */,
+				80BB349919D73CA500B2C82B /* MainViewController.m */,
+				80BB349F19D73D3700B2C82B /* FrontViewController.h */,
+				80BB34A019D73D3700B2C82B /* FrontViewController.m */,
+				80BB34A219D73D4700B2C82B /* RearViewController.h */,
+				80BB34A319D73D4700B2C82B /* RearViewController.m */,
+				80BB349B19D73CF800B2C82B /* SWRevealViewController */,
 				80B269C519D73A750012F891 /* Images.xcassets */,
+				80BB34A519D73ECC00B2C82B /* Images */,
 				80B269BA19D73A750012F891 /* Supporting Files */,
 			);
 			path = DevConSummitApp;
@@ -142,6 +164,23 @@
 				80B269D519D73A750012F891 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		80BB349B19D73CF800B2C82B /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				80BB349C19D73CF800B2C82B /* SWRevealViewController.h */,
+				80BB349D19D73CF800B2C82B /* SWRevealViewController.m */,
+			);
+			path = SWRevealViewController;
+			sourceTree = "<group>";
+		};
+		80BB34A519D73ECC00B2C82B /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				80BB34A619D73ECC00B2C82B /* navigation-icon.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				80B269BE19D73A750012F891 /* InfoPlist.strings in Resources */,
+				80BB34A719D73ECC00B2C82B /* navigation-icon.png in Resources */,
 				80B269C619D73A750012F891 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,7 +280,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				80B269C419D73A750012F891 /* AppDelegate.m in Sources */,
+				80BB349A19D73CA500B2C82B /* MainViewController.m in Sources */,
 				80B269C019D73A750012F891 /* main.m in Sources */,
+				80BB349E19D73CF800B2C82B /* SWRevealViewController.m in Sources */,
+				80BB34A419D73D4700B2C82B /* RearViewController.m in Sources */,
+				80BB34A119D73D3700B2C82B /* FrontViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +481,7 @@
 				80B269DE19D73A750012F891 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		80B269DF19D73A750012F891 /* Build configuration list for PBXNativeTarget "DevConSummitAppTests" */ = {
 			isa = XCConfigurationList;
@@ -445,6 +490,7 @@
 				80B269E119D73A750012F891 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
