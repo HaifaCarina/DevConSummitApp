@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		805D891319D74EC800D2CF32 /* haifa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 805D891219D74EC800D2CF32 /* haifa.jpg */; };
+		805D891919D74EE100D2CF32 /* SourceSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 805D891519D74EE100D2CF32 /* SourceSansPro-Bold.otf */; };
+		805D891A19D74EE100D2CF32 /* SourceSansPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 805D891619D74EE100D2CF32 /* SourceSansPro-Light.otf */; };
+		805D891B19D74EE100D2CF32 /* SourceSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 805D891719D74EE100D2CF32 /* SourceSansPro-Regular.otf */; };
+		805D891C19D74EE100D2CF32 /* SourceSansPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 805D891819D74EE100D2CF32 /* SourceSansPro-Semibold.otf */; };
+		805D891E19D74FF600D2CF32 /* myprofile-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 805D891D19D74FF600D2CF32 /* myprofile-background.png */; };
 		80B269B419D73A750012F891 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B269B319D73A750012F891 /* Foundation.framework */; };
 		80B269B619D73A750012F891 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B269B519D73A750012F891 /* CoreGraphics.framework */; };
 		80B269B819D73A750012F891 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B269B719D73A750012F891 /* UIKit.framework */; };
@@ -37,6 +43,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		805D891219D74EC800D2CF32 /* haifa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = haifa.jpg; sourceTree = "<group>"; };
+		805D891519D74EE100D2CF32 /* SourceSansPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Bold.otf"; sourceTree = "<group>"; };
+		805D891619D74EE100D2CF32 /* SourceSansPro-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Light.otf"; sourceTree = "<group>"; };
+		805D891719D74EE100D2CF32 /* SourceSansPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.otf"; sourceTree = "<group>"; };
+		805D891819D74EE100D2CF32 /* SourceSansPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Semibold.otf"; sourceTree = "<group>"; };
+		805D891D19D74FF600D2CF32 /* myprofile-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myprofile-background.png"; sourceTree = "<group>"; };
 		80B269B019D73A750012F891 /* DevConSummitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DevConSummitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80B269B319D73A750012F891 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		80B269B519D73A750012F891 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -88,6 +100,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		805D891419D74EE100D2CF32 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				805D891519D74EE100D2CF32 /* SourceSansPro-Bold.otf */,
+				805D891619D74EE100D2CF32 /* SourceSansPro-Light.otf */,
+				805D891719D74EE100D2CF32 /* SourceSansPro-Regular.otf */,
+				805D891819D74EE100D2CF32 /* SourceSansPro-Semibold.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		80B269A719D73A750012F891 = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +144,7 @@
 		80B269B919D73A750012F891 /* DevConSummitApp */ = {
 			isa = PBXGroup;
 			children = (
+				805D891419D74EE100D2CF32 /* Fonts */,
 				80B269C219D73A750012F891 /* AppDelegate.h */,
 				80B269C319D73A750012F891 /* AppDelegate.m */,
 				80BB349819D73CA500B2C82B /* MainViewController.h */,
@@ -178,6 +202,8 @@
 		80BB34A519D73ECC00B2C82B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				805D891D19D74FF600D2CF32 /* myprofile-background.png */,
+				805D891219D74EC800D2CF32 /* haifa.jpg */,
 				80BB34A619D73ECC00B2C82B /* navigation-icon.png */,
 			);
 			path = Images;
@@ -258,9 +284,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				805D891A19D74EE100D2CF32 /* SourceSansPro-Light.otf in Resources */,
 				80B269BE19D73A750012F891 /* InfoPlist.strings in Resources */,
+				805D891319D74EC800D2CF32 /* haifa.jpg in Resources */,
+				805D891E19D74FF600D2CF32 /* myprofile-background.png in Resources */,
+				805D891919D74EE100D2CF32 /* SourceSansPro-Bold.otf in Resources */,
+				805D891C19D74EE100D2CF32 /* SourceSansPro-Semibold.otf in Resources */,
 				80BB34A719D73ECC00B2C82B /* navigation-icon.png in Resources */,
 				80B269C619D73A750012F891 /* Images.xcassets in Resources */,
+				805D891B19D74EE100D2CF32 /* SourceSansPro-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
