@@ -61,6 +61,8 @@
     cell.contentView.backgroundColor = UIColorFromRGB(0xfbfaf7);
     
     NSString *text = nil;
+    UIView *bgColorView = [[UIView alloc] init];
+    
     switch ( indexPath.row )
     {
         case 0: {
@@ -144,42 +146,53 @@
         case 1: {
             text = @"News";
             cell.textLabel.textColor = UIColorFromRGB(0x83ac25);
+            bgColorView.backgroundColor = UIColorFromRGB(0x83ac25);
             break;
             
         }
         case 2: {
             text = @"Programs";
             cell.textLabel.textColor = UIColorFromRGB(0xdb6d2c);
+            bgColorView.backgroundColor = UIColorFromRGB(0xdb6d2c);
             break;
         }
         case 3: {
             text = @"Speakers";
             cell.textLabel.textColor = UIColorFromRGB(0x6A4FFA);
+            bgColorView.backgroundColor = UIColorFromRGB(0x6A4FFA);
             break;
         }
         case 4: {
             text = @"Attendees";
             cell.textLabel.textColor = UIColorFromRGB(0xe6c630);
+            bgColorView.backgroundColor = UIColorFromRGB(0xe6c630);
             break;
         }
         case 5: {
             text = @"Sponsors";
             cell.textLabel.textColor = UIColorFromRGB(0x3DA6E5);
+            bgColorView.backgroundColor = UIColorFromRGB(0x3DA6E5);
             break;
         }
         case 6: {
             text = @"Leaderboard";
             cell.textLabel.textColor = UIColorFromRGB(0x83ac25);
+            bgColorView.backgroundColor = UIColorFromRGB(0x83ac25);
             break;
         }
         case 7: {
             text = @"Engage";
             cell.textLabel.textColor = UIColorFromRGB(0x83ac25);
+            bgColorView.backgroundColor = UIColorFromRGB(0x83ac25);
             break;
         }
     }
     
     cell.textLabel.text = text;
+    cell.textLabel.highlightedTextColor = [UIColor whiteColor];
+    
+    [cell setSelectedBackgroundView:bgColorView];
+    
     return cell;
 }
 
