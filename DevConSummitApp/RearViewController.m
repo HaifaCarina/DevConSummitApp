@@ -9,6 +9,7 @@
 #import "RearViewController.h"
 #import "SWRevealViewController.h"
 #import "FrontViewController.h"
+#import "ProgramsViewController.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 #define UIColorFromRGBWithAlpha(rgbValue,a) [UIColor \ colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
@@ -119,7 +120,7 @@
             
             
             NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithAttributedString: affiliation.attributedText];
-            // Company - Set Company Font
+            // Company - Set Font
             [text addAttribute:NSForegroundColorAttributeName
                          value:UIColorFromRGB(0x83ac25)
                          range:NSMakeRange(position.length+4, company.length)];
@@ -127,7 +128,7 @@
                          value:[UIFont fontWithName:@"SourceSansPro-SemiBold" size:12]
                          range:NSMakeRange(position.length+4, company.length)];
             
-            // Specialty - Set Company Font
+            // Specialty - Set Font
             [text addAttribute:NSFontAttributeName
                          value:[UIFont fontWithName:@"SourceSansPro-SemiBold" size:12]
                          range:NSMakeRange(position.length+ company.length +6, specialty.length)];
@@ -219,6 +220,12 @@
         
         FrontViewController *frontViewController = [[FrontViewController alloc] init];
         frontController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
+    } else if (indexPath.row == 2) {
+        NSLog(@"Should Display Programs");
+        
+        ProgramsViewController *programsController = [[ProgramsViewController alloc]init];
+        frontController = [[UINavigationController alloc] initWithRootViewController:programsController];
+        
     } else {
         FrontViewController *frontViewController = [[FrontViewController alloc] init];
         frontController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
