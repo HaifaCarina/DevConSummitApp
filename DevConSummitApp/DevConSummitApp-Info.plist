@@ -30,6 +30,7 @@
 		<string>SourceSansPro-Light.otf</string>
 		<string>SourceSansPro-Regular.otf</string>
 		<string>SourceSansPro-Semibold.otf</string>
+		<string>PTSerif-Italic.ttf</string>
 	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
