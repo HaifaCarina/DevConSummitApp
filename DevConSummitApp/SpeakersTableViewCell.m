@@ -92,7 +92,7 @@
     
     // header - Set Font
     [text addAttribute:NSFontAttributeName
-                 value:[UIFont fontWithName:@"SourceSansPro-Regular" size:10]
+                 value:[UIFont fontWithName:@"PTSerif-Italic" size:10]
                  range:NSMakeRange(0, text.length)];
     [self.header setAttributedText: text];
     
