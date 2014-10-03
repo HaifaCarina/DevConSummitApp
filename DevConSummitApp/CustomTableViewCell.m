@@ -30,14 +30,19 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    //SET IMAGE VIEW
+    // #########################################
+    //              Set ImageView
+    // #########################################
+    
     self.imageView.frame = CGRectMake(10,10,60,60);
     self.imageView.layer.borderColor = [UIColor orangeColor].CGColor;
     self.imageView.layer.borderWidth = 1;
     self.imageView.layer.cornerRadius = 5.0;
     self.imageView.layer.masksToBounds = YES;
     
-    // SET HEADER LABEL
+    // #########################################
+    //              Set Header Text
+    // #########################################
     self.header.frame = CGRectMake(80, 5, 230, 10);
     self.header.lineBreakMode = NSLineBreakByWordWrapping;
     self.header.numberOfLines = 0;
@@ -60,7 +65,9 @@
     
     
     
-    // SET TEXT LABEL
+    // #########################################
+    //              Set TextLabel
+    // #########################################
     self.textLabel.frame = CGRectMake(80, 20, 230, 50);
     self.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
     self.textLabel.numberOfLines = 0;
@@ -70,7 +77,6 @@
     CGRect textLabelFrame = [self.textLabel.text boundingRectWithSize:CGSizeMake(self.textLabel.frame.size.width,MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName : self.textLabel.font } context:nil];
     
     self.textLabel.frame = CGRectMake(self.textLabel.frame.origin.x, self.header.frame.origin.y + self.header.frame.size.height, self.textLabel.frame.size.width, textLabelFrame.size.height);
-    //self.textLabel.backgroundColor = [UIColor yellowColor];
     
     // Add a bottomBorder.
   /*  CALayer *bottomBorder = [CALayer layer];
@@ -79,7 +85,9 @@
     [self.textLabel.layer addSublayer:bottomBorder];
     */
     
-    // TEXT DETAIL LABEL - Set Frame
+    // #########################################
+    //              Set Detail TextLabel
+    // #########################################
     self.detailTextLabel.frame = CGRectMake(80, self.textLabel.frame.origin.y + self.textLabel.frame.size.height + 10 , 230, 10);
     self.detailTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
     self.detailTextLabel.numberOfLines = 0;
