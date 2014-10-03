@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		802A303519DA11AC00CB6826 /* SpeakersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 802A303419DA11AC00CB6826 /* SpeakersViewController.m */; };
 		802D404C19D75411008873E8 /* ProgramsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 802D404B19D75411008873E8 /* ProgramsViewController.m */; };
 		802D405519D76170008873E8 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 802D405419D76170008873E8 /* CustomTableViewCell.m */; };
+		803CAA4A19DC9669008493B5 /* SpeakersTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 803CAA4919DC9669008493B5 /* SpeakersTableViewCell.m */; };
+		8043C1FC19DEE0980054C60C /* UIImage+StackBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = 8043C1FB19DEE0980054C60C /* UIImage+StackBlur.m */; };
+		8043C1FE19DF1B5F0054C60C /* disclosure-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8043C1FD19DF1B5F0054C60C /* disclosure-icon.png */; };
 		805D891319D74EC800D2CF32 /* haifa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 805D891219D74EC800D2CF32 /* haifa.jpg */; };
 		805D891919D74EE100D2CF32 /* SourceSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 805D891519D74EE100D2CF32 /* SourceSansPro-Bold.otf */; };
 		805D891A19D74EE100D2CF32 /* SourceSansPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 805D891619D74EE100D2CF32 /* SourceSansPro-Light.otf */; };
@@ -45,10 +49,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		802A303319DA11AC00CB6826 /* SpeakersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeakersViewController.h; sourceTree = "<group>"; };
+		802A303419DA11AC00CB6826 /* SpeakersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeakersViewController.m; sourceTree = "<group>"; };
 		802D404A19D75411008873E8 /* ProgramsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramsViewController.h; sourceTree = "<group>"; };
 		802D404B19D75411008873E8 /* ProgramsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramsViewController.m; sourceTree = "<group>"; };
 		802D405319D76170008873E8 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
 		802D405419D76170008873E8 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
+		803CAA4819DC9669008493B5 /* SpeakersTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeakersTableViewCell.h; sourceTree = "<group>"; };
+		803CAA4919DC9669008493B5 /* SpeakersTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeakersTableViewCell.m; sourceTree = "<group>"; };
+		8043C1FA19DEE0980054C60C /* UIImage+StackBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+StackBlur.h"; sourceTree = "<group>"; };
+		8043C1FB19DEE0980054C60C /* UIImage+StackBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+StackBlur.m"; sourceTree = "<group>"; };
+		8043C1FD19DF1B5F0054C60C /* disclosure-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclosure-icon.png"; sourceTree = "<group>"; };
 		805D891219D74EC800D2CF32 /* haifa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = haifa.jpg; sourceTree = "<group>"; };
 		805D891519D74EE100D2CF32 /* SourceSansPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Bold.otf"; sourceTree = "<group>"; };
 		805D891619D74EE100D2CF32 /* SourceSansPro-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Light.otf"; sourceTree = "<group>"; };
@@ -106,6 +117,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8043C1F919DEE0980054C60C /* UIImage+StackBlur */ = {
+			isa = PBXGroup;
+			children = (
+				8043C1FA19DEE0980054C60C /* UIImage+StackBlur.h */,
+				8043C1FB19DEE0980054C60C /* UIImage+StackBlur.m */,
+			);
+			path = "UIImage+StackBlur";
+			sourceTree = "<group>";
+		};
 		805D891419D74EE100D2CF32 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +182,11 @@
 				802D404B19D75411008873E8 /* ProgramsViewController.m */,
 				802D405319D76170008873E8 /* CustomTableViewCell.h */,
 				802D405419D76170008873E8 /* CustomTableViewCell.m */,
+				802A303319DA11AC00CB6826 /* SpeakersViewController.h */,
+				802A303419DA11AC00CB6826 /* SpeakersViewController.m */,
+				803CAA4819DC9669008493B5 /* SpeakersTableViewCell.h */,
+				803CAA4919DC9669008493B5 /* SpeakersTableViewCell.m */,
+				8043C1F919DEE0980054C60C /* UIImage+StackBlur */,
 				80BB349B19D73CF800B2C82B /* SWRevealViewController */,
 				80B269C519D73A750012F891 /* Images.xcassets */,
 				805D891419D74EE100D2CF32 /* Fonts */,
@@ -212,6 +237,7 @@
 		80BB34A519D73ECC00B2C82B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8043C1FD19DF1B5F0054C60C /* disclosure-icon.png */,
 				805D891D19D74FF600D2CF32 /* myprofile-background.png */,
 				805D891219D74EC800D2CF32 /* haifa.jpg */,
 				80BB34A619D73ECC00B2C82B /* navigation-icon.png */,
@@ -299,6 +325,7 @@
 				805D891319D74EC800D2CF32 /* haifa.jpg in Resources */,
 				805D891E19D74FF600D2CF32 /* myprofile-background.png in Resources */,
 				805D891919D74EE100D2CF32 /* SourceSansPro-Bold.otf in Resources */,
+				8043C1FE19DF1B5F0054C60C /* disclosure-icon.png in Resources */,
 				805D891C19D74EE100D2CF32 /* SourceSansPro-Semibold.otf in Resources */,
 				80BB34A719D73ECC00B2C82B /* navigation-icon.png in Resources */,
 				80B269C619D73A750012F891 /* Images.xcassets in Resources */,
@@ -322,12 +349,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				80B269C419D73A750012F891 /* AppDelegate.m in Sources */,
+				803CAA4A19DC9669008493B5 /* SpeakersTableViewCell.m in Sources */,
 				80BB349A19D73CA500B2C82B /* MainViewController.m in Sources */,
 				80B269C019D73A750012F891 /* main.m in Sources */,
 				80BB349E19D73CF800B2C82B /* SWRevealViewController.m in Sources */,
 				80BB34A419D73D4700B2C82B /* RearViewController.m in Sources */,
+				802A303519DA11AC00CB6826 /* SpeakersViewController.m in Sources */,
 				80BB34A119D73D3700B2C82B /* FrontViewController.m in Sources */,
 				802D405519D76170008873E8 /* CustomTableViewCell.m in Sources */,
+				8043C1FC19DEE0980054C60C /* UIImage+StackBlur.m in Sources */,
 				802D404C19D75411008873E8 /* ProgramsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

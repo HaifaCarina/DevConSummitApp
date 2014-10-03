@@ -10,6 +10,7 @@
 #import "SWRevealViewController.h"
 #import "FrontViewController.h"
 #import "ProgramsViewController.h"
+#import "SpeakersViewController.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 #define UIColorFromRGBWithAlpha(rgbValue,a) [UIColor \ colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
@@ -238,6 +239,12 @@
         
         ProgramsViewController *programsController = [[ProgramsViewController alloc]init];
         frontController = [[UINavigationController alloc] initWithRootViewController:programsController];
+        
+    } else if (indexPath.row == 3) {
+        NSLog(@"Should Display Speakers");
+        
+        SpeakersViewController *speakersController = [[SpeakersViewController alloc]init];
+        frontController = [[UINavigationController alloc] initWithRootViewController:speakersController];
         
     } else {
         FrontViewController *frontViewController = [[FrontViewController alloc] init];
