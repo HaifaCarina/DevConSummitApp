@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8024C6BD19DF207900B73EDB /* PTSerif-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8024C6BC19DF207900B73EDB /* PTSerif-Italic.ttf */; };
 		802A303519DA11AC00CB6826 /* SpeakersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 802A303419DA11AC00CB6826 /* SpeakersViewController.m */; };
 		802D404C19D75411008873E8 /* ProgramsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 802D404B19D75411008873E8 /* ProgramsViewController.m */; };
 		802D405519D76170008873E8 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 802D405419D76170008873E8 /* CustomTableViewCell.m */; };
@@ -49,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8024C6BC19DF207900B73EDB /* PTSerif-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSerif-Italic.ttf"; sourceTree = "<group>"; };
 		802A303319DA11AC00CB6826 /* SpeakersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeakersViewController.h; sourceTree = "<group>"; };
 		802A303419DA11AC00CB6826 /* SpeakersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeakersViewController.m; sourceTree = "<group>"; };
 		802D404A19D75411008873E8 /* ProgramsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramsViewController.h; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 		80BB34A519D73ECC00B2C82B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8024C6BC19DF207900B73EDB /* PTSerif-Italic.ttf */,
 				8043C1FD19DF1B5F0054C60C /* disclosure-icon.png */,
 				805D891D19D74FF600D2CF32 /* myprofile-background.png */,
 				805D891219D74EC800D2CF32 /* haifa.jpg */,
@@ -321,6 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				805D891A19D74EE100D2CF32 /* SourceSansPro-Light.otf in Resources */,
+				8024C6BD19DF207900B73EDB /* PTSerif-Italic.ttf in Resources */,
 				80B269BE19D73A750012F891 /* InfoPlist.strings in Resources */,
 				805D891319D74EC800D2CF32 /* haifa.jpg in Resources */,
 				805D891E19D74FF600D2CF32 /* myprofile-background.png in Resources */,
