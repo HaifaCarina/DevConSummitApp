@@ -11,6 +11,7 @@
 #import "FrontViewController.h"
 #import "ProgramsViewController.h"
 #import "SpeakersViewController.h"
+#import "SponsorsViewController.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 #define UIColorFromRGBWithAlpha(rgbValue,a) [UIColor \ colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
@@ -245,6 +246,12 @@
         
         SpeakersViewController *speakersController = [[SpeakersViewController alloc]init];
         frontController = [[UINavigationController alloc] initWithRootViewController:speakersController];
+        
+    } else if (indexPath.row == 5) {
+        NSLog(@"Should Display Sponsors");
+        
+        SponsorsViewController *sponsorsController = [[SponsorsViewController alloc]init];
+        frontController = [[UINavigationController alloc] initWithRootViewController:sponsorsController];
         
     } else {
         FrontViewController *frontViewController = [[FrontViewController alloc] init];
