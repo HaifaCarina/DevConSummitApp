@@ -20,6 +20,8 @@
 		803CAA4A19DC9669008493B5 /* SpeakersTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 803CAA4919DC9669008493B5 /* SpeakersTableViewCell.m */; };
 		8043C1FC19DEE0980054C60C /* UIImage+StackBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = 8043C1FB19DEE0980054C60C /* UIImage+StackBlur.m */; };
 		8043C1FE19DF1B5F0054C60C /* disclosure-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8043C1FD19DF1B5F0054C60C /* disclosure-icon.png */; };
+		804A63AD19E1547700DE69FA /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 804A63AC19E1547700DE69FA /* NewsViewController.m */; };
+		804A63B019E154A900DE69FA /* NewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 804A63AF19E154A900DE69FA /* NewsTableViewCell.m */; };
 		805D891319D74EC800D2CF32 /* haifa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 805D891219D74EC800D2CF32 /* haifa.jpg */; };
 		805D891919D74EE100D2CF32 /* SourceSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 805D891519D74EE100D2CF32 /* SourceSansPro-Bold.otf */; };
 		805D891A19D74EE100D2CF32 /* SourceSansPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 805D891619D74EE100D2CF32 /* SourceSansPro-Light.otf */; };
@@ -75,6 +77,10 @@
 		8043C1FA19DEE0980054C60C /* UIImage+StackBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+StackBlur.h"; sourceTree = "<group>"; };
 		8043C1FB19DEE0980054C60C /* UIImage+StackBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+StackBlur.m"; sourceTree = "<group>"; };
 		8043C1FD19DF1B5F0054C60C /* disclosure-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclosure-icon.png"; sourceTree = "<group>"; };
+		804A63AB19E1547700DE69FA /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
+		804A63AC19E1547700DE69FA /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
+		804A63AE19E154A900DE69FA /* NewsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTableViewCell.h; sourceTree = "<group>"; };
+		804A63AF19E154A900DE69FA /* NewsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTableViewCell.m; sourceTree = "<group>"; };
 		805D891219D74EC800D2CF32 /* haifa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = haifa.jpg; sourceTree = "<group>"; };
 		805D891519D74EE100D2CF32 /* SourceSansPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Bold.otf"; sourceTree = "<group>"; };
 		805D891619D74EE100D2CF32 /* SourceSansPro-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Light.otf"; sourceTree = "<group>"; };
@@ -203,6 +209,10 @@
 				803CAA4919DC9669008493B5 /* SpeakersTableViewCell.m */,
 				8032562A19DF269F00546426 /* SponsorsViewController.h */,
 				8032562B19DF269F00546426 /* SponsorsViewController.m */,
+				804A63AB19E1547700DE69FA /* NewsViewController.h */,
+				804A63AC19E1547700DE69FA /* NewsViewController.m */,
+				804A63AE19E154A900DE69FA /* NewsTableViewCell.h */,
+				804A63AF19E154A900DE69FA /* NewsTableViewCell.m */,
 				8043C1F919DEE0980054C60C /* UIImage+StackBlur */,
 				80BB349B19D73CF800B2C82B /* SWRevealViewController */,
 				80B269C519D73A750012F891 /* Images.xcassets */,
@@ -383,6 +393,8 @@
 				80B269C019D73A750012F891 /* main.m in Sources */,
 				80BB349E19D73CF800B2C82B /* SWRevealViewController.m in Sources */,
 				80BB34A419D73D4700B2C82B /* RearViewController.m in Sources */,
+				804A63B019E154A900DE69FA /* NewsTableViewCell.m in Sources */,
+				804A63AD19E1547700DE69FA /* NewsViewController.m in Sources */,
 				802A303519DA11AC00CB6826 /* SpeakersViewController.m in Sources */,
 				80BB34A119D73D3700B2C82B /* FrontViewController.m in Sources */,
 				8032562C19DF269F00546426 /* SponsorsViewController.m in Sources */,
