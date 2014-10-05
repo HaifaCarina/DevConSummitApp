@@ -28,6 +28,8 @@
 		805D891B19D74EE100D2CF32 /* SourceSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 805D891719D74EE100D2CF32 /* SourceSansPro-Regular.otf */; };
 		805D891C19D74EE100D2CF32 /* SourceSansPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 805D891819D74EE100D2CF32 /* SourceSansPro-Semibold.otf */; };
 		805D891E19D74FF600D2CF32 /* myprofile-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 805D891D19D74FF600D2CF32 /* myprofile-background.png */; };
+		80A6584319E1D5590014FAFD /* AttendeesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A6584219E1D5590014FAFD /* AttendeesViewController.m */; };
+		80A6584619E1D72D0014FAFD /* AttendeesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A6584519E1D72D0014FAFD /* AttendeesTableViewCell.m */; };
 		80B269B419D73A750012F891 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B269B319D73A750012F891 /* Foundation.framework */; };
 		80B269B619D73A750012F891 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B269B519D73A750012F891 /* CoreGraphics.framework */; };
 		80B269B819D73A750012F891 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B269B719D73A750012F891 /* UIKit.framework */; };
@@ -87,6 +89,10 @@
 		805D891719D74EE100D2CF32 /* SourceSansPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.otf"; sourceTree = "<group>"; };
 		805D891819D74EE100D2CF32 /* SourceSansPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Semibold.otf"; sourceTree = "<group>"; };
 		805D891D19D74FF600D2CF32 /* myprofile-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myprofile-background.png"; sourceTree = "<group>"; };
+		80A6584119E1D5590014FAFD /* AttendeesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendeesViewController.h; sourceTree = "<group>"; };
+		80A6584219E1D5590014FAFD /* AttendeesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendeesViewController.m; sourceTree = "<group>"; };
+		80A6584419E1D72D0014FAFD /* AttendeesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendeesTableViewCell.h; sourceTree = "<group>"; };
+		80A6584519E1D72D0014FAFD /* AttendeesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendeesTableViewCell.m; sourceTree = "<group>"; };
 		80B269B019D73A750012F891 /* DevConSummitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DevConSummitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80B269B319D73A750012F891 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		80B269B519D73A750012F891 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -199,6 +205,10 @@
 				80BB34A019D73D3700B2C82B /* FrontViewController.m */,
 				80BB34A219D73D4700B2C82B /* RearViewController.h */,
 				80BB34A319D73D4700B2C82B /* RearViewController.m */,
+				80A6584119E1D5590014FAFD /* AttendeesViewController.h */,
+				80A6584219E1D5590014FAFD /* AttendeesViewController.m */,
+				80A6584419E1D72D0014FAFD /* AttendeesTableViewCell.h */,
+				80A6584519E1D72D0014FAFD /* AttendeesTableViewCell.m */,
 				802D404A19D75411008873E8 /* ProgramsViewController.h */,
 				802D404B19D75411008873E8 /* ProgramsViewController.m */,
 				802D405319D76170008873E8 /* CustomTableViewCell.h */,
@@ -390,6 +400,7 @@
 				80B269C419D73A750012F891 /* AppDelegate.m in Sources */,
 				803CAA4A19DC9669008493B5 /* SpeakersTableViewCell.m in Sources */,
 				80BB349A19D73CA500B2C82B /* MainViewController.m in Sources */,
+				80A6584619E1D72D0014FAFD /* AttendeesTableViewCell.m in Sources */,
 				80B269C019D73A750012F891 /* main.m in Sources */,
 				80BB349E19D73CF800B2C82B /* SWRevealViewController.m in Sources */,
 				80BB34A419D73D4700B2C82B /* RearViewController.m in Sources */,
@@ -401,6 +412,7 @@
 				802D405519D76170008873E8 /* CustomTableViewCell.m in Sources */,
 				8043C1FC19DEE0980054C60C /* UIImage+StackBlur.m in Sources */,
 				802D404C19D75411008873E8 /* ProgramsViewController.m in Sources */,
+				80A6584319E1D5590014FAFD /* AttendeesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
