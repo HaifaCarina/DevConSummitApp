@@ -9,11 +9,14 @@
 #import "SpeakersViewController.h"
 #import "SWRevealViewController.h"
 #import "SpeakersTableViewCell.h"
+#import "SpeakerProfileViewController.h"
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 #define UIColorFromRGBWithAlpha(rgbValue,a) [UIColor \ colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 
-@interface SpeakersViewController ()
+@interface SpeakersViewController () {
+    SWRevealViewController *revealController;
 
+}
 @end
 
 @implementation SpeakersViewController
@@ -34,7 +37,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     // Set-up navigation drawer
-    SWRevealViewController *revealController = [self revealViewController];
+    revealController = [self revealViewController];
     [self.navigationController.navigationBar addGestureRecognizer:revealController.panGestureRecognizer];
     
     UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navigation-icon.png"] style:UIBarButtonItemStyleBordered target:revealController action:@selector(revealToggle:)];
@@ -157,6 +160,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"did select %@", indexPath);
+    
+    SpeakerProfileViewController *profileView = [[SpeakerProfileViewController alloc] init];
+    [self.navigationController pushViewController:profileView animated:YES];
 
 }
 
