@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface NewsTableViewCell : UITableViewCell
-
+@property (strong, nonatomic, retain) UILabel *header;
 @end
