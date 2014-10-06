@@ -29,6 +29,8 @@
 		805D891B19D74EE100D2CF32 /* SourceSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 805D891719D74EE100D2CF32 /* SourceSansPro-Regular.otf */; };
 		805D891C19D74EE100D2CF32 /* SourceSansPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 805D891819D74EE100D2CF32 /* SourceSansPro-Semibold.otf */; };
 		805D891E19D74FF600D2CF32 /* myprofile-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 805D891D19D74FF600D2CF32 /* myprofile-background.png */; };
+		808EB02519E2C4CD0091AADD /* settings-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 808EB02419E2C4CD0091AADD /* settings-icon.png */; };
+		808EB02719E2C91D0091AADD /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 808EB02619E2C91D0091AADD /* reveal-icon.png */; };
 		80A6584319E1D5590014FAFD /* AttendeesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A6584219E1D5590014FAFD /* AttendeesViewController.m */; };
 		80A6584619E1D72D0014FAFD /* AttendeesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A6584519E1D72D0014FAFD /* AttendeesTableViewCell.m */; };
 		80B269B419D73A750012F891 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B269B319D73A750012F891 /* Foundation.framework */; };
@@ -93,6 +95,8 @@
 		805D891719D74EE100D2CF32 /* SourceSansPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.otf"; sourceTree = "<group>"; };
 		805D891819D74EE100D2CF32 /* SourceSansPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Semibold.otf"; sourceTree = "<group>"; };
 		805D891D19D74FF600D2CF32 /* myprofile-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myprofile-background.png"; sourceTree = "<group>"; };
+		808EB02419E2C4CD0091AADD /* settings-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-icon.png"; sourceTree = "<group>"; };
+		808EB02619E2C91D0091AADD /* reveal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon.png"; sourceTree = "<group>"; };
 		80A6584119E1D5590014FAFD /* AttendeesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendeesViewController.h; sourceTree = "<group>"; };
 		80A6584219E1D5590014FAFD /* AttendeesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendeesViewController.m; sourceTree = "<group>"; };
 		80A6584419E1D72D0014FAFD /* AttendeesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendeesTableViewCell.h; sourceTree = "<group>"; };
@@ -284,6 +288,8 @@
 		80BB34A519D73ECC00B2C82B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				808EB02619E2C91D0091AADD /* reveal-icon.png */,
+				808EB02419E2C4CD0091AADD /* settings-icon.png */,
 				8032563519DF471900546426 /* Gold-accenture.png */,
 				8032563319DF470100546426 /* CP-uber.png */,
 				8032562F19DF43B900546426 /* CP-GitHub.png */,
@@ -378,12 +384,14 @@
 				8032563619DF471900546426 /* Gold-accenture.png in Resources */,
 				80B269BE19D73A750012F891 /* InfoPlist.strings in Resources */,
 				8032562E19DF398900546426 /* devcon-summit.png in Resources */,
+				808EB02719E2C91D0091AADD /* reveal-icon.png in Resources */,
 				805D891319D74EC800D2CF32 /* haifa.jpg in Resources */,
 				8032563219DF43B900546426 /* Gold-Canva.png in Resources */,
 				8032563419DF470100546426 /* CP-uber.png in Resources */,
 				805D891E19D74FF600D2CF32 /* myprofile-background.png in Resources */,
 				805D891919D74EE100D2CF32 /* SourceSansPro-Bold.otf in Resources */,
 				8043C1FE19DF1B5F0054C60C /* disclosure-icon.png in Resources */,
+				808EB02519E2C4CD0091AADD /* settings-icon.png in Resources */,
 				805D891C19D74EE100D2CF32 /* SourceSansPro-Semibold.otf in Resources */,
 				8032563119DF43B900546426 /* CP-GitHub.png in Resources */,
 				80BB34A719D73ECC00B2C82B /* navigation-icon.png in Resources */,

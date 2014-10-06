@@ -28,22 +28,35 @@
     return self;
 }
 
+- (void) requestButton {
+    NSLog(@"button is pressed!");
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
     
+    self.navigationItem.title = @"My Profile";
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: UIColorFromRGB(0x83ac25)};
+    self.view.backgroundColor = UIColorFromRGB(0xfbfaf7);
+    
+    // #########################################
+    //          Set-up Navigation Drawer
+    // #########################################
+
     SWRevealViewController *revealController = [self revealViewController];
     
     [self.navigationController.navigationBar addGestureRecognizer:revealController.panGestureRecognizer];
     
-    UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navigation-icon.png"]
-                                                                         style:UIBarButtonItemStyleBordered target:revealController action:@selector(revealToggle:)];
-    
+    UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"reveal-icon.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleBordered target:revealController action:@selector(revealToggle:)];
     self.navigationItem.leftBarButtonItem = revealButtonItem;
-    self.navigationItem.title = @"My Profile";
     
-    self.view.backgroundColor = UIColorFromRGB(0xfbfaf7);
+    // #########################################
+    //          Set-up Settings Button
+    // #########################################
+    UIBarButtonItem *settingsButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"settings-icon.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleBordered target:self action:@selector(requestButton)];
+    
+    self.navigationItem.rightBarButtonItem = settingsButtonItem;
+    
     
     // #########################################
     //          Set-up ScrollView
