@@ -17,6 +17,15 @@
     [super viewDidLoad];
     self.view.backgroundColor = UIColorFromRGB(0xfbfaf7);
     
+    // #########################################
+    //          Set-up ScrollView
+    // #########################################
+    
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame: CGRectMake(0, -40, 320, self.view.frame.size.height + 40)];
+    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height);
+    scrollView.showsHorizontalScrollIndicator = YES;
+    [self.view addSubview:scrollView];
+    
     
     // #########################################
     // Set Image for cell bottom half background
@@ -32,14 +41,14 @@
     UIImage *blurredImage = [partOfImage stackBlur:55];
     
     UIImageView *imageView1 = [[UIImageView alloc]initWithImage:blurredImage];
-    imageView1.frame = CGRectMake(0, 0, self.view.frame.size.width, 200);
+    imageView1.frame = CGRectMake(0, 0, self.view.frame.size.width, 180);
     
-    [self.view addSubview:imageView1];
-    [self.view sendSubviewToBack:imageView1];
+    [scrollView addSubview:imageView1];
+    [scrollView sendSubviewToBack:imageView1];
     
-    UIView *background = [[UIView alloc]initWithFrame:CGRectMake(0, 200, self.view.frame.size.width, 140)];
+    UIView *background = [[UIView alloc]initWithFrame:CGRectMake(0, 180, self.view.frame.size.width, 140)];
     background.backgroundColor = UIColorFromRGB(0x6A4FFA);
-    [self.view addSubview:background];
+    [scrollView addSubview:background];
     
     // #########################################
     //              Set Image View
@@ -47,13 +56,13 @@
     
     UIImageView *imageView = [[UIImageView alloc]init];
     imageView.frame = CGRectMake(0, 0, 100, 100);
-    imageView.center = CGPointMake(self.view.bounds.size.width/2, 200);
+    imageView.center = CGPointMake(self.view.bounds.size.width/2, 180);
     imageView.image = [UIImage imageNamed:@"haifa.jpg"];
     imageView.layer.borderColor = UIColorFromRGB(0x6A4FFA).CGColor;
     imageView.layer.borderWidth = 2;
     imageView.layer.cornerRadius = 5.0;
     imageView.layer.masksToBounds = YES;
-    [self.view addSubview:imageView];
+    [scrollView addSubview:imageView];
     
     // #########################################
     //              Set Name
@@ -61,13 +70,13 @@
     
     UILabel *name = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width*0.9, 40)];
     name.text = @"HAIFA CARINA BALUYOS";
-    name.center = CGPointMake(self.view.bounds.size.width/2, 280);
+    name.center = CGPointMake(self.view.bounds.size.width/2, 260);
     name.lineBreakMode = NSLineBreakByWordWrapping;
     name.numberOfLines = 0;
     name.textAlignment = NSTextAlignmentCenter;
     name.textColor = [UIColor whiteColor];
     name.font = [UIFont fontWithName:@"SourceSansPro-SemiBold" size:20];
-    [self.view addSubview:name];
+    [scrollView addSubview:name];
     
     // Name - Resize Frame
     CGRect nameFrame = [name.text boundingRectWithSize:CGSizeMake(name.frame.size.width,MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName : name.font } context:nil];
@@ -91,7 +100,7 @@
     affiliation.textAlignment = NSTextAlignmentCenter;
     affiliation.font = [UIFont fontWithName:@"SourceSansPro-Regular" size:12];
     affiliation.textColor = [UIColor whiteColor];
-    [self.view addSubview:affiliation];
+    [scrollView addSubview:affiliation];
     
     
     NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithAttributedString: affiliation.attributedText];
@@ -106,13 +115,13 @@
     //              Set Event Role
     // #########################################
     
-    UILabel *eventRole = [[UILabel alloc]initWithFrame:CGRectMake(0, 350, 300, 50)];
+    UILabel *eventRole = [[UILabel alloc]initWithFrame:CGRectMake(0, 330, 300, 50)];
     eventRole.center = CGPointMake(self.view.bounds.size.width/2, eventRole.center.y);
     eventRole.textAlignment = NSTextAlignmentCenter;
     eventRole.text = @"Resource Speaker";
     eventRole.textColor = UIColorFromRGB(0x83ac25);
     eventRole.font = [UIFont fontWithName:@"PTSerif-Italic" size:14];
-    [self.view addSubview:eventRole];
+    [scrollView addSubview:eventRole];
     
     // EventRole - Resize Frame
     CGRect eventRoleFrame = [eventRole.text boundingRectWithSize:CGSizeMake(eventRole.frame.size.width,MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName : eventRole.font } context:nil];
@@ -122,14 +131,14 @@
     //              Set talkTitle
     // #########################################
     
-    UILabel *talkTitle = [[UILabel alloc]initWithFrame:CGRectMake(0, 365, 300, 50)];
+    UILabel *talkTitle = [[UILabel alloc]initWithFrame:CGRectMake(0, 345, 300, 50)];
     talkTitle.center = CGPointMake(self.view.bounds.size.width/2, talkTitle.center.y);
     talkTitle.textAlignment = NSTextAlignmentCenter;
     talkTitle.text = @"Trends and Best Practices in Android Development";
     talkTitle.lineBreakMode = NSLineBreakByWordWrapping;
     talkTitle.numberOfLines = 0;
     talkTitle.font = [UIFont fontWithName:@"SourceSansPro-SemiBold" size:18];
-    [self.view addSubview:talkTitle];
+    [scrollView addSubview:talkTitle];
     
     // talkTitle - Resize Frame
     CGRect talkTitleFrame = [talkTitle.text boundingRectWithSize:CGSizeMake(talkTitle.frame.size.width,MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName : talkTitle.font } context:nil];
@@ -139,13 +148,13 @@
     //              Set About Header
     // #########################################
  
-    UILabel *aboutHeader = [[UILabel alloc]initWithFrame:CGRectMake(0, 420, 300, 50)];
+    UILabel *aboutHeader = [[UILabel alloc]initWithFrame:CGRectMake(0, 400, 300, 50)];
     aboutHeader.center = CGPointMake(self.view.bounds.size.width/2, aboutHeader.center.y);
     aboutHeader.textAlignment = NSTextAlignmentCenter;
     aboutHeader.text = @"About Haifa";
     aboutHeader.textColor = UIColorFromRGB(0x83ac25);
     aboutHeader.font = [UIFont fontWithName:@"PTSerif-Italic" size:14];
-    [self.view addSubview:aboutHeader];
+    [scrollView addSubview:aboutHeader];
     
     // aboutHeader - Resize Frame
     CGRect aboutHeaderFrame = [aboutHeader.text boundingRectWithSize:CGSizeMake(aboutHeader.frame.size.width,MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName : aboutHeader.font } context:nil];
@@ -156,19 +165,31 @@
     //              Set About Description
     // #########################################
     
-    UILabel *aboutDescription = [[UILabel alloc]initWithFrame:CGRectMake(0, 450, 300, 50)];
+    UILabel *aboutDescription = [[UILabel alloc]initWithFrame:CGRectMake(0, 430, 300, 50)];
     aboutDescription.center = CGPointMake(self.view.bounds.size.width/2, aboutDescription.center.y);
     aboutDescription.textAlignment = NSTextAlignmentJustified;
-    aboutDescription.text = @"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, ";
+    aboutDescription.text = @"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, ";
     aboutDescription.font = [aboutDescription.font fontWithSize:12];
     aboutDescription.lineBreakMode = NSLineBreakByWordWrapping;
     aboutDescription.numberOfLines = 0;
-    [self.view addSubview:aboutDescription];
+    [scrollView addSubview:aboutDescription];
     
     // aboutDescription - Resize Frame
     CGRect aboutDescriptionFrame = [aboutDescription.text boundingRectWithSize:CGSizeMake(aboutDescription.frame.size.width,MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName : aboutDescription.font } context:nil];
     aboutDescription.frame = CGRectMake(aboutDescription.frame.origin.x, aboutDescription.frame.origin.y, aboutDescription.frame.size.width, aboutDescriptionFrame.size.height);
     
+    // #########################################
+    //              Set ScrollView Content
+    // #########################################
+    
+    float sizeOfContent = 0;
+    UIView *lLast = [scrollView.subviews lastObject];
+    NSInteger wd = lLast.frame.origin.y;
+    NSInteger ht = lLast.frame.size.height;
+    
+    sizeOfContent = wd+ht;
+    
+    scrollView.contentSize = CGSizeMake(scrollView.frame.size.width, sizeOfContent + 10);
 
     
 }
