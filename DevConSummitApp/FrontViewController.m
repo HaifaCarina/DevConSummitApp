@@ -9,7 +9,7 @@
 #import "FrontViewController.h"
 #import "SWRevealViewController.h"
 #import "UIImage+StackBlur.h"
-
+#import "EditMyProfileViewController.h"
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 #define UIColorFromRGBWithAlpha(rgbValue,a) [UIColor \ colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 
@@ -30,6 +30,9 @@
 
 - (void) requestButton {
     NSLog(@"button is pressed!");
+    
+    EditMyProfileViewController *editMyProfileView = [[EditMyProfileViewController alloc] init];
+    [self.navigationController pushViewController:editMyProfileView animated:YES];
 }
 - (void)viewDidLoad
 {

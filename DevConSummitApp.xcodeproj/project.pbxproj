@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		8024C6BD19DF207900B73EDB /* PTSerif-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8024C6BC19DF207900B73EDB /* PTSerif-Italic.ttf */; };
+		8029875D19E2F8A300B49102 /* EditMyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8029875C19E2F8A300B49102 /* EditMyProfileViewController.m */; };
+		8029876119E327C300B49102 /* facebook-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8029876019E327C300B49102 /* facebook-icon.png */; };
+		8029876319E3281300B49102 /* twitter-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8029876219E3281300B49102 /* twitter-icon.png */; };
+		8029876519E3286E00B49102 /* website-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8029876419E3286E00B49102 /* website-icon.png */; };
 		802A303519DA11AC00CB6826 /* SpeakersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 802A303419DA11AC00CB6826 /* SpeakersViewController.m */; };
 		802D404C19D75411008873E8 /* ProgramsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 802D404B19D75411008873E8 /* ProgramsViewController.m */; };
 		802D405519D76170008873E8 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 802D405419D76170008873E8 /* CustomTableViewCell.m */; };
@@ -65,6 +69,11 @@
 
 /* Begin PBXFileReference section */
 		8024C6BC19DF207900B73EDB /* PTSerif-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSerif-Italic.ttf"; sourceTree = "<group>"; };
+		8029875B19E2F8A300B49102 /* EditMyProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditMyProfileViewController.h; sourceTree = "<group>"; };
+		8029875C19E2F8A300B49102 /* EditMyProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditMyProfileViewController.m; sourceTree = "<group>"; };
+		8029876019E327C300B49102 /* facebook-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook-icon.png"; sourceTree = "<group>"; };
+		8029876219E3281300B49102 /* twitter-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter-icon.png"; sourceTree = "<group>"; };
+		8029876419E3286E00B49102 /* website-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "website-icon.png"; sourceTree = "<group>"; };
 		802A303319DA11AC00CB6826 /* SpeakersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeakersViewController.h; sourceTree = "<group>"; };
 		802A303419DA11AC00CB6826 /* SpeakersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeakersViewController.m; sourceTree = "<group>"; };
 		802D404A19D75411008873E8 /* ProgramsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramsViewController.h; sourceTree = "<group>"; };
@@ -213,6 +222,8 @@
 				80BB349919D73CA500B2C82B /* MainViewController.m */,
 				80BB349F19D73D3700B2C82B /* FrontViewController.h */,
 				80BB34A019D73D3700B2C82B /* FrontViewController.m */,
+				8029875B19E2F8A300B49102 /* EditMyProfileViewController.h */,
+				8029875C19E2F8A300B49102 /* EditMyProfileViewController.m */,
 				80BB34A219D73D4700B2C82B /* RearViewController.h */,
 				80BB34A319D73D4700B2C82B /* RearViewController.m */,
 				80A6584119E1D5590014FAFD /* AttendeesViewController.h */,
@@ -288,6 +299,9 @@
 		80BB34A519D73ECC00B2C82B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8029876419E3286E00B49102 /* website-icon.png */,
+				8029876219E3281300B49102 /* twitter-icon.png */,
+				8029876019E327C300B49102 /* facebook-icon.png */,
 				808EB02619E2C91D0091AADD /* reveal-icon.png */,
 				808EB02419E2C4CD0091AADD /* settings-icon.png */,
 				8032563519DF471900546426 /* Gold-accenture.png */,
@@ -387,6 +401,8 @@
 				808EB02719E2C91D0091AADD /* reveal-icon.png in Resources */,
 				805D891319D74EC800D2CF32 /* haifa.jpg in Resources */,
 				8032563219DF43B900546426 /* Gold-Canva.png in Resources */,
+				8029876519E3286E00B49102 /* website-icon.png in Resources */,
+				8029876319E3281300B49102 /* twitter-icon.png in Resources */,
 				8032563419DF470100546426 /* CP-uber.png in Resources */,
 				805D891E19D74FF600D2CF32 /* myprofile-background.png in Resources */,
 				805D891919D74EE100D2CF32 /* SourceSansPro-Bold.otf in Resources */,
@@ -395,6 +411,7 @@
 				805D891C19D74EE100D2CF32 /* SourceSansPro-Semibold.otf in Resources */,
 				8032563119DF43B900546426 /* CP-GitHub.png in Resources */,
 				80BB34A719D73ECC00B2C82B /* navigation-icon.png in Resources */,
+				8029876119E327C300B49102 /* facebook-icon.png in Resources */,
 				80B269C619D73A750012F891 /* Images.xcassets in Resources */,
 				805D891B19D74EE100D2CF32 /* SourceSansPro-Regular.otf in Resources */,
 			);
@@ -423,6 +440,7 @@
 				80B269C019D73A750012F891 /* main.m in Sources */,
 				80BB349E19D73CF800B2C82B /* SWRevealViewController.m in Sources */,
 				80BB34A419D73D4700B2C82B /* RearViewController.m in Sources */,
+				8029875D19E2F8A300B49102 /* EditMyProfileViewController.m in Sources */,
 				804F997819E1E19D00B04F9E /* SpeakerProfileViewController.m in Sources */,
 				804A63B019E154A900DE69FA /* NewsTableViewCell.m in Sources */,
 				804A63AD19E1547700DE69FA /* NewsViewController.m in Sources */,
