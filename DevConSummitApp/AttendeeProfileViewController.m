@@ -16,6 +16,7 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = UIColorFromRGB(0xfbfaf7);
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: UIColorFromRGB(0x83ac25)};
     
     // #########################################
     //          Set-up ScrollView
