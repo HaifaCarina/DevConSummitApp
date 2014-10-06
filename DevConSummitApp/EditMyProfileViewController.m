@@ -10,7 +10,10 @@
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 #define UIColorFromRGBWithAlpha(rgbValue,a) [UIColor \ colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 
-@interface EditMyProfileViewController ()
+@interface EditMyProfileViewController () {
+    CGFloat defaultFontSize;
+    CGFloat defaultHeight;
+}
 @property (nonatomic, strong) UITextField *positionField;
 @property (nonatomic, strong) UITextField *companyField;
 @property (nonatomic, strong) UITextField *locationField;
@@ -20,6 +23,7 @@
 @property (nonatomic, strong) UITextField *websiteField;
 @property (nonatomic, strong) UITextField *twitterField;
 @property (nonatomic, strong) UITextField *facebookField;
+
 
 @end
 
@@ -33,8 +37,8 @@
     self.navigationController.navigationBar.tintColor = UIColorFromRGB(0x83ac25);
     self.tableView.backgroundColor = UIColorFromRGB(0xfbfaf7);
     
-    
-    
+    defaultFontSize = 14.0f;
+    defaultHeight = 40.0f;
 }
 
 #pragma mark - Table view data source
@@ -60,6 +64,7 @@
     
     NSString *text = nil;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.textLabel.font = [cell.textLabel.font fontWithSize:defaultFontSize];
     
     switch ( indexPath.row )
     {
@@ -82,12 +87,13 @@
             name.numberOfLines = 0;
             name.textAlignment = NSTextAlignmentCenter;
             name.textColor = UIColorFromRGB(0x83ac25);
-            name.font = [UIFont fontWithName:@"SourceSansPro-SemiBold" size:12];
+            name.font = [UIFont fontWithName:@"SourceSansPro-SemiBold" size:defaultFontSize];
             [cell.contentView addSubview:name];
             
             // Name - Resize Frame
             CGRect nameFrame = [name.text boundingRectWithSize:CGSizeMake(name.frame.size.width,MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName : name.font } context:nil];
             name.frame = CGRectMake(name.frame.origin.x, name.frame.origin.y, name.frame.size.width, nameFrame.size.height);
+            
             return cell;
             break;
         }
@@ -98,30 +104,30 @@
             
         }
         case 2: {
-            self.positionField = [[UITextField alloc]initWithFrame:CGRectMake(25, 0, cell.contentView.frame.size.width-35, 30 )];
+            self.positionField = [[UITextField alloc]initWithFrame:CGRectMake(25, 0, cell.contentView.frame.size.width-35, defaultHeight )];
             [self.positionField setAutocorrectionType:UITextAutocorrectionTypeNo];
             self.positionField.placeholder = @"Company Role/Position";
-            [self.positionField setFont:[UIFont systemFontOfSize:12]];
+            [self.positionField setFont: [UIFont systemFontOfSize: defaultFontSize]];
             self.positionField.delegate = self;
             [cell.contentView addSubview:self.positionField];
             return cell;
             break;
         }
         case 3: {
-            self.companyField = [[UITextField alloc]initWithFrame:CGRectMake(25, 0, cell.contentView.frame.size.width-35, 30 )];
+            self.companyField = [[UITextField alloc]initWithFrame:CGRectMake(25, 0, cell.contentView.frame.size.width-35, defaultHeight )];
             [self.companyField setAutocorrectionType:UITextAutocorrectionTypeNo];
             self.companyField.placeholder = @"Company Name";
-            [self.companyField setFont:[UIFont systemFontOfSize:12]];
+            [self.companyField setFont:[UIFont systemFontOfSize:defaultFontSize]];
             self.companyField.delegate = self;
             [cell.contentView addSubview:self.companyField];
             return cell;
             break;
         }
         case 4: {
-            self.locationField = [[UITextField alloc]initWithFrame:CGRectMake(25, 0, cell.contentView.frame.size.width-35, 30 )];
+            self.locationField = [[UITextField alloc]initWithFrame:CGRectMake(25, 0, cell.contentView.frame.size.width-35, defaultHeight )];
             [self.locationField setAutocorrectionType:UITextAutocorrectionTypeNo];
             self.locationField.placeholder = @"Location";
-            [self.locationField setFont:[UIFont systemFontOfSize:12]];
+            [self.locationField setFont:[UIFont systemFontOfSize:defaultFontSize]];
             self.locationField.delegate = self;
             [cell.contentView addSubview:self.locationField];
             return cell;
@@ -136,7 +142,7 @@
         case 6: {
             self.aboutField = [[UITextView alloc]initWithFrame:CGRectMake(20, 0, cell.contentView.frame.size.width-35, 80 )];
             [self.aboutField setAutocorrectionType:UITextAutocorrectionTypeNo];
-            [self.aboutField setFont:[UIFont systemFontOfSize:12]];
+            [self.aboutField setFont:[UIFont systemFontOfSize:defaultFontSize]];
             self.aboutField.delegate = self;
             self.aboutField.text = @"Enter short description of yourself";
             self.aboutField.textColor = [UIColor lightGrayColor];
@@ -152,10 +158,10 @@
             
         }
         case 8: {
-            self.specialtyField = [[UITextField alloc]initWithFrame:CGRectMake(25, 0, cell.contentView.frame.size.width-35, 30 )];
+            self.specialtyField = [[UITextField alloc]initWithFrame:CGRectMake(25, 0, cell.contentView.frame.size.width-35, defaultHeight )];
             [self.specialtyField setAutocorrectionType:UITextAutocorrectionTypeNo];
             self.specialtyField.placeholder = @"One Technology Specialty (Ex. Android)";
-            [self.specialtyField setFont:[UIFont systemFontOfSize:12]];
+            [self.specialtyField setFont:[UIFont systemFontOfSize:defaultFontSize]];
             self.specialtyField.delegate = self;
             [cell.contentView addSubview:self.specialtyField];
             return cell;
@@ -164,7 +170,7 @@
         case 9: {
             self.technologiesField = [[UITextView alloc]initWithFrame:CGRectMake(20, 0, cell.contentView.frame.size.width-35, 80 )];
             [self.technologiesField setAutocorrectionType:UITextAutocorrectionTypeNo];
-            [self.technologiesField setFont:[UIFont systemFontOfSize:12]];
+            [self.technologiesField setFont:[UIFont systemFontOfSize:defaultFontSize]];
             self.technologiesField.delegate = self;
             self.technologiesField.text = @"Enter list of development technologies used (Ex. JavaScript, PHP, MySQL)";
             self.technologiesField.textColor = [UIColor lightGrayColor];
@@ -181,10 +187,10 @@
             
         }
         case 11: {
-            self.websiteField = [[UITextField alloc]initWithFrame:CGRectMake(25, 0, cell.contentView.frame.size.width-35, 30 )];
+            self.websiteField = [[UITextField alloc]initWithFrame:CGRectMake(25, 0, cell.contentView.frame.size.width-35, defaultHeight )];
             [self.websiteField setAutocorrectionType:UITextAutocorrectionTypeNo];
             self.websiteField.placeholder = @"http://yourdomainname.com";
-            [self.websiteField setFont:[UIFont systemFontOfSize:12]];
+            [self.websiteField setFont:[UIFont systemFontOfSize:defaultFontSize]];
             self.websiteField.delegate = self;
             [cell.contentView addSubview:self.websiteField];
             
@@ -197,10 +203,10 @@
             break;
         }
         case 12: {
-            self.twitterField = [[UITextField alloc]initWithFrame:CGRectMake(25, 0, cell.contentView.frame.size.width-35, 30 )];
+            self.twitterField = [[UITextField alloc]initWithFrame:CGRectMake(25, 0, cell.contentView.frame.size.width-35, defaultHeight )];
             [self.twitterField setAutocorrectionType:UITextAutocorrectionTypeNo];
             self.twitterField.placeholder = @"@username";
-            [self.twitterField setFont:[UIFont systemFontOfSize:12]];
+            [self.twitterField setFont:[UIFont systemFontOfSize:defaultFontSize]];
             self.twitterField.delegate = self;
             [cell.contentView addSubview:self.twitterField];
             
@@ -216,10 +222,10 @@
         case 13: {
             
             
-            self.facebookField = [[UITextField alloc]initWithFrame:CGRectMake(25, 0, cell.contentView.frame.size.width-35, 30 )];
+            self.facebookField = [[UITextField alloc]initWithFrame:CGRectMake(25, 0, cell.contentView.frame.size.width-35, defaultHeight )];
             [self.facebookField setAutocorrectionType:UITextAutocorrectionTypeNo];
             self.facebookField.placeholder = @"/username or Facebook ID";
-            [self.facebookField setFont:[UIFont systemFontOfSize:12]];
+            [self.facebookField setFont:[UIFont systemFontOfSize:defaultFontSize]];
             self.facebookField.delegate = self;
             [cell.contentView addSubview:self.facebookField];
             
@@ -237,7 +243,6 @@
     }
     
     cell.textLabel.text = text;
-    cell.textLabel.font = [cell.textLabel.font fontWithSize:12];
     
     
     return cell;
@@ -271,7 +276,7 @@
     } else if (indexPath.row == 9) {
         return 80;
     } else {
-        return 30;
+        return defaultHeight;
     }
     
 }
