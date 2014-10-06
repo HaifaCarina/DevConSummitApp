@@ -92,7 +92,7 @@
 {
     
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:nil];
     if (cell == nil)
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
@@ -122,7 +122,7 @@
                 
                 UIImageView *imageView2 = [[UIImageView alloc] init];
                 imageView2.contentMode  = UIViewContentModeScaleAspectFit;
-                imageView2.image = [UIImage imageNamed:@"CP-Github.png"];
+                imageView2.image = [UIImage imageNamed:@"CP-GitHub.png"];
                 imageView2.frame = CGRectMake(160, 10, 100, 80);
                 [cell.contentView addSubview:imageView2];
                 
