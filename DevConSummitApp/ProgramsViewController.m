@@ -36,7 +36,9 @@
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: UIColorFromRGB(0x83ac25)};
     
     SWRevealViewController *revealController = [self revealViewController];
-    [self.navigationController.navigationBar addGestureRecognizer:revealController.panGestureRecognizer];
+    [revealController panGestureRecognizer];
+    [revealController tapGestureRecognizer];
+    
     UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"reveal-icon.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleBordered target:revealController action:@selector(revealToggle:)];
     self.navigationItem.leftBarButtonItem = revealButtonItem;
     self.navigationItem.title = @"Programs";
@@ -120,9 +122,8 @@
             break;
     }
     
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
-    
     
 }
 
