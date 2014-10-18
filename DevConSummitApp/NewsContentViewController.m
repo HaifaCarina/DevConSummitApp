@@ -23,15 +23,18 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.tintColor = UIColorFromRGB(0x83ac25);
     
+    UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame: CGRectMake(0, 0 , self.view.frame.size.width, self.view.frame.size.height)];
+    [self.view addSubview:scrollView];
+    
     UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"haifa.jpg"]];
-    imageView.frame = CGRectMake(0, 0 + self.navigationController.navigationBar.frame.size.height, self.view.frame.size.width, self.view.frame.size.height * 0.45);
+    imageView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height * 0.45);
     imageView.contentMode  = UIViewContentModeScaleToFill;
-    [self.view addSubview:imageView];
+    [scrollView addSubview:imageView];
     
     CGRect frame = CGRectMake(0, imageView.frame.origin.y + (imageView.frame.size.height * 0.65), self.view.frame.size.width, imageView.frame.size.height * 0.35);
     UIView *titleBG = [[UIView alloc]initWithFrame:frame];
     titleBG.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.75];
-    [self.view addSubview:titleBG];
+    [scrollView addSubview:titleBG];
     
     UILabel *title = [[UILabel alloc]initWithFrame: CGRectMake(10, frame.origin.y, frame.size.width, frame.size.height)];
     title.lineBreakMode = NSLineBreakByWordWrapping;
@@ -39,7 +42,7 @@
     title.textColor = UIColorFromRGB(0x83ac25);
     title.font = [UIFont fontWithName:@"SourceSansPro-SemiBold" size:20];
     title.text = @"Meet our Android Speaker from Philippine Android Developers Community!";
-    [self.view addSubview:title];
+    [scrollView addSubview:title];
     
     UILabel *content = [[UILabel alloc]initWithFrame:CGRectMake(10, title.frame.origin.y + title.frame.size.height , self.view.frame.size.width - 20, 200)];
     content.lineBreakMode = NSLineBreakByWordWrapping;
@@ -47,18 +50,19 @@
     content.text = @"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, ";
     content.font = [UIFont fontWithName:@"Merriweather-Regular" size:14];
     
-    [self.view addSubview:content];
+    // Content - Resize Frame
+    CGRect contentFrame = [content.text boundingRectWithSize:CGSizeMake(content.frame.size.width,MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName : content.font } context:nil];
+    content.frame = CGRectMake(content.frame.origin.x, content.frame.origin.y, content.frame.size.width, contentFrame.size.height);
+    
+    [scrollView addSubview:content];
     
     
-    for (NSString* family in [UIFont familyNames])
-    {
-        NSLog(@"FONT %@", family);
-        
-        for (NSString* name in [UIFont fontNamesForFamilyName: family])
-        {
-            NSLog(@"  %@", name);
-        }
-    }
+    float sizeOfContent = 0;
+    UIView *lLast = [scrollView.subviews lastObject];
+    NSInteger wd = lLast.frame.origin.y;
+    NSInteger ht = lLast.frame.size.height;
+    sizeOfContent = wd+ht;
+    scrollView.contentSize = CGSizeMake(scrollView.frame.size.width, sizeOfContent + 10);
     
 }
 
