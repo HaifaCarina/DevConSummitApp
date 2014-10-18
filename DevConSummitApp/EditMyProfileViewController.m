@@ -7,12 +7,16 @@
 //
 
 #import "EditMyProfileViewController.h"
+#import "CustomTableViewCell.h"
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 #define UIColorFromRGBWithAlpha(rgbValue,a) [UIColor \ colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 
 @interface EditMyProfileViewController () {
     CGFloat defaultFontSize;
     CGFloat defaultHeight;
+    UIActionSheet *actionSheet;
+    UIImagePickerController *picker;
+    UIImageView *profileImage;
 }
 @property (nonatomic, strong) UITextField *positionField;
 @property (nonatomic, strong) UITextField *companyField;
@@ -35,10 +39,24 @@
     self.navigationItem.title = @"Edit My Profile";
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: UIColorFromRGB(0x83ac25)};
     self.navigationController.navigationBar.tintColor = UIColorFromRGB(0x83ac25);
-    self.tableView.backgroundColor = UIColorFromRGB(0xfbfaf7);
+    self.tableView.backgroundColor = [UIColor whiteColor]; //UIColorFromRGB(0xfbfaf7);
     
     defaultFontSize = 14.0f;
     defaultHeight = 40.0f;
+    
+    actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                  delegate:self
+                                  cancelButtonTitle:@"Cancel"
+                                  destructiveButtonTitle:nil
+                                  otherButtonTitles:@"Take photo", @"Choose existing photo", nil];
+    
+    picker = [[UIImagePickerController alloc]init];
+    picker.allowsEditing=TRUE;
+    picker.delegate = self;
+    
+    profileImage = [[UIImageView alloc]init];
+    profileImage.image = [UIImage imageNamed:@"haifa.jpg"];
+    
 }
 
 #pragma mark - Table view data source
@@ -47,13 +65,17 @@
     return 1;
 }
 
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 15;
+    
+    return 16;
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:nil];
     if (cell == nil)
@@ -62,48 +84,37 @@
     }
     
     
+    
     NSString *text = nil;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.textLabel.font = [cell.textLabel.font fontWithSize:defaultFontSize];
     
+    
     switch ( indexPath.row )
     {
         case 0: {
-            
-            UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 00, 90, 90)];
-            
-            imageView.image = [UIImage imageNamed:@"haifa.jpg"];
-            imageView.center = CGPointMake(cell.contentView.frame.size.width/2, cell.contentView.center.y + (cell.contentView.center.y * 1.50));
-            imageView.backgroundColor = [UIColor clearColor];
-            imageView.layer.cornerRadius = 5.0;
-            imageView.layer.masksToBounds = YES;
-            
-            [cell.contentView addSubview:imageView];
-            
-            UILabel *name = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 200, 40)];
-            name.text = @"HAIFA CARINA BALUYOS";
-            name.center = CGPointMake(cell.contentView.frame.size.width/2, cell.contentView.center.y + (cell.contentView.center.y * 4.50) );
-            name.lineBreakMode = NSLineBreakByWordWrapping;
-            name.numberOfLines = 0;
-            name.textAlignment = NSTextAlignmentCenter;
-            name.textColor = UIColorFromRGB(0x83ac25);
-            name.font = [UIFont fontWithName:@"SourceSansPro-SemiBold" size:defaultFontSize];
-            [cell.contentView addSubview:name];
-            
-            // Name - Resize Frame
-            CGRect nameFrame = [name.text boundingRectWithSize:CGSizeMake(name.frame.size.width,MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName : name.font } context:nil];
-            name.frame = CGRectMake(name.frame.origin.x, name.frame.origin.y, name.frame.size.width, nameFrame.size.height);
-            
-            return cell;
+            text = @"HAIFA CARINA BALUYOS";
+            cell.textLabel.textColor = UIColorFromRGB(0x83ac25);
+            cell.textLabel.textAlignment = NSTextAlignmentCenter;
+            cell.textLabel.font = [UIFont fontWithName:@"SourceSansPro-SemiBold" size:defaultFontSize];
             break;
         }
         case 1: {
-            text = @"User Information";
+            text = @"Photo";
+            cell.imageView.image = profileImage.image;
+            cell.imageView.layer.cornerRadius = 5.0;
+            cell.imageView.layer.masksToBounds = YES;
             cell.textLabel.textColor = UIColorFromRGB(0x83ac25);
             break;
             
         }
         case 2: {
+            text = @"User Information";
+            cell.textLabel.textColor = UIColorFromRGB(0x83ac25);
+            break;
+            
+        }
+        case 3: {
             self.positionField = [[UITextField alloc]initWithFrame:CGRectMake(25, 0, cell.contentView.frame.size.width-35, defaultHeight )];
             [self.positionField setAutocorrectionType:UITextAutocorrectionTypeNo];
             self.positionField.placeholder = @"Company Role/Position";
@@ -113,7 +124,7 @@
             return cell;
             break;
         }
-        case 3: {
+        case 4: {
             self.companyField = [[UITextField alloc]initWithFrame:CGRectMake(25, 0, cell.contentView.frame.size.width-35, defaultHeight )];
             [self.companyField setAutocorrectionType:UITextAutocorrectionTypeNo];
             self.companyField.placeholder = @"Company Name";
@@ -123,7 +134,7 @@
             return cell;
             break;
         }
-        case 4: {
+        case 5: {
             self.locationField = [[UITextField alloc]initWithFrame:CGRectMake(25, 0, cell.contentView.frame.size.width-35, defaultHeight )];
             [self.locationField setAutocorrectionType:UITextAutocorrectionTypeNo];
             self.locationField.placeholder = @"Location";
@@ -133,13 +144,13 @@
             return cell;
             break;
         }
-        case 5: {
+        case 6: {
             text = @"About Me";
             cell.textLabel.textColor = UIColorFromRGB(0x83ac25);
             break;
             
         }
-        case 6: {
+        case 7: {
             self.aboutField = [[UITextView alloc]initWithFrame:CGRectMake(20, 0, cell.contentView.frame.size.width-35, 80 )];
             [self.aboutField setAutocorrectionType:UITextAutocorrectionTypeNo];
             [self.aboutField setFont:[UIFont systemFontOfSize:defaultFontSize]];
@@ -151,13 +162,13 @@
             return cell;
             break;
         }
-        case 7: {
+        case 8: {
             text = @"Technology Stack";
             cell.textLabel.textColor = UIColorFromRGB(0x83ac25);
             break;
             
         }
-        case 8: {
+        case 9: {
             self.specialtyField = [[UITextField alloc]initWithFrame:CGRectMake(25, 0, cell.contentView.frame.size.width-35, defaultHeight )];
             [self.specialtyField setAutocorrectionType:UITextAutocorrectionTypeNo];
             self.specialtyField.placeholder = @"One Technology Specialty (Ex. Android)";
@@ -167,7 +178,7 @@
             return cell;
             break;
         }
-        case 9: {
+        case 10: {
             self.technologiesField = [[UITextView alloc]initWithFrame:CGRectMake(20, 0, cell.contentView.frame.size.width-35, 80 )];
             [self.technologiesField setAutocorrectionType:UITextAutocorrectionTypeNo];
             [self.technologiesField setFont:[UIFont systemFontOfSize:defaultFontSize]];
@@ -180,13 +191,13 @@
             break;
             
         }
-        case 10: {
+        case 11: {
             text = @"Social Media Links";
             cell.textLabel.textColor = UIColorFromRGB(0x83ac25);
             break;
             
         }
-        case 11: {
+        case 12: {
             self.websiteField = [[UITextField alloc]initWithFrame:CGRectMake(25, 0, cell.contentView.frame.size.width-35, defaultHeight )];
             [self.websiteField setAutocorrectionType:UITextAutocorrectionTypeNo];
             self.websiteField.placeholder = @"http://yourdomainname.com";
@@ -202,7 +213,7 @@
             return cell;
             break;
         }
-        case 12: {
+        case 13: {
             self.twitterField = [[UITextField alloc]initWithFrame:CGRectMake(25, 0, cell.contentView.frame.size.width-35, defaultHeight )];
             [self.twitterField setAutocorrectionType:UITextAutocorrectionTypeNo];
             self.twitterField.placeholder = @"@username";
@@ -219,7 +230,7 @@
             return cell;
             break;
         }
-        case 13: {
+        case 14: {
             
             
             self.facebookField = [[UITextField alloc]initWithFrame:CGRectMake(25, 0, cell.contentView.frame.size.width-35, defaultHeight )];
@@ -264,16 +275,21 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"did select %@", indexPath);
+    if (indexPath.row == 1 ) {
+        [actionSheet showInView:self.view];
+    }
     
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        return 140;
-    } else if (indexPath.row == 6) {
+        return defaultHeight;
+    } else if (indexPath.row == 1) {
+        return 50;
+    } else if (indexPath.row == 7) {
         return 80;
-    } else if (indexPath.row == 9) {
+    } else if (indexPath.row == 10) {
         return 80;
     } else {
         return defaultHeight;
@@ -286,6 +302,18 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return NO;
+}
+
+#pragma mark - UIActionSheet Delegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (buttonIndex == 0) {
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    } else {
+        picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+    }
+    [self presentViewController:picker animated:YES completion:nil];
+
 }
 
 #pragma mark - UITextView Delegate
@@ -309,5 +337,25 @@
     }
     [textView resignFirstResponder];
 }
+#pragma mark - UIImagePickerController Delegate
+//Tells the delegate that the user picked a still image or movie.
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    NSLog(@"didFinishPickingMediaWithInfo");
+    
+    UIImage *pickerImage=[info objectForKey:UIImagePickerControllerEditedImage];
+    profileImage.image=pickerImage;
+    
+    [self.tableView reloadData];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+//Tells the delegate that the user cancelled the pick operation.
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    NSLog(@"imagePickerControllerDidCancel");
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 @end

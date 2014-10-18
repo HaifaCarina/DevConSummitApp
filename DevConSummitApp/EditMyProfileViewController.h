@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EditMyProfileViewController : UITableViewController <UITextFieldDelegate, UITextViewDelegate> {
+@interface EditMyProfileViewController : UITableViewController <UITextFieldDelegate, UITextViewDelegate, UIActionSheetDelegate> {
   
 }
 @end
