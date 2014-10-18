@@ -39,7 +39,8 @@
 
     // Set-up navigation drawer
     revealController = [self revealViewController];
-    [self.navigationController.navigationBar addGestureRecognizer:revealController.panGestureRecognizer];
+    [revealController panGestureRecognizer];
+    [revealController tapGestureRecognizer];
     
     UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"reveal-icon.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleBordered target:revealController action:@selector(revealToggle:)];
     self.navigationItem.leftBarButtonItem = revealButtonItem;
