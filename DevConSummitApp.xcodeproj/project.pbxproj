@@ -55,6 +55,8 @@
 		80BB34A119D73D3700B2C82B /* FrontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80BB34A019D73D3700B2C82B /* FrontViewController.m */; };
 		80BB34A419D73D4700B2C82B /* RearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80BB34A319D73D4700B2C82B /* RearViewController.m */; };
 		80BB34A719D73ECC00B2C82B /* navigation-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 80BB34A619D73ECC00B2C82B /* navigation-icon.png */; };
+		80EA6BC019F2572200D3890D /* NewsContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80EA6BBF19F2572200D3890D /* NewsContentViewController.m */; };
+		80EA6BC219F2EF1200D3890D /* Merriweather-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80EA6BC119F2EF1200D3890D /* Merriweather-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +139,9 @@
 		80BB34A219D73D4700B2C82B /* RearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RearViewController.h; sourceTree = "<group>"; };
 		80BB34A319D73D4700B2C82B /* RearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RearViewController.m; sourceTree = "<group>"; };
 		80BB34A619D73ECC00B2C82B /* navigation-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation-icon.png"; sourceTree = "<group>"; };
+		80EA6BBE19F2572200D3890D /* NewsContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsContentViewController.h; sourceTree = "<group>"; };
+		80EA6BBF19F2572200D3890D /* NewsContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsContentViewController.m; sourceTree = "<group>"; };
+		80EA6BC119F2EF1200D3890D /* Merriweather-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Merriweather-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +180,7 @@
 		805D891419D74EE100D2CF32 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				80EA6BC119F2EF1200D3890D /* Merriweather-Regular.ttf */,
 				805D891519D74EE100D2CF32 /* SourceSansPro-Bold.otf */,
 				805D891619D74EE100D2CF32 /* SourceSansPro-Light.otf */,
 				805D891719D74EE100D2CF32 /* SourceSansPro-Regular.otf */,
@@ -246,6 +252,8 @@
 				8032562B19DF269F00546426 /* SponsorsViewController.m */,
 				804A63AB19E1547700DE69FA /* NewsViewController.h */,
 				804A63AC19E1547700DE69FA /* NewsViewController.m */,
+				80EA6BBE19F2572200D3890D /* NewsContentViewController.h */,
+				80EA6BBF19F2572200D3890D /* NewsContentViewController.m */,
 				804A63AE19E154A900DE69FA /* NewsTableViewCell.h */,
 				804A63AF19E154A900DE69FA /* NewsTableViewCell.m */,
 				8043C1F919DEE0980054C60C /* UIImage+StackBlur */,
@@ -409,6 +417,7 @@
 				8043C1FE19DF1B5F0054C60C /* disclosure-icon.png in Resources */,
 				808EB02519E2C4CD0091AADD /* settings-icon.png in Resources */,
 				805D891C19D74EE100D2CF32 /* SourceSansPro-Semibold.otf in Resources */,
+				80EA6BC219F2EF1200D3890D /* Merriweather-Regular.ttf in Resources */,
 				8032563119DF43B900546426 /* CP-GitHub.png in Resources */,
 				80BB34A719D73ECC00B2C82B /* navigation-icon.png in Resources */,
 				8029876119E327C300B49102 /* facebook-icon.png in Resources */,
@@ -437,6 +446,7 @@
 				80B5EF6519E296B300999836 /* AttendeeProfileViewController.m in Sources */,
 				80BB349A19D73CA500B2C82B /* MainViewController.m in Sources */,
 				80A6584619E1D72D0014FAFD /* AttendeesTableViewCell.m in Sources */,
+				80EA6BC019F2572200D3890D /* NewsContentViewController.m in Sources */,
 				80B269C019D73A750012F891 /* main.m in Sources */,
 				80BB349E19D73CF800B2C82B /* SWRevealViewController.m in Sources */,
 				80BB34A419D73D4700B2C82B /* RearViewController.m in Sources */,
