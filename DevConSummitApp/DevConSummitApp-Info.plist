@@ -31,6 +31,7 @@
 		<string>SourceSansPro-Regular.otf</string>
 		<string>SourceSansPro-Semibold.otf</string>
 		<string>PTSerif-Italic.ttf</string>
+		<string>Merriweather-Regular.ttf</string>
 	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
