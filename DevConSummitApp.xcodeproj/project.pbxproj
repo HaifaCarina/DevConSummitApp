@@ -33,6 +33,10 @@
 		805D891B19D74EE100D2CF32 /* SourceSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 805D891719D74EE100D2CF32 /* SourceSansPro-Regular.otf */; };
 		805D891C19D74EE100D2CF32 /* SourceSansPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 805D891819D74EE100D2CF32 /* SourceSansPro-Semibold.otf */; };
 		805D891E19D74FF600D2CF32 /* myprofile-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 805D891D19D74FF600D2CF32 /* myprofile-background.png */; };
+		806B904919F303120091468C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 806B904819F303120091468C /* LoginViewController.m */; };
+		806B904B19F304900091468C /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 806B904A19F304900091468C /* logo.png */; };
+		806B904E19F30A700091468C /* email.png in Resources */ = {isa = PBXBuildFile; fileRef = 806B904C19F30A700091468C /* email.png */; };
+		806B904F19F30A700091468C /* password.png in Resources */ = {isa = PBXBuildFile; fileRef = 806B904D19F30A700091468C /* password.png */; };
 		808EB02519E2C4CD0091AADD /* settings-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 808EB02419E2C4CD0091AADD /* settings-icon.png */; };
 		808EB02719E2C91D0091AADD /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 808EB02619E2C91D0091AADD /* reveal-icon.png */; };
 		80A6584319E1D5590014FAFD /* AttendeesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A6584219E1D5590014FAFD /* AttendeesViewController.m */; };
@@ -106,6 +110,11 @@
 		805D891719D74EE100D2CF32 /* SourceSansPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.otf"; sourceTree = "<group>"; };
 		805D891819D74EE100D2CF32 /* SourceSansPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Semibold.otf"; sourceTree = "<group>"; };
 		805D891D19D74FF600D2CF32 /* myprofile-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myprofile-background.png"; sourceTree = "<group>"; };
+		806B904719F303120091468C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		806B904819F303120091468C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		806B904A19F304900091468C /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		806B904C19F30A700091468C /* email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = email.png; sourceTree = "<group>"; };
+		806B904D19F30A700091468C /* password.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = password.png; sourceTree = "<group>"; };
 		808EB02419E2C4CD0091AADD /* settings-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-icon.png"; sourceTree = "<group>"; };
 		808EB02619E2C91D0091AADD /* reveal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon.png"; sourceTree = "<group>"; };
 		80A6584119E1D5590014FAFD /* AttendeesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendeesViewController.h; sourceTree = "<group>"; };
@@ -224,6 +233,8 @@
 			children = (
 				80B269C219D73A750012F891 /* AppDelegate.h */,
 				80B269C319D73A750012F891 /* AppDelegate.m */,
+				806B904719F303120091468C /* LoginViewController.h */,
+				806B904819F303120091468C /* LoginViewController.m */,
 				80BB349819D73CA500B2C82B /* MainViewController.h */,
 				80BB349919D73CA500B2C82B /* MainViewController.m */,
 				80BB349F19D73D3700B2C82B /* FrontViewController.h */,
@@ -307,6 +318,9 @@
 		80BB34A519D73ECC00B2C82B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				806B904C19F30A700091468C /* email.png */,
+				806B904D19F30A700091468C /* password.png */,
+				806B904A19F304900091468C /* logo.png */,
 				8029876419E3286E00B49102 /* website-icon.png */,
 				8029876219E3281300B49102 /* twitter-icon.png */,
 				8029876019E327C300B49102 /* facebook-icon.png */,
@@ -402,6 +416,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				805D891A19D74EE100D2CF32 /* SourceSansPro-Light.otf in Resources */,
+				806B904B19F304900091468C /* logo.png in Resources */,
 				8024C6BD19DF207900B73EDB /* PTSerif-Italic.ttf in Resources */,
 				8032563619DF471900546426 /* Gold-accenture.png in Resources */,
 				80B269BE19D73A750012F891 /* InfoPlist.strings in Resources */,
@@ -417,9 +432,11 @@
 				8043C1FE19DF1B5F0054C60C /* disclosure-icon.png in Resources */,
 				808EB02519E2C4CD0091AADD /* settings-icon.png in Resources */,
 				805D891C19D74EE100D2CF32 /* SourceSansPro-Semibold.otf in Resources */,
+				806B904F19F30A700091468C /* password.png in Resources */,
 				80EA6BC219F2EF1200D3890D /* Merriweather-Regular.ttf in Resources */,
 				8032563119DF43B900546426 /* CP-GitHub.png in Resources */,
 				80BB34A719D73ECC00B2C82B /* navigation-icon.png in Resources */,
+				806B904E19F30A700091468C /* email.png in Resources */,
 				8029876119E327C300B49102 /* facebook-icon.png in Resources */,
 				80B269C619D73A750012F891 /* Images.xcassets in Resources */,
 				805D891B19D74EE100D2CF32 /* SourceSansPro-Regular.otf in Resources */,
@@ -452,6 +469,7 @@
 				80BB34A419D73D4700B2C82B /* RearViewController.m in Sources */,
 				8029875D19E2F8A300B49102 /* EditMyProfileViewController.m in Sources */,
 				804F997819E1E19D00B04F9E /* SpeakerProfileViewController.m in Sources */,
+				806B904919F303120091468C /* LoginViewController.m in Sources */,
 				804A63B019E154A900DE69FA /* NewsTableViewCell.m in Sources */,
 				804A63AD19E1547700DE69FA /* NewsViewController.m in Sources */,
 				802A303519DA11AC00CB6826 /* SpeakersViewController.m in Sources */,

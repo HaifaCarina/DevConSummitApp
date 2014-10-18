@@ -98,7 +98,6 @@
     cell.contentView.backgroundColor = UIColorFromRGB(0xfbfaf7);
     
     NSString *text = nil;
-    UIView *bgColorView = [[UIView alloc] init];
     
     switch ( indexPath.row )
     {
