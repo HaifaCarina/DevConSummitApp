@@ -9,6 +9,7 @@
 #import "NewsViewController.h"
 #import "SWRevealViewController.h"
 #import "NewsTableViewCell.h"
+#import "NewsContentViewController.h"
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 #define UIColorFromRGBWithAlpha(rgbValue,a) [UIColor \ colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 
@@ -82,6 +83,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //  NSLog(@"did select %@", indexPath);
+    
+    NewsContentViewController *viewController = [[NewsContentViewController alloc]init];
+    [self.navigationController pushViewController:viewController animated:YES];
     
     
 }
