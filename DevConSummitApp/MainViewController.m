@@ -11,7 +11,7 @@
 #import "FrontViewController.h"
 #import "RearViewController.h"
 #import "AppDelegate.h"
-
+#import "KeychainItemWrapper.h"
 @interface MainViewController () <SWRevealViewControllerDelegate>
 
 @end
@@ -31,6 +31,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    KeychainItemWrapper *loginKeychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"LoginData" accessGroup:nil];
+    NSLog(@"MAINVIEW CREDS %@,%@", [loginKeychain objectForKey:(__bridge id)kSecAttrAccount], [[NSString alloc] initWithData:[loginKeychain objectForKey:(__bridge id)kSecValueData] encoding:NSUTF8StringEncoding]);
     
     FrontViewController *frontViewController = [[FrontViewController alloc] init];
     RearViewController *rearViewController = [[RearViewController alloc] init];
