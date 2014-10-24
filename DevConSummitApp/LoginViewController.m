@@ -7,14 +7,18 @@
 //
 
 #import "LoginViewController.h"
+#import "MainViewController.h"
+#import "KeychainItemWrapper.h"
+
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 #define UIColorFromRGBWithAlpha(rgbValue,a) [UIColor \ colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 
-@interface LoginViewController () <UITextFieldDelegate>
+@interface LoginViewController () <UITextFieldDelegate, NSURLConnectionDelegate>
 
 @property (nonatomic, strong) UITextField *emailInput;
 @property (nonatomic, strong) UITextField *passwordInput;
-
+@property (nonatomic, strong) KeychainItemWrapper *loginKeychain;
+@property (nonatomic, strong) NSData *apiData;
 @end
 
 @implementation LoginViewController
@@ -116,13 +120,96 @@
     frame = login.frame;
     frame.origin.y = self.view.frame.size.height * 0.80;
     [login setFrame:frame];
+    
+    // Initiatlize Keychain for email and authentication token
+    self.loginKeychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"LoginData" accessGroup:nil];
+ 
 }
 
 - (void) buttonPressed {
     NSLog(@"button is pressed!");
-    //MainViewController *mainViewController = [[MainViewController alloc]init];
-    //mainViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    //[self presentViewController:mainViewController animated:YES completion:nil];
+    
+    // #########################################
+    //              Set Keychain Email Value
+    // #########################################
+    
+    // Store email to keychain
+    if ([self.emailInput text])
+        [self.loginKeychain setObject:[self.emailInput text] forKey:(__bridge id)kSecAttrAccount];
+    
+    // #########################################
+    //              Send Login API Request
+    // #########################################
+    
+    NSString *post = [NSString stringWithFormat:@"email=%@&password=%@",[self.emailInput text],[self.passwordInput text]];
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *postLength = [NSString stringWithFormat:@"%d",[postData length]];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init] ;
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://api.devcon.ph/api/v1/tokens"]]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postData];
+    
+    NSURLConnection *conn = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+    if(conn) {
+        NSLog(@"Connection Successful");
+    } else {
+        NSLog(@"Connection could not be made");
+    }
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData*)data {
+    //Above method is used to receive the data which we get using post method.
+    self.apiData = data;
+    NSLog(@"Data returned: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+    
+}
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    //This method , you can use to receive the error report in case of connection is not made to server.
+
+}
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+
+    
+    
+    NSError *error = nil;
+    id object = [NSJSONSerialization JSONObjectWithData:self.apiData options:0 error:&error];
+    
+    if(error) { NSLog(@"json was malformed"); }
+    
+    
+    if([object isKindOfClass:[NSDictionary class]])
+    {
+        NSDictionary *results = object;
+        
+        
+        
+        
+        if ([[results valueForKey:@"status_code"] integerValue]  ==  200) {
+            NSLog(@"Credentials correct!");
+            //Store authentication token
+            [self.loginKeychain setObject: (NSString *)[results valueForKey:@"authentication_token"] forKey:(__bridge id)kSecValueData];
+            
+            NSLog(@"LOGIN CREDS %@,%@", [self.loginKeychain objectForKey:(__bridge id)kSecAttrAccount], [self.loginKeychain objectForKey:(__bridge id)kSecValueData]);
+            
+            // Change Login View to MainView
+            MainViewController *mainViewController = [[MainViewController alloc]init];
+            mainViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+            [self presentViewController:mainViewController animated:YES completion:nil];
+            
+        } else {
+            NSLog(@"You shall not pass!");
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Incorrect" message:@"You shall not pass!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            
+        }
+    }
+    else
+    {
+        /* there's no guarantee that the outermost object in a JSON packet will be a dictionary; if we get here then it wasn't, so 'object' shouldn't be treated as an NSDictionary; probably you need to report a suitable error condition */
+    }
+    
 }
 
 #pragma mark - UITextField Delegate

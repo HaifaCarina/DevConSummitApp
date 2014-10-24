@@ -37,6 +37,8 @@
 		806B904B19F304900091468C /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 806B904A19F304900091468C /* logo.png */; };
 		806B904E19F30A700091468C /* email.png in Resources */ = {isa = PBXBuildFile; fileRef = 806B904C19F30A700091468C /* email.png */; };
 		806B904F19F30A700091468C /* password.png in Resources */ = {isa = PBXBuildFile; fileRef = 806B904D19F30A700091468C /* password.png */; };
+		807F839519FAD5A1007A160B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 807F839419FAD5A1007A160B /* Security.framework */; };
+		807F839819FAD70E007A160B /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 807F839719FAD70E007A160B /* KeychainItemWrapper.m */; };
 		808EB02519E2C4CD0091AADD /* settings-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 808EB02419E2C4CD0091AADD /* settings-icon.png */; };
 		808EB02719E2C91D0091AADD /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 808EB02619E2C91D0091AADD /* reveal-icon.png */; };
 		80A6584319E1D5590014FAFD /* AttendeesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A6584219E1D5590014FAFD /* AttendeesViewController.m */; };
@@ -116,6 +118,9 @@
 		806B904A19F304900091468C /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		806B904C19F30A700091468C /* email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = email.png; sourceTree = "<group>"; };
 		806B904D19F30A700091468C /* password.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = password.png; sourceTree = "<group>"; };
+		807F839419FAD5A1007A160B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		807F839619FAD70E007A160B /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+		807F839719FAD70E007A160B /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		808EB02419E2C4CD0091AADD /* settings-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-icon.png"; sourceTree = "<group>"; };
 		808EB02619E2C91D0091AADD /* reveal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon.png"; sourceTree = "<group>"; };
 		80A6584119E1D5590014FAFD /* AttendeesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendeesViewController.h; sourceTree = "<group>"; };
@@ -160,6 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				807F839519FAD5A1007A160B /* Security.framework in Frameworks */,
 				80BCB43F19F32755009C8B99 /* MobileCoreServices.framework in Frameworks */,
 				80B269B619D73A750012F891 /* CoreGraphics.framework in Frameworks */,
 				80B269B819D73A750012F891 /* UIKit.framework in Frameworks */,
@@ -223,6 +229,7 @@
 		80B269B219D73A750012F891 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				807F839419FAD5A1007A160B /* Security.framework */,
 				80BCB43E19F32755009C8B99 /* MobileCoreServices.framework */,
 				80B269B319D73A750012F891 /* Foundation.framework */,
 				80B269B519D73A750012F891 /* CoreGraphics.framework */,
@@ -235,6 +242,8 @@
 		80B269B919D73A750012F891 /* DevConSummitApp */ = {
 			isa = PBXGroup;
 			children = (
+				807F839619FAD70E007A160B /* KeychainItemWrapper.h */,
+				807F839719FAD70E007A160B /* KeychainItemWrapper.m */,
 				80B269C219D73A750012F891 /* AppDelegate.h */,
 				80B269C319D73A750012F891 /* AppDelegate.m */,
 				806B904719F303120091468C /* LoginViewController.h */,
@@ -468,6 +477,7 @@
 				80BB349A19D73CA500B2C82B /* MainViewController.m in Sources */,
 				80A6584619E1D72D0014FAFD /* AttendeesTableViewCell.m in Sources */,
 				80EA6BC019F2572200D3890D /* NewsContentViewController.m in Sources */,
+				807F839819FAD70E007A160B /* KeychainItemWrapper.m in Sources */,
 				80B269C019D73A750012F891 /* main.m in Sources */,
 				80BB349E19D73CF800B2C82B /* SWRevealViewController.m in Sources */,
 				80BB34A419D73D4700B2C82B /* RearViewController.m in Sources */,
