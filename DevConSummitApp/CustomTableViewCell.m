@@ -64,7 +64,6 @@
     self.header.frame = CGRectMake(self.header.frame.origin.x, self.header.frame.origin.y, self.header.frame.size.width, headerFrame.size.height);
     
     
-    
     // #########################################
     //              Set TextLabel
     // #########################################
@@ -72,6 +71,12 @@
     self.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
     self.textLabel.numberOfLines = 0;
     
+    NSMutableAttributedString *text1 = [[NSMutableAttributedString alloc] initWithAttributedString: self.textLabel.attributedText];
+    
+    // textLabel - Set Font
+    [text1 addAttribute:NSForegroundColorAttributeName value:UIColorFromRGB(0xdb6d2c) range:NSMakeRange(0, text1.length)];
+    [text1 addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"SourceSansPro-SemiBold" size:18] range:NSMakeRange(0, text1.length)];
+    [self.textLabel setAttributedText: text1];
     
     // TEXT LABEL - Set Frame
     CGRect textLabelFrame = [self.textLabel.text boundingRectWithSize:CGSizeMake(self.textLabel.frame.size.width,MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName : self.textLabel.font } context:nil];
@@ -91,6 +96,13 @@
     self.detailTextLabel.frame = CGRectMake(80, self.textLabel.frame.origin.y + self.textLabel.frame.size.height + 10 , 230, 10);
     self.detailTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
     self.detailTextLabel.numberOfLines = 0;
+    
+    NSMutableAttributedString *text2 = [[NSMutableAttributedString alloc] initWithAttributedString: self.detailTextLabel.attributedText];
+    
+    // detailTextLabel - Set Font
+    [text2 addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Arial" size:12] range:NSMakeRange(0, text2.length)];
+    [self.detailTextLabel setAttributedText: text2];
+    
     
     // header - Set Frame
     CGRect detailTextLabelFrame = [self.detailTextLabel.text boundingRectWithSize:CGSizeMake(self.detailTextLabel.frame.size.width,MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName : self.detailTextLabel.font } context:nil];
