@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8024C6BD19DF207900B73EDB /* PTSerif-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8024C6BC19DF207900B73EDB /* PTSerif-Italic.ttf */; };
+		8026F99019FC6F0B00BDD71E /* logo-summit-flat.png in Resources */ = {isa = PBXBuildFile; fileRef = 8026F98F19FC6F0B00BDD71E /* logo-summit-flat.png */; };
 		8029875D19E2F8A300B49102 /* EditMyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8029875C19E2F8A300B49102 /* EditMyProfileViewController.m */; };
 		8029876119E327C300B49102 /* facebook-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8029876019E327C300B49102 /* facebook-icon.png */; };
 		8029876319E3281300B49102 /* twitter-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8029876219E3281300B49102 /* twitter-icon.png */; };
@@ -78,6 +79,7 @@
 
 /* Begin PBXFileReference section */
 		8024C6BC19DF207900B73EDB /* PTSerif-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSerif-Italic.ttf"; sourceTree = "<group>"; };
+		8026F98F19FC6F0B00BDD71E /* logo-summit-flat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-summit-flat.png"; sourceTree = "<group>"; };
 		8029875B19E2F8A300B49102 /* EditMyProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditMyProfileViewController.h; sourceTree = "<group>"; };
 		8029875C19E2F8A300B49102 /* EditMyProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditMyProfileViewController.m; sourceTree = "<group>"; };
 		8029876019E327C300B49102 /* facebook-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook-icon.png"; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 		80BB34A519D73ECC00B2C82B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8026F98F19FC6F0B00BDD71E /* logo-summit-flat.png */,
 				806B904C19F30A700091468C /* email.png */,
 				806B904D19F30A700091468C /* password.png */,
 				806B904A19F304900091468C /* logo.png */,
@@ -452,6 +455,7 @@
 				806B904E19F30A700091468C /* email.png in Resources */,
 				8029876119E327C300B49102 /* facebook-icon.png in Resources */,
 				80B269C619D73A750012F891 /* Images.xcassets in Resources */,
+				8026F99019FC6F0B00BDD71E /* logo-summit-flat.png in Resources */,
 				805D891B19D74EE100D2CF32 /* SourceSansPro-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
