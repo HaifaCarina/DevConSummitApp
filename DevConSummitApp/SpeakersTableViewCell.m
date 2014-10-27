@@ -51,6 +51,13 @@
     
     UIImageView *imageView = [[UIImageView alloc]initWithImage:blurredImage];
     imageView.frame = CGRectMake(0, self.frame.size.height/2, self.frame.size.width, self.frame.size.height/2);
+    
+    CALayer *sublayer = [CALayer layer];
+    [sublayer setBackgroundColor: UIColorFromRGB(0x6A4FFA).CGColor];
+    [sublayer setOpacity:0.4];
+    [sublayer setFrame: CGRectMake(0, 0, self.frame.size.width, self.frame.size.height/2)];
+    [imageView.layer addSublayer:sublayer];
+    
 
     CALayer *bottomBorder = [CALayer layer];
     bottomBorder.frame = CGRectMake(0, self.contentView.frame.size.height-3, self.contentView.frame.size.width, 4.0f);
@@ -70,7 +77,7 @@
     // #########################################
     //              Set Image View
     // #########################################
-    self.imageView.frame = CGRectMake(10,10,60,60);
+    self.imageView.frame = CGRectMake(10,30,60,60);
     self.imageView.layer.borderColor = [UIColor orangeColor].CGColor;
     self.imageView.layer.borderWidth = 1;
     self.imageView.layer.cornerRadius = 5.0;
@@ -83,7 +90,7 @@
     
     self.header.frame = CGRectMake(80, 5, 230, 10);
     self.header.textColor = [UIColor whiteColor];
-    self.header.text = @"Resource Speaker";
+    //self.header.text = @"Resource Speaker";
     self.header.lineBreakMode = NSLineBreakByWordWrapping;
     self.header.numberOfLines = 0;
     
@@ -123,7 +130,7 @@
     // TEXT LABEL - Set Frame
     CGRect textLabelFrame = [self.textLabel.text boundingRectWithSize:CGSizeMake(self.textLabel.frame.size.width,MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName : self.textLabel.font } context:nil];
     
-    self.textLabel.frame = CGRectMake(self.textLabel.frame.origin.x, self.header.frame.origin.y + self.header.frame.size.height, self.textLabel.frame.size.width, textLabelFrame.size.height);
+    self.textLabel.frame = CGRectMake(self.textLabel.frame.origin.x, self.header.frame.origin.y + self.header.frame.size.height , self.textLabel.frame.size.width, textLabelFrame.size.height);
     
     
     
@@ -133,7 +140,7 @@
     
     self.affiliation.frame = CGRectMake(80, 65, 230, 10);
     self.affiliation.textColor = [UIColor whiteColor];
-    self.affiliation.text = @"Software Developer at DevCon";
+    //self.affiliation.text = @"Software Developer at DevCon";
     self.affiliation.lineBreakMode = NSLineBreakByWordWrapping;
     self.affiliation.numberOfLines = 0;
     
@@ -156,7 +163,7 @@
     
     self.title.frame = CGRectMake(80, 65, 230, 10);
     self.title.textColor = [UIColor whiteColor];
-    self.title.text = @"Trends and Best Practices in Android Development";
+    //self.title.text = @"Trends and Best Practices in Android Development";
     self.title.lineBreakMode = NSLineBreakByWordWrapping;
     self.title.numberOfLines = 0;
     //self.title.backgroundColor = [UIColor yellowColor];
@@ -172,7 +179,7 @@
     
     // title - Set Frame
     CGRect titleFrame = [self.title.text boundingRectWithSize:CGSizeMake(self.title.frame.size.width,MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName : self.title.font } context:nil];
-    self.title.frame = CGRectMake(self.title.frame.origin.x, self.affiliation.frame.origin.y + self.affiliation.frame.size.height+ 10, self.title.frame.size.width, titleFrame.size.height);
+    self.title.frame = CGRectMake(self.title.frame.origin.x, self.affiliation.frame.origin.y + self.affiliation.frame.size.height + 10, self.title.frame.size.width, titleFrame.size.height);
     
     
 }

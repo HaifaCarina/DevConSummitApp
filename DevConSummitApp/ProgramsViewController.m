@@ -69,7 +69,7 @@
 
 - (void) sendProgramsAPIRequest {
     // #########################################
-    //              Send Login API Request
+    //              Send Programs API Request
     // #########################################
     KeychainItemWrapper *loginKeychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"LoginData" accessGroup:nil];
     NSLog(@"MAINVIEW CREDS %@,%@", [loginKeychain objectForKey:(__bridge id)kSecAttrAccount], [[NSString alloc] initWithData:[loginKeychain objectForKey:(__bridge id)kSecValueData] encoding:NSUTF8StringEncoding]);
