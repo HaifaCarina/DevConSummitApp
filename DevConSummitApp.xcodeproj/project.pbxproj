@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8024C6BD19DF207900B73EDB /* PTSerif-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8024C6BC19DF207900B73EDB /* PTSerif-Italic.ttf */; };
-		8026F99019FC6F0B00BDD71E /* logo-summit-flat.png in Resources */ = {isa = PBXBuildFile; fileRef = 8026F98F19FC6F0B00BDD71E /* logo-summit-flat.png */; };
 		8029875D19E2F8A300B49102 /* EditMyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8029875C19E2F8A300B49102 /* EditMyProfileViewController.m */; };
 		8029876119E327C300B49102 /* facebook-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8029876019E327C300B49102 /* facebook-icon.png */; };
 		8029876319E3281300B49102 /* twitter-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8029876219E3281300B49102 /* twitter-icon.png */; };
@@ -25,6 +24,7 @@
 		803CAA4A19DC9669008493B5 /* SpeakersTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 803CAA4919DC9669008493B5 /* SpeakersTableViewCell.m */; };
 		8043C1FC19DEE0980054C60C /* UIImage+StackBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = 8043C1FB19DEE0980054C60C /* UIImage+StackBlur.m */; };
 		8043C1FE19DF1B5F0054C60C /* disclosure-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8043C1FD19DF1B5F0054C60C /* disclosure-icon.png */; };
+		80454C9519FEADBF00AF622F /* logo-summit-flat.png in Resources */ = {isa = PBXBuildFile; fileRef = 80454C9419FEADBF00AF622F /* logo-summit-flat.png */; };
 		804A63AD19E1547700DE69FA /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 804A63AC19E1547700DE69FA /* NewsViewController.m */; };
 		804A63B019E154A900DE69FA /* NewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 804A63AF19E154A900DE69FA /* NewsTableViewCell.m */; };
 		804F997819E1E19D00B04F9E /* SpeakerProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 804F997719E1E19D00B04F9E /* SpeakerProfileViewController.m */; };
@@ -79,7 +79,6 @@
 
 /* Begin PBXFileReference section */
 		8024C6BC19DF207900B73EDB /* PTSerif-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSerif-Italic.ttf"; sourceTree = "<group>"; };
-		8026F98F19FC6F0B00BDD71E /* logo-summit-flat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-summit-flat.png"; sourceTree = "<group>"; };
 		8029875B19E2F8A300B49102 /* EditMyProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditMyProfileViewController.h; sourceTree = "<group>"; };
 		8029875C19E2F8A300B49102 /* EditMyProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditMyProfileViewController.m; sourceTree = "<group>"; };
 		8029876019E327C300B49102 /* facebook-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook-icon.png"; sourceTree = "<group>"; };
@@ -103,6 +102,7 @@
 		8043C1FA19DEE0980054C60C /* UIImage+StackBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+StackBlur.h"; sourceTree = "<group>"; };
 		8043C1FB19DEE0980054C60C /* UIImage+StackBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+StackBlur.m"; sourceTree = "<group>"; };
 		8043C1FD19DF1B5F0054C60C /* disclosure-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclosure-icon.png"; sourceTree = "<group>"; };
+		80454C9419FEADBF00AF622F /* logo-summit-flat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-summit-flat.png"; sourceTree = "<group>"; };
 		804A63AB19E1547700DE69FA /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
 		804A63AC19E1547700DE69FA /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
 		804A63AE19E154A900DE69FA /* NewsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTableViewCell.h; sourceTree = "<group>"; };
@@ -333,7 +333,7 @@
 		80BB34A519D73ECC00B2C82B /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				8026F98F19FC6F0B00BDD71E /* logo-summit-flat.png */,
+				80454C9419FEADBF00AF622F /* logo-summit-flat.png */,
 				806B904C19F30A700091468C /* email.png */,
 				806B904D19F30A700091468C /* password.png */,
 				806B904A19F304900091468C /* logo.png */,
@@ -455,7 +455,7 @@
 				806B904E19F30A700091468C /* email.png in Resources */,
 				8029876119E327C300B49102 /* facebook-icon.png in Resources */,
 				80B269C619D73A750012F891 /* Images.xcassets in Resources */,
-				8026F99019FC6F0B00BDD71E /* logo-summit-flat.png in Resources */,
+				80454C9519FEADBF00AF622F /* logo-summit-flat.png in Resources */,
 				805D891B19D74EE100D2CF32 /* SourceSansPro-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
