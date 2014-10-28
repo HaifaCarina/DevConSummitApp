@@ -27,6 +27,7 @@
 		80454C9519FEADBF00AF622F /* logo-summit-flat.png in Resources */ = {isa = PBXBuildFile; fileRef = 80454C9419FEADBF00AF622F /* logo-summit-flat.png */; };
 		804A63AD19E1547700DE69FA /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 804A63AC19E1547700DE69FA /* NewsViewController.m */; };
 		804A63B019E154A900DE69FA /* NewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 804A63AF19E154A900DE69FA /* NewsTableViewCell.m */; };
+		804AF7F319FEDA3C000B0C94 /* MyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 804AF7F219FEDA3C000B0C94 /* MyManager.m */; };
 		804F997819E1E19D00B04F9E /* SpeakerProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 804F997719E1E19D00B04F9E /* SpeakerProfileViewController.m */; };
 		805D891319D74EC800D2CF32 /* haifa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 805D891219D74EC800D2CF32 /* haifa.jpg */; };
 		805D891919D74EE100D2CF32 /* SourceSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 805D891519D74EE100D2CF32 /* SourceSansPro-Bold.otf */; };
@@ -107,6 +108,8 @@
 		804A63AC19E1547700DE69FA /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
 		804A63AE19E154A900DE69FA /* NewsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTableViewCell.h; sourceTree = "<group>"; };
 		804A63AF19E154A900DE69FA /* NewsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTableViewCell.m; sourceTree = "<group>"; };
+		804AF7F119FEDA3C000B0C94 /* MyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyManager.h; sourceTree = "<group>"; };
+		804AF7F219FEDA3C000B0C94 /* MyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyManager.m; sourceTree = "<group>"; };
 		804F997619E1E19D00B04F9E /* SpeakerProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeakerProfileViewController.h; sourceTree = "<group>"; };
 		804F997719E1E19D00B04F9E /* SpeakerProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeakerProfileViewController.m; sourceTree = "<group>"; };
 		805D891219D74EC800D2CF32 /* haifa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = haifa.jpg; sourceTree = "<group>"; };
@@ -248,6 +251,8 @@
 				807F839719FAD70E007A160B /* KeychainItemWrapper.m */,
 				80B269C219D73A750012F891 /* AppDelegate.h */,
 				80B269C319D73A750012F891 /* AppDelegate.m */,
+				804AF7F119FEDA3C000B0C94 /* MyManager.h */,
+				804AF7F219FEDA3C000B0C94 /* MyManager.m */,
 				806B904719F303120091468C /* LoginViewController.h */,
 				806B904819F303120091468C /* LoginViewController.m */,
 				80BB349819D73CA500B2C82B /* MainViewController.h */,
@@ -497,6 +502,7 @@
 				8043C1FC19DEE0980054C60C /* UIImage+StackBlur.m in Sources */,
 				802D404C19D75411008873E8 /* ProgramsViewController.m in Sources */,
 				80A6584319E1D5590014FAFD /* AttendeesViewController.m in Sources */,
+				804AF7F319FEDA3C000B0C94 /* MyManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
