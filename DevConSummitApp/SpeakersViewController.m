@@ -5,7 +5,7 @@
 //  Created by Haifa Carina Baluyos on 9/30/14.
 //  Copyright (c) 2014 HaifaCarina. All rights reserved.
 //
-
+#import "MyManager.h"
 #import "SpeakersViewController.h"
 #import "SWRevealViewController.h"
 #import "SpeakersTableViewCell.h"
@@ -16,8 +16,8 @@
 
 @interface SpeakersViewController () <NSURLConnectionDelegate> {
     SWRevealViewController *revealController;
-    NSMutableData *jsonData;
     NSDictionary *object;
+    NSArray *speakersImages;
     
 }
 @property (nonatomic, strong) UITableView *tableView;
@@ -37,6 +37,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    // Set global variable to use in this viewcontroller
+    MyManager *globals = [MyManager sharedManager];
+    object = globals.speakersObject;
+    speakersImages = globals.speakersImages;
     
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: UIColorFromRGB(0x83ac25)};
@@ -64,66 +68,7 @@
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
     
-    jsonData = [[NSMutableData alloc] initWithData:nil];
-    [self sendSpeakersAPIRequest];
-    
 }
-
-- (void) sendSpeakersAPIRequest {
-    // #########################################
-    //              Send Speakers API Request
-    // #########################################
-    KeychainItemWrapper *loginKeychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"LoginData" accessGroup:nil];
-    NSLog(@"MAINVIEW CREDS %@,%@", [loginKeychain objectForKey:(__bridge id)kSecAttrAccount], [[NSString alloc] initWithData:[loginKeychain objectForKey:(__bridge id)kSecValueData] encoding:NSUTF8StringEncoding]);
-    
-    NSString *token = [[NSString alloc] initWithData:[loginKeychain objectForKey:(__bridge id)kSecValueData] encoding:NSUTF8StringEncoding];
-    NSString *post = [NSString stringWithFormat:@"authentication_token=%@",token];
-    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    NSString *postLength = [NSString stringWithFormat:@"%d",[postData length]];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init] ;
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://api.devcon.ph/api/v1/speakers"]]];
-    [request setHTTPMethod:@"POST"];
-    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    [request setHTTPBody:postData];
-    
-    NSURLConnection *conn = [[NSURLConnection alloc]initWithRequest:request delegate:self];
-    if(conn) {
-        NSLog(@"Connection Successful");
-    } else {
-        NSLog(@"Connection could not be made");
-    }
-}
-
-#pragma mark - NSURLConnection Delegate
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData*)data {
-    [jsonData appendData:data];
-    NSLog(@"Did receive data");
-    
-}
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    //This method , you can use to receive the error report in case of connection is not made to server.
-    
-}
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    
-    NSError *error = nil;
-    object = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
-    
-    NSDictionary *objectTmp = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
-    
-    if(error) { NSLog(@"json was malformed: %@", error); }
-    NSLog(@"jsonData: %@", objectTmp);
-    
-    
-    
-    NSLog(@"count: %d", [[object objectForKey:@"speakers"] count]);
-    [self.tableView reloadData];
-    
-}
-
-
-
 
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -147,14 +92,14 @@
     
     cell.contentView.backgroundColor = UIColorFromRGB(0xfbfaf7);
     
-    NSString *name, *position, *company, *description, *photo, *website, *twitter = nil;
+    NSString *name, *position, *company, *description, *photo, *website, *twitter, *category, *title = nil;
     // #########################################
-    //        Set Content Based On JSON Data
+    //        Set Content Based On Speakers Data
     // #########################################
     if (indexPath.row < [[object objectForKey:@"speakers"] count]) {
         
         id speakerContent = [[[object objectForKey:@"speakers"] objectAtIndex:indexPath.row] objectForKey:@"speaker"];
-        NSLog(@"COMPANY: %@",[speakerContent objectForKey:@"company"]);
+        
         name = [NSString stringWithFormat:@"%@ %@",[speakerContent objectForKey:@"first_name"], [speakerContent objectForKey:@"last_name"]];
         position = [speakerContent objectForKey:@"position"];
         company = [speakerContent objectForKey:@"company"];
@@ -163,25 +108,34 @@
         twitter = [speakerContent objectForKey:@"twitter_handle"];
         website = [speakerContent objectForKey:@"website"];
         
-        if ([photo isEqualToString:@""]) {
-            NSLog(@"empty url");
-            cell.imageView.image = [UIImage imageNamed:@"logo-summit-flat.png"];
+       
+        cell.imageView.image =  [speakersImages objectAtIndex:indexPath.row];
+
+        int count = [[speakerContent objectForKey:@"category"] count];
+        
+        if ( count > 1 ) {
+            NSMutableString *categorySummary = [[NSMutableString alloc]init];
+            
+            for (int i=0; i < count ; i++) {
+                if (i>0) [categorySummary appendString:@", "];
+                [categorySummary appendFormat:@"%@", [[speakerContent objectForKey:@"category"] objectAtIndex:i]];
+            }
+            
+            category = categorySummary;
+            title = [[speakerContent objectForKey:@"talk"] objectAtIndex:0];
+            
         } else {
-            NSURL *url = [NSURL URLWithString:photo ];
-            NSData *data = [NSData dataWithContentsOfURL:url];
-            cell.imageView.image = [[UIImage alloc] initWithData:data];
+            category = @"TBA";
+            title = @"TBA";
         }
-        NSLog(@"there should be content");
         
     }
-    
-    cell.affiliation.text = [NSString stringWithFormat:@"%@ at %@",position, company];
+    cell.header.text = category;
     cell.textLabel.text = name;
+    cell.affiliation.text = [NSString stringWithFormat:@"%@ at %@",position, company];
+    cell.title.text = title;
     cell.detailTextLabel.text = @"";
-    NSLog(@"now display detailedtextlabel");
     
-    cell.header.text = @"Resource Speaker";
-    cell.title.text = @"The \"What\" and \"Why\" of NoSQL";
     return cell;
 }
 
