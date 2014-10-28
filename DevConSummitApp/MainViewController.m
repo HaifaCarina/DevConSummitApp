@@ -5,7 +5,7 @@
 //  Created by Haifa Carina Baluyos on 9/28/14.
 //  Copyright (c) 2014 HaifaCarina. All rights reserved.
 //
-
+#import "MyManager.h"
 #import "MainViewController.h"
 #import "SWRevealViewController.h"
 #import "FrontViewController.h"
@@ -33,6 +33,9 @@
     // Do any additional setup after loading the view.
     KeychainItemWrapper *loginKeychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"LoginData" accessGroup:nil];
     NSLog(@"MAINVIEW CREDS %@,%@", [loginKeychain objectForKey:(__bridge id)kSecAttrAccount], [[NSString alloc] initWithData:[loginKeychain objectForKey:(__bridge id)kSecValueData] encoding:NSUTF8StringEncoding]);
+    
+    MyManager *globals = [MyManager sharedManager];
+    globals.someProperty = @"Haifa";
     
     FrontViewController *frontViewController = [[FrontViewController alloc] init];
     RearViewController *rearViewController = [[RearViewController alloc] init];
