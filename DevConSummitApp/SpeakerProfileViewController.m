@@ -5,16 +5,29 @@
 //  Created by Haifa Carina Baluyos on 10/6/14.
 //  Copyright (c) 2014 HaifaCarina. All rights reserved.
 //
-
+#import "MyManager.h"
 #import "SpeakerProfileViewController.h"
 #import "UIImage+StackBlur.h"
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 #define UIColorFromRGBWithAlpha(rgbValue,a) [UIColor \ colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 
+@interface SpeakerProfileViewController () {
+    NSDictionary *speakerContent;
+}
+
+@end
+
 @implementation SpeakerProfileViewController
+@synthesize selection;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Set global variable to use in this viewcontroller
+    MyManager *globals = [MyManager sharedManager];
+    speakerContent = [[[globals.speakersObject objectForKey:@"speakers"] objectAtIndex:selection] objectForKey:@"speaker"];
+    
     self.view.backgroundColor = UIColorFromRGB(0xfbfaf7);
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: UIColorFromRGB(0x83ac25)};
     self.navigationController.navigationBar.tintColor = UIColorFromRGB(0x83ac25);
@@ -31,7 +44,7 @@
     // #########################################
     // Set Image for cell bottom half background
     // #########################################
-    UIImage *image = [UIImage imageNamed:@"haifa.jpg"];
+    UIImage *image = [globals.speakersImages objectAtIndex:selection]; //[UIImage imageNamed:@"haifa.jpg"];
     
     // Slice image into half
     CGImageRef imageToSplit = image.CGImage;
@@ -58,7 +71,7 @@
     UIImageView *imageView = [[UIImageView alloc]init];
     imageView.frame = CGRectMake(0, 0, 100, 100);
     imageView.center = CGPointMake(self.view.bounds.size.width/2, 180);
-    imageView.image = [UIImage imageNamed:@"haifa.jpg"];
+    imageView.image = [globals.speakersImages objectAtIndex:selection]; //[UIImage imageNamed:@"haifa.jpg"];
     imageView.layer.borderColor = UIColorFromRGB(0x6A4FFA).CGColor;
     imageView.layer.borderWidth = 2;
     imageView.layer.cornerRadius = 5.0;
@@ -68,10 +81,10 @@
     // #########################################
     //              Set Name
     // #########################################
-    
+    NSString *nameText = [NSString stringWithFormat:@"%@ %@",[speakerContent objectForKey:@"first_name"], [speakerContent objectForKey:@"last_name"]];
     UILabel *name = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width*0.9, 40)];
-    name.text = @"HAIFA CARINA BALUYOS";
-    name.center = CGPointMake(self.view.bounds.size.width/2, 260);
+    name.text = nameText; //@"HAIFA CARINA BALUYOS";
+    name.center = CGPointMake(self.view.bounds.size.width/2, 250);
     name.lineBreakMode = NSLineBreakByWordWrapping;
     name.numberOfLines = 0;
     name.textAlignment = NSTextAlignmentCenter;
@@ -88,14 +101,14 @@
     //              Set Affiliation
     // #########################################
     
-    UILabel *affiliation = [[UILabel alloc]initWithFrame:CGRectMake(28, name.frame.origin.y + name.frame.size.height + 20, 200, 65)];
+    UILabel *affiliation = [[UILabel alloc]initWithFrame:CGRectMake(28, name.frame.origin.y + name.frame.size.height + 30, 200, 65)];
     affiliation.center = CGPointMake(self.view.bounds.size.width/2, affiliation.frame.origin.y);
-    NSString *position = @"Software Engineer";
-    NSString *company = @"DevCon";
-    NSString *twitter = @"@haifacarina";
-    NSString *website = @"http://haifacarina.com";
+    NSString *position = [speakerContent objectForKey:@"position"];
+    NSString *company = [speakerContent objectForKey:@"company"];
+    NSString *twitter = [speakerContent objectForKey:@"twitter_handle"];
+    NSString *website = [speakerContent objectForKey:@"website"];
     
-    affiliation.text = [NSString stringWithFormat:@"%@ at %@ \n%@ \n%@", position, company, twitter, website ];
+    affiliation.text = [NSString stringWithFormat:@"%@ at %@ \n@%@ \n%@", position, company, twitter, website ];
     affiliation.lineBreakMode = NSLineBreakByWordWrapping;
     affiliation.numberOfLines = 0;
     affiliation.textAlignment = NSTextAlignmentCenter;
@@ -115,11 +128,29 @@
     // #########################################
     //              Set Event Role
     // #########################################
+    NSString *category, *title;
+    int count = [[speakerContent objectForKey:@"category"] count];
+    
+    if ( count > 1 ) {
+        NSMutableString *categorySummary = [[NSMutableString alloc]init];
+        
+        for (int i=0; i < count ; i++) {
+            if (i>0) [categorySummary appendString:@", "];
+            [categorySummary appendFormat:@"%@", [[speakerContent objectForKey:@"category"] objectAtIndex:i]];
+        }
+        
+        category = categorySummary;
+        title = [[speakerContent objectForKey:@"talk"] objectAtIndex:0];
+        
+    } else {
+        category = @"TBA";
+        title = @"TBA";
+    }
     
     UILabel *eventRole = [[UILabel alloc]initWithFrame:CGRectMake(0, 330, 300, 50)];
     eventRole.center = CGPointMake(self.view.bounds.size.width/2, eventRole.center.y);
     eventRole.textAlignment = NSTextAlignmentCenter;
-    eventRole.text = @"Resource Speaker";
+    eventRole.text = category; //@"Resource Speaker";
     eventRole.textColor = UIColorFromRGB(0x83ac25);
     eventRole.font = [UIFont fontWithName:@"PTSerif-Italic" size:14];
     [scrollView addSubview:eventRole];
@@ -135,7 +166,7 @@
     UILabel *talkTitle = [[UILabel alloc]initWithFrame:CGRectMake(0, 345, 300, 50)];
     talkTitle.center = CGPointMake(self.view.bounds.size.width/2, talkTitle.center.y);
     talkTitle.textAlignment = NSTextAlignmentCenter;
-    talkTitle.text = @"Trends and Best Practices in Android Development";
+    talkTitle.text = title;
     talkTitle.lineBreakMode = NSLineBreakByWordWrapping;
     talkTitle.numberOfLines = 0;
     talkTitle.font = [UIFont fontWithName:@"SourceSansPro-SemiBold" size:18];
@@ -152,7 +183,7 @@
     UILabel *aboutHeader = [[UILabel alloc]initWithFrame:CGRectMake(0, 400, 300, 50)];
     aboutHeader.center = CGPointMake(self.view.bounds.size.width/2, aboutHeader.center.y);
     aboutHeader.textAlignment = NSTextAlignmentCenter;
-    aboutHeader.text = @"About Haifa";
+    aboutHeader.text = [NSString stringWithFormat:@"About %@",[speakerContent objectForKey:@"first_name"]];//@"About Haifa";
     aboutHeader.textColor = UIColorFromRGB(0x83ac25);
     aboutHeader.font = [UIFont fontWithName:@"PTSerif-Italic" size:14];
     [scrollView addSubview:aboutHeader];
@@ -169,7 +200,7 @@
     UILabel *aboutDescription = [[UILabel alloc]initWithFrame:CGRectMake(0, 430, 300, 50)];
     aboutDescription.center = CGPointMake(self.view.bounds.size.width/2, aboutDescription.center.y);
     aboutDescription.textAlignment = NSTextAlignmentJustified;
-    aboutDescription.text = @"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, ";
+    aboutDescription.text = [speakerContent objectForKey:@"description"];
     aboutDescription.font = [aboutDescription.font fontWithSize:12];
     aboutDescription.lineBreakMode = NSLineBreakByWordWrapping;
     aboutDescription.numberOfLines = 0;
