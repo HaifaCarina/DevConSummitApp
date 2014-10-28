@@ -156,6 +156,7 @@
     NSLog(@"did select %@", indexPath);
     
     SpeakerProfileViewController *profileView = [[SpeakerProfileViewController alloc] init];
+    profileView.selection = indexPath.row;
     [self.navigationController pushViewController:profileView animated:YES];
 
 }

@@ -78,7 +78,7 @@
     //              Set Image View
     // #########################################
     self.imageView.frame = CGRectMake(10,30,60,60);
-    self.imageView.layer.borderColor = [UIColor orangeColor].CGColor;
+    self.imageView.layer.borderColor = UIColorFromRGB(0x6A4FFA).CGColor;
     self.imageView.layer.borderWidth = 1;
     self.imageView.layer.cornerRadius = 5.0;
     self.imageView.layer.masksToBounds = YES;
