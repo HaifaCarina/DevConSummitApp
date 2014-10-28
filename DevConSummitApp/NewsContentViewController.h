@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface NewsContentViewController : UIViewController
-
+@property (nonatomic) int selection;
 @end
