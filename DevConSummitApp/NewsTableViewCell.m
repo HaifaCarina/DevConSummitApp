@@ -86,14 +86,17 @@
     // #########################################
     //              Set Detail TextLabel
     // #########################################
-    self.detailTextLabel.frame = CGRectMake(self.contentView.frame.size.height + 10, self.textLabel.frame.origin.y + self.textLabel.frame.size.height + 3  , 200, 10);
+    self.detailTextLabel.frame = CGRectMake(self.contentView.frame.size.height + 10, self.textLabel.frame.origin.y + self.textLabel.frame.size.height + 8  , 200, 10);
     self.detailTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
     self.detailTextLabel.numberOfLines = 0;
     self.detailTextLabel.font = [UIFont systemFontOfSize:10];
     
+    self.detailTextLabel.numberOfLines = 2;
+    self.detailTextLabel.bounds = CGRectMake(0, 0, self.detailTextLabel.frame.size.width, 2 * self.detailTextLabel.font.lineHeight);
+    
     // header - Set Frame
     CGRect detailTextLabelFrame = [self.detailTextLabel.text boundingRectWithSize:CGSizeMake(self.detailTextLabel.frame.size.width,MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName : self.detailTextLabel.font } context:nil];
-    self.detailTextLabel.frame = CGRectMake(self.detailTextLabel.frame.origin.x, self.detailTextLabel.frame.origin.y, self.detailTextLabel.frame.size.width, detailTextLabelFrame.size.height);
+    //self.detailTextLabel.frame = CGRectMake(self.detailTextLabel.frame.origin.x, self.detailTextLabel.frame.origin.y, self.detailTextLabel.frame.size.width, detailTextLabelFrame.size.height);
     
 }
 
