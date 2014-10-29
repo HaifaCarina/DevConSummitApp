@@ -10,7 +10,7 @@
 #import "KeychainItemWrapper.h"
 @implementation MyManager
 
-@synthesize someProperty, speakersObject, speakersImages, programsObject, newsObject, newsImages, sponsorsObject;
+@synthesize someProperty, speakersObject, speakersImages, programsObject, newsObject, newsImages, sponsorsObject, sponsorsImages;
 
 #pragma mark Singleton Methods
 
@@ -78,7 +78,7 @@
     
 
     //send sponsors request
-    sponsorsData = [[NSMutableData alloc]init];
+    /*sponsorsData = [[NSMutableData alloc]init];
     NSMutableURLRequest *sponsorsRequest = [[NSMutableURLRequest alloc] init] ;
     [sponsorsRequest setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://api.devcon.ph/api/v1/sponsors"]]];
     [sponsorsRequest setHTTPMethod:@"POST"];
@@ -86,7 +86,7 @@
     [sponsorsRequest setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [sponsorsRequest setHTTPBody:postData];
     sponsorsConnection = [[NSURLConnection alloc]initWithRequest:sponsorsRequest delegate:self];
-    
+    */
     complete = 0;
     
 }
@@ -143,7 +143,7 @@
     }
     
     NSLog(@"TOTAL: %d", complete);
-    if (complete == 4) {
+    if (complete == 3) {
         [self getImages];
     }
     
@@ -177,7 +177,21 @@
         
         NSLog(@"Add image of %@", [[newsContent objectForKey:@"news"]objectForKey:@"title"]);
     }
-
+    
+    // load sponsors images
+    /*for (NSDictionary *sponsorsContent in [sponsorsObject objectForKey:@"sponsors"]) {
+        
+        NSURL *url = [NSURL URLWithString: [[sponsorsContent objectForKey:@"sponsor"]objectForKey:@"photo_url"] ];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        if (data) {
+            [sponsorsImages addObject:[UIImage imageWithData:data]];
+        } else {
+            [sponsorsImages addObject:[UIImage imageNamed:@"logo-summit-flat.png"]];
+        }
+        
+        NSLog(@"Add image of %@", [[sponsorsContent objectForKey:@"sponsor"]objectForKey:@"name"]);
+    }
+    */
 }
 
 - (void)dealloc {
