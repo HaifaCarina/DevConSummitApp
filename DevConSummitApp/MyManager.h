@@ -24,6 +24,7 @@
     
     NSMutableData *programsData;
     NSURLConnection *programsConnection;
+    NSMutableArray *programsImages;
     NSDictionary *programsObject;
     
     NSMutableData *newsData;
@@ -44,6 +45,7 @@
 @property (nonatomic, retain) NSDictionary *speakersObject;
 @property (nonatomic, retain) NSMutableArray *speakersImages;
 @property (nonatomic, retain) NSDictionary *programsObject;
+@property (nonatomic, retain) NSMutableArray *programsImages;
 @property (nonatomic, retain) NSDictionary *newsObject;
 @property (nonatomic, retain) NSMutableArray *newsImages;
 @property (nonatomic, retain) NSDictionary *sponsorsObject;

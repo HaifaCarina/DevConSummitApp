@@ -5,7 +5,7 @@
 //  Created by Haifa Carina Baluyos on 9/28/14.
 //  Copyright (c) 2014 HaifaCarina. All rights reserved.
 //
-
+#import "MyManager.h"
 #import "ProgramsViewController.h"
 #import "SWRevealViewController.h"
 #import "CustomTableViewCell.h"
@@ -14,12 +14,8 @@
 #define UIColorFromRGBWithAlpha(rgbValue,a) [UIColor \ colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 
 @interface ProgramsViewController () <NSURLConnectionDelegate>{
-    NSDictionary *program;
-    NSArray *programTitles;
-    NSData *apiData;
-    NSMutableData *jsonData;
-    NSDictionary *objectTmp;
     NSDictionary *object;
+    NSArray *programsImages;
 }
 @end
 
@@ -38,6 +34,11 @@
 {
     [super viewDidLoad];
     
+    // Set global variable to use in this viewcontroller
+    MyManager *globals = [MyManager sharedManager];
+    object = globals.programsObject;
+    programsImages = globals.programsImages;
+    
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: UIColorFromRGB(0x83ac25)};
     
     // #########################################
@@ -51,69 +52,7 @@
     UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"reveal-icon.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleBordered target:revealController action:@selector(revealToggle:)];
     self.navigationItem.leftBarButtonItem = revealButtonItem;
     self.navigationItem.title = @"Programs";
-    
-    program = @{@"9:00 AM" : @[@"Welcome Remarks | By DevCon Representative"],
-                @"9:15 AM" : @[@"Sponsor Talks | By Deltek, Accenture"],
-                @"10:30 AM" : @[@"The Big Picture for Pinoy Developers | Calen Martin Legaspi of PSIA"],
-                @"11:00 AM" : @[@"Panel: Developer Opportunities | By Jobstreet, Freelancer, PSIA"],
-                @"12:00 AM" : @[@"Lunch Break | Games + Networking"],
-                @"1:00 PM" : @[@"Trends in Android Development | By Android Expert "]};
-    
-    programTitles = [[program allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-    
-    jsonData = [[NSMutableData alloc] initWithData:nil];
-    [self sendProgramsAPIRequest];
-    
    
-}
-
-- (void) sendProgramsAPIRequest {
-    // #########################################
-    //              Send Programs API Request
-    // #########################################
-    KeychainItemWrapper *loginKeychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"LoginData" accessGroup:nil];
-    NSLog(@"MAINVIEW CREDS %@,%@", [loginKeychain objectForKey:(__bridge id)kSecAttrAccount], [[NSString alloc] initWithData:[loginKeychain objectForKey:(__bridge id)kSecValueData] encoding:NSUTF8StringEncoding]);
-    
-    NSString *token = [[NSString alloc] initWithData:[loginKeychain objectForKey:(__bridge id)kSecValueData] encoding:NSUTF8StringEncoding];
-    NSString *post = [NSString stringWithFormat:@"authentication_token=%@",token];
-    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    NSString *postLength = [NSString stringWithFormat:@"%d",[postData length]];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init] ;
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://api.devcon.ph/api/v1/programs"]]];
-    [request setHTTPMethod:@"POST"];
-    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    [request setHTTPBody:postData];
-    
-    NSURLConnection *conn = [[NSURLConnection alloc]initWithRequest:request delegate:self];
-    if(conn) {
-        NSLog(@"Connection Successful");
-    } else {
-        NSLog(@"Connection could not be made");
-    }
-}
-
-#pragma mark - NSURLConnection Delegate
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData*)data {
-    [jsonData appendData:data];
-    NSLog(@"Did receive data");
-    
-}
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    //This method , you can use to receive the error report in case of connection is not made to server.
-    
-}
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    
-    NSError *error = nil;
-    object = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
-    
-    //objectTmp = [NSJSONSerialization JSONObjectWithData:dataTmp options:0 error:&error];
-    
-    if(error) { NSLog(@"json was malformed: %@", error); }
-    
-    [self.tableView reloadData];
-    
 }
 
 #pragma mark - Table view data source
@@ -140,9 +79,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSString *sectionTitle = [programTitles objectAtIndex:section];
-    NSArray *sectionPrograms = [program objectForKey:sectionTitle];
-    return [sectionPrograms count];
+    return 1;
 }
 
 
@@ -157,33 +94,6 @@
         
     }
     
-    
-    
-    
-    NSString *programTitle = [programTitles objectAtIndex:indexPath.section];
-    NSArray *sectionProgram = [program objectForKey:programTitle];
-    NSString *programs= [sectionProgram objectAtIndex: indexPath.row ];
-    cell.textLabel.text = programs;
-    //cell.textLabel.textColor = UIColorFromRGB(0xdb6d2c);
-    
-    
-    
-    // Set default Header Label
-    cell.header.text = @"Haifa Baluyos • Software Engineer at DevCon";
-    
-    // SET DETAILED TEXT LABEL
-    switch (indexPath.section) {
-        case 4:
-        {
-            cell.textLabel.text = @"Panel Discussion";
-            cell.detailTextLabel.text = @"Micael Diaz de River • OLX PH \nHaifa Baluyos • DEVCON \nTerence Ponce • Aelogica";
-        }
-            break;
-            
-        default:
-            cell.detailTextLabel.text = @"This talk is all about awesomeness!";
-            break;
-    }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
@@ -208,17 +118,7 @@
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%@",[programContent objectForKey:@"description"]];
             
             //SET IMAGEVIEW
-            if ([[speaker objectForKey:@"photo_url"] isEqualToString:@""]) {
-                NSLog(@"empty url");
-                cell.imageView.image = [UIImage imageNamed:@"logo-summit-flat.png"];
-            } else {
-                NSURL *url = [NSURL URLWithString:[speaker objectForKey:@"photo_url"] ];
-                NSData *data = [NSData dataWithContentsOfURL:url];
-                cell.imageView.image = [[UIImage alloc] initWithData:data];
-            }
-            
-            
-            
+            cell.imageView.image =  [programsImages objectAtIndex:indexPath.section];
             
         } else {
            // Set Cell Content
@@ -228,12 +128,11 @@
             NSMutableString *panelists = [[NSMutableString alloc]initWithString:@""];
             for (NSDictionary *speaker in [programContent objectForKey:@"speakers"]) {
                 [panelists appendFormat:@"\n%@ %@ • %@", [speaker objectForKey:@"first_name"], [speaker objectForKey:@"last_name"], [speaker objectForKey:@"company"]];
-                
             }
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@",[programContent objectForKey:@"description"], panelists];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ \n%@",[programContent objectForKey:@"description"], panelists];
             
             //SET IMAGEVIEW
-            cell.imageView.image = [UIImage imageNamed:@"logo-summit-flat.png"];
+            cell.imageView.image =  [programsImages objectAtIndex:indexPath.section];
             
         }
         
