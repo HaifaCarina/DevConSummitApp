@@ -5,7 +5,7 @@
 //  Created by Haifa Carina Baluyos on 9/28/14.
 //  Copyright (c) 2014 HaifaCarina. All rights reserved.
 //
-
+#import "MyManager.h"
 #import "RearViewController.h"
 #import "SWRevealViewController.h"
 #import "FrontViewController.h"
@@ -18,7 +18,10 @@
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 #define UIColorFromRGBWithAlpha(rgbValue,a) [UIColor \ colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 
-@interface RearViewController ()
+@interface RearViewController () {
+    NSDictionary *object;
+    UIImage *profileImage;
+}
 
 @end
 
@@ -36,6 +39,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Set global variable to use in this viewcontroller
+    MyManager *globals = [MyManager sharedManager];
+    object = globals.profileObject;
+    profileImage = globals.profileImage;
     
     self.tableView.backgroundColor = UIColorFromRGB(0xfbfaf7);
     [[self navigationController] setNavigationBarHidden:YES];
@@ -73,7 +81,7 @@
             
             UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 00, 90, 90)];
             
-            imageView.image = [UIImage imageNamed:@"haifa.jpg"];
+            imageView.image = profileImage; //[UIImage imageNamed:@"haifa.jpg"];
             imageView.center = CGPointMake(cell.contentView.center.x-(cell.contentView.center.x * 0.20), cell.contentView.center.y + (cell.contentView.center.y * 1.50));
             imageView.backgroundColor = [UIColor clearColor];
             
@@ -95,9 +103,11 @@
             cell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"myprofile-background.png"]];
             
             [cell.contentView addSubview:imageView];
+            //Set-up data
+            NSDictionary *profileContent = [[object objectForKey:@"profile"] objectForKey:@"user"];
             
             UILabel *name = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 200, 40)];
-            name.text = @"HAIFA CARINA BALUYOS";
+            name.text = [NSString stringWithFormat:@"%@ %@", [profileContent objectForKey:@"first_name"], [profileContent objectForKey:@"last_name"]];
             name.center = CGPointMake(cell.contentView.center.x -(cell.contentView.center.x * 0.20), cell.contentView.center.y + (cell.contentView.center.y * 4.50) );
             name.lineBreakMode = NSLineBreakByWordWrapping;
             name.numberOfLines = 0;
@@ -112,10 +122,35 @@
             
             ///
             UILabel *affiliation = [[UILabel alloc]initWithFrame:CGRectMake(28, name.frame.origin.y + name.frame.size.height , 200, 65)];
-            NSString *position = @"Software Engineer";
-            NSString *company = @"Developers Connect Philippines";
-            NSString *specialty = @"Objective-C";
-            NSString *location = @"Mandaluyong, Metro Manila";
+            NSString *position, *company, *specialty,*location = nil;
+            
+            // set-up position
+            if ([profileContent objectForKey:@"position"] == (id)[NSNull null] || [[profileContent objectForKey:@"position"] isEqualToString:@""] ) {
+                position = @"Jedi";
+            } else {
+                position = [profileContent objectForKey:@"position"];
+            }
+            
+            // set-up company
+            if ([profileContent objectForKey:@"company"] == (id)[NSNull null] || [[profileContent objectForKey:@"company"] isEqualToString:@""] ) {
+                company = @"The Force";
+            } else {
+                company = [profileContent objectForKey:@"company"];
+            }
+            
+            // set-up specialty
+            if ([profileContent objectForKey:@"primary_technology"] == (id)[NSNull null] || [[profileContent objectForKey:@"primary_technology"] isEqualToString:@""]) {
+                specialty = @"Awesome Language";
+            } else {
+                specialty = [profileContent objectForKey:@"primary_technology"];
+            }
+            
+            // set-up location
+            if ([profileContent objectForKey:@"location"] == (id)[NSNull null] || [[profileContent objectForKey:@"location"] isEqualToString:@""] ) {
+                location = @"Philippines";
+            } else {
+                location = [profileContent objectForKey:@"location"];
+            }
             
             affiliation.text = [NSString stringWithFormat:@"%@ at %@ \n%@ \n%@", position, company, specialty, location ];
             affiliation.lineBreakMode = NSLineBreakByWordWrapping;

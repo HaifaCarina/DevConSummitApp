@@ -12,6 +12,11 @@
     NSString *someProperty;
     NSDictionary *object;
     
+    NSMutableData *profileData;
+    NSURLConnection *profileConnection;
+    UIImage *profileImage;
+    NSDictionary *profileObject;
+    
     NSMutableData *speakersData;
     NSURLConnection *speakersConnection;
     NSMutableArray *speakersImages;
@@ -33,8 +38,9 @@
     NSMutableArray *sponsorsImages;
     int complete;
 }
-
 @property (nonatomic, retain) NSString *someProperty;
+@property (nonatomic, retain) NSDictionary *profileObject;
+@property (nonatomic, retain) UIImage *profileImage;
 @property (nonatomic, retain) NSDictionary *speakersObject;
 @property (nonatomic, retain) NSMutableArray *speakersImages;
 @property (nonatomic, retain) NSDictionary *programsObject;
@@ -42,6 +48,7 @@
 @property (nonatomic, retain) NSMutableArray *newsImages;
 @property (nonatomic, retain) NSDictionary *sponsorsObject;
 @property (nonatomic, retain) NSMutableArray *sponsorsImages;
+
 
 + (id)sharedManager;
 
