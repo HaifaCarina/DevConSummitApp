@@ -11,20 +11,26 @@
 @interface MyManager : NSObject <NSURLConnectionDelegate> {
     NSString *someProperty;
     NSDictionary *object;
+    
     NSMutableData *speakersData;
     NSURLConnection *speakersConnection;
     NSMutableArray *speakersImages;
+    NSDictionary *speakersObject;
+    
     NSMutableData *programsData;
     NSURLConnection *programsConnection;
+    NSDictionary *programsObject;
+    
     NSMutableData *newsData;
     NSURLConnection *newsConnection;
+    NSDictionary *newsObject;
     NSMutableArray *newsImages;
+    
+    
     NSMutableData *sponsorsData;
     NSURLConnection *sponsorsConnection;
-    NSDictionary *speakersObject;
-    NSDictionary *programsObject;
-    NSDictionary *newsObject;
     NSDictionary *sponsorsObject;
+    NSMutableArray *sponsorsImages;
     int complete;
 }
 
@@ -35,6 +41,7 @@
 @property (nonatomic, retain) NSDictionary *newsObject;
 @property (nonatomic, retain) NSMutableArray *newsImages;
 @property (nonatomic, retain) NSDictionary *sponsorsObject;
+@property (nonatomic, retain) NSMutableArray *sponsorsImages;
 
 + (id)sharedManager;
 
