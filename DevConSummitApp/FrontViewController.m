@@ -5,7 +5,7 @@
 //  Created by Haifa Carina Baluyos on 9/28/14.
 //  Copyright (c) 2014 HaifaCarina. All rights reserved.
 //
-
+#import "MyManager.h"
 #import "FrontViewController.h"
 #import "SWRevealViewController.h"
 #import "UIImage+StackBlur.h"
@@ -13,7 +13,10 @@
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 #define UIColorFromRGBWithAlpha(rgbValue,a) [UIColor \ colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 
-@interface FrontViewController ()
+@interface FrontViewController (){
+    NSDictionary *object;
+    UIImage *profileImage;
+}
 
 @end
 
@@ -24,6 +27,11 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
+        // Set global variable to use in this viewcontroller
+        MyManager *globals = [MyManager sharedManager];
+        object = globals.profileObject;
+        profileImage = globals.profileImage;
     }
     return self;
 }
@@ -37,6 +45,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
     
     self.navigationItem.title = @"My Profile";
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: UIColorFromRGB(0x83ac25)};
@@ -101,18 +111,21 @@
     imageView.frame = CGRectMake(0, 0, 100, 100);
     imageView.center = CGPointMake(self.view.bounds.size.width/2, 180);
     imageView.image = [UIImage imageNamed:@"haifa.jpg"];
-    imageView.layer.borderColor = UIColorFromRGB(0x6A4FFA).CGColor;
+    imageView.layer.borderColor = UIColorFromRGB(0xe6c630).CGColor;
     imageView.layer.borderWidth = 2;
     imageView.layer.cornerRadius = 5.0;
     imageView.layer.masksToBounds = YES;
     [scrollView addSubview:imageView];
+    
+    //Set-up data
+    NSDictionary *profileContent = [[object objectForKey:@"profile"] objectForKey:@"user"];
     
     // #########################################
     //              Set Name
     // #########################################
     
     UILabel *name = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width*0.9, 40)];
-    name.text = @"HAIFA CARINA BALUYOS";
+    name.text = [NSString stringWithFormat:@"%@ %@", [profileContent objectForKey:@"first_name"], [profileContent objectForKey:@"last_name"]];
     name.center = CGPointMake(self.view.bounds.size.width/2, 260);
     name.lineBreakMode = NSLineBreakByWordWrapping;
     name.numberOfLines = 0;
@@ -132,10 +145,36 @@
     
     UILabel *affiliation = [[UILabel alloc]initWithFrame:CGRectMake(28, name.frame.origin.y + name.frame.size.height + 20, 200, 65)];
     affiliation.center = CGPointMake(self.view.bounds.size.width/2, affiliation.frame.origin.y);
-    NSString *position = @"Software Engineer";
-    NSString *company = @"DevCon";
-    NSString *location = @"Mandaluyong, Metro Manila";
-    NSString *specialty = @"Objective-C";
+    NSString *position, *company, *specialty,*location = nil;
+    
+    // set-up position
+    if ([profileContent objectForKey:@"position"] == (id)[NSNull null] || [[profileContent objectForKey:@"position"] isEqualToString:@""] ) {
+        position = @"Jedi";
+    } else {
+        position = [profileContent objectForKey:@"position"];
+    }
+    
+    // set-up company
+    if ([profileContent objectForKey:@"company"] == (id)[NSNull null] || [[profileContent objectForKey:@"company"] isEqualToString:@""] ) {
+        company = @"The Force";
+    } else {
+        company = [profileContent objectForKey:@"company"];
+    }
+    
+    // set-up specialty
+    if ([profileContent objectForKey:@"primary_technology"] == (id)[NSNull null] || [[profileContent objectForKey:@"primary_technology"] isEqualToString:@""]) {
+        specialty = @"Awesome Language";
+    } else {
+        specialty = [profileContent objectForKey:@"primary_technology"];
+    }
+    
+    // set-up location
+    if ([profileContent objectForKey:@"location"] == (id)[NSNull null] || [[profileContent objectForKey:@"location"] isEqualToString:@""] ) {
+        location = @"Philippines";
+    } else {
+        location = [profileContent objectForKey:@"location"];
+    }
+
     
     affiliation.text = [NSString stringWithFormat:@"%@ at %@ \n%@ \n%@", position, company, location, specialty ];
     affiliation.lineBreakMode = NSLineBreakByWordWrapping;
@@ -173,11 +212,18 @@
     // #########################################
     //      Set Technology Stack Content
     // #########################################
+    NSString *technologies = nil;
+    // Get content for technology stack
+    if ([profileContent objectForKey:@"technologies"] == (id)[NSNull null] || [[profileContent objectForKey:@"technologies"] count] == 0 ) {
+        technologies = @"Objective-C • JavaScript • PHP • CSS • MySQL • PostgreSQL • CakePHP";
+    } else {
+        technologies = @"compiled list of technologies";
+    }
     
     UILabel *technologyStackContent = [[UILabel alloc]initWithFrame:CGRectMake(0, 345, 300, 50)];
     technologyStackContent.center = CGPointMake(self.view.bounds.size.width/2, technologyStackContent.center.y);
     technologyStackContent.textAlignment = NSTextAlignmentCenter;
-    technologyStackContent.text = @"Objective-C • JavaScript • PHP • CSS • MySQL • PostgreSQL • CakePHP";
+    technologyStackContent.text = technologies;
     technologyStackContent.lineBreakMode = NSLineBreakByWordWrapping;
     technologyStackContent.numberOfLines = 0;
     technologyStackContent.font = [technologyStackContent.font fontWithSize:12];//[UIFont fontWithName:@"SourceSansPro-SemiBold" size:18];
@@ -204,11 +250,18 @@
     aboutHeader.frame = CGRectMake(aboutHeader.frame.origin.x, aboutHeader.frame.origin.y, aboutHeader.frame.size.width, aboutHeaderFrame.size.height);
     
     
+    NSString *aboutText = nil;
+    // Get content for technology stack
+    if ([profileContent objectForKey:@"description"] == (id)[NSNull null] || [[profileContent objectForKey:@"description"] isEqualToString:@""]  ) {
+        aboutText = @"The about section is to be filled soon!";
+    } else {
+        aboutText = [profileContent objectForKey:@"description"];
+    }
     
     UILabel *aboutDescription = [[UILabel alloc]initWithFrame:CGRectMake(0, 430, 300, 50)];
     aboutDescription.center = CGPointMake(self.view.bounds.size.width/2, aboutDescription.center.y);
     aboutDescription.textAlignment = NSTextAlignmentJustified;
-    aboutDescription.text = @"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, ";
+    aboutDescription.text = aboutText;
     aboutDescription.font = [aboutDescription.font fontWithSize:12];
     aboutDescription.lineBreakMode = NSLineBreakByWordWrapping;
     aboutDescription.numberOfLines = 0;
