@@ -11,7 +11,7 @@
 #import "KeychainItemWrapper.h"
 @implementation MyManager
 
-@synthesize someProperty, profileObject, profileImage, speakersObject, speakersImages, programsObject, newsObject, newsImages, sponsorsObject, sponsorsImages;
+@synthesize someProperty, profileObject, profileImage, speakersObject, speakersImages, programsObject, programsImages, newsObject, newsImages, sponsorsObject, sponsorsImages;
 
 #pragma mark Singleton Methods
 
@@ -67,6 +67,7 @@
     speakersConnection = [[NSURLConnection alloc]initWithRequest:speakersRequest delegate:self];
     
     //send programs request
+    programsImages = [[NSMutableArray alloc]init];
     programsData = [[NSMutableData alloc]init];
     NSMutableURLRequest *programsRequest = [[NSMutableURLRequest alloc] init] ;
     [programsRequest setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://api.devcon.ph/api/v1/programs"]]];
@@ -208,6 +209,33 @@
         }
         
         NSLog(@"Add image of %@", [[newsContent objectForKey:@"news"]objectForKey:@"title"]);
+    }
+    
+    // load programs images
+    for (NSDictionary *programsContent in [programsObject objectForKey:@"programs"] ) {
+        
+        //Check if resource talk
+        if ([[[[programsContent objectForKey:@"program" ] objectForKey:@"category"] objectForKey:@"name" ] isEqualToString:@"Resource Talk"]) {
+            
+            NSDictionary *speaker = [[[programsContent objectForKey:@"program" ] objectForKey:@"speakers"]objectAtIndex:0];
+            
+            if ([[speaker objectForKey:@"photo_url"] isEqualToString:@""]) {
+                [programsImages addObject:[UIImage imageNamed:@"logo-summit-flat.png"]];
+            } else {
+                NSURL *url = [NSURL URLWithString:[speaker objectForKey:@"photo_url"] ];
+                NSData *data = [NSData dataWithContentsOfURL:url];
+                
+                if (data) {
+                    [programsImages addObject:[UIImage imageWithData:data]];
+                } else {
+                    [programsImages addObject:[UIImage imageNamed:@"logo-summit-flat.png"]];
+                }
+            }
+        } else {
+        // Set-up for Panel Panel
+            [programsImages addObject:[UIImage imageNamed:@"logo-summit-flat.png"]];
+        }
+        NSLog(@"Add image of %@", [[programsContent objectForKey:@"program"]objectForKey:@"title"]);
     }
     
         // load sponsors images
