@@ -5,7 +5,7 @@
 //  Created by Haifa Carina Baluyos on 10/19/14.
 //  Copyright (c) 2014 HaifaCarina. All rights reserved.
 //
-
+#import "MyManager.h"
 #import "LoginViewController.h"
 #import "MainViewController.h"
 #import "KeychainItemWrapper.h"
@@ -193,11 +193,41 @@
             
             NSLog(@"LOGIN CREDS %@,%@", [self.loginKeychain objectForKey:(__bridge id)kSecAttrAccount], [self.loginKeychain objectForKey:(__bridge id)kSecValueData]);
             
+           // Set global variable to use in this viewcontroller
+            MyManager *globals = [MyManager sharedManager];
+            NSLog(@"globals: %@", globals.profileObject);
+            
+            
+            UIView *viewTmp = [[UIView alloc]initWithFrame:self.view.frame];
+            
+            UIActivityIndicatorView *progress= [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(viewTmp.frame.size.width/2, viewTmp.frame.size.height/2, 80, 80)];
+            progress.center = CGPointMake(viewTmp.frame.size.width/2, 420);
+            progress.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+            [viewTmp addSubview:progress];
+            [progress startAnimating];
+            
+            UIImageView *monster = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 300, 300)];
+            monster.image = [UIImage imageNamed:@"loginmonster.png"];
+            monster.contentMode = UIViewContentModeScaleAspectFit;
+            monster.center = CGPointMake(viewTmp.frame.size.width/2, 200);
+            [viewTmp addSubview:monster];
+            
+            UILabel *pleaseWait = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 300, 60)];
+            pleaseWait.textAlignment = NSTextAlignmentCenter;
+            pleaseWait.center = CGPointMake(viewTmp.frame.size.width/2, 380);
+            pleaseWait.text = @"Hi! I'm Qwerty, hope you can wait a little as we load the app information.";
+            pleaseWait.lineBreakMode = NSLineBreakByWordWrapping;
+            pleaseWait.numberOfLines = 0;
+            pleaseWait.textColor = UIColorFromRGB(0x83ac25);
+            [viewTmp addSubview:pleaseWait];
+            
+            viewTmp.backgroundColor = UIColorFromRGB(0xe9e9e9);
+            [self.view addSubview:viewTmp];
             // Change Login View to MainView
-            MainViewController *mainViewController = [[MainViewController alloc]init];
+            /*MainViewController *mainViewController = [[MainViewController alloc]init];
             mainViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
             [self presentViewController:mainViewController animated:YES completion:nil];
-            
+            */
         } else {
             NSLog(@"You shall not pass!");
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Incorrect" message:@"You shall not pass!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
