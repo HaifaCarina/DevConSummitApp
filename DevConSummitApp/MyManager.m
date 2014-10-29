@@ -5,12 +5,13 @@
 //  Created by Haifa Carina Baluyos on 10/28/14.
 //  Copyright (c) 2014 HaifaCarina. All rights reserved.
 //
-
+#import "AppDelegate.h"
+#import "MainViewController.h"
 #import "MyManager.h"
 #import "KeychainItemWrapper.h"
 @implementation MyManager
 
-@synthesize someProperty, speakersObject, speakersImages, programsObject, newsObject, newsImages, sponsorsObject, sponsorsImages;
+@synthesize someProperty, profileObject, profileImage, speakersObject, speakersImages, programsObject, newsObject, newsImages, sponsorsObject, sponsorsImages;
 
 #pragma mark Singleton Methods
 
@@ -43,6 +44,16 @@
     NSString *post = [NSString stringWithFormat:@"authentication_token=%@",token];
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     NSString *postLength = [NSString stringWithFormat:@"%d",[postData length]];
+    
+    //send profile request
+    profileData = [[NSMutableData alloc]init];
+    NSMutableURLRequest *profileRequest = [[NSMutableURLRequest alloc] init] ;
+    [profileRequest setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://api.devcon.ph/api/v1/profile"]]];
+    [profileRequest setHTTPMethod:@"POST"];
+    [profileRequest setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [profileRequest setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [profileRequest setHTTPBody:postData];
+    profileConnection = [[NSURLConnection alloc]initWithRequest:profileRequest delegate:self];
     
     //send speaker request
     speakersImages = [[NSMutableArray alloc]init];
@@ -93,7 +104,10 @@
 
 #pragma mark - NSURLConnection Delegate
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData*)data {
-    if (connection == speakersConnection) {
+    if (connection == profileConnection) {
+        [profileData appendData:data];
+        NSLog(@"Yup. profileConnection! Did receive data");
+    } else if (connection == speakersConnection) {
         [speakersData appendData:data];
         NSLog(@"Yup. spekaersConnection! Did receive data");
     } else if (connection == programsConnection) {
@@ -124,7 +138,11 @@
     //NSLog(@"speakersData: %@", objectTmp);
     //NSLog(@"count: %d", [[object objectForKey:@"speakers"] count]);
     
-    if (connection == speakersConnection) {
+    if (connection == profileConnection) {
+        profileObject = [NSJSONSerialization JSONObjectWithData:profileData options:0 error:&error];
+        complete++;
+        NSLog(@"Yup. spekaersConnection! COMPLETE! %@", profileObject);
+    } else if (connection == speakersConnection) {
         speakersObject = [NSJSONSerialization JSONObjectWithData:speakersData options:0 error:&error];
                 complete++;
         NSLog(@"Yup. spekaersConnection! COMPLETE!");
@@ -143,13 +161,27 @@
     }
     
     NSLog(@"TOTAL: %d", complete);
-    if (complete == 3) {
+    if (complete == 4) {
         [self getImages];
     }
     
 }
 
 - (void) getImages {
+    
+    // load profile image
+    NSDictionary *profileContent = [profileObject objectForKey:@"profile"];
+    NSURL *profileUrl = [NSURL URLWithString: [[profileContent objectForKey:@"user"]objectForKey:@"photo_url"] ];
+    NSData *data = [NSData dataWithContentsOfURL:profileUrl];
+    if (data) {
+        
+        profileImage = [UIImage imageWithData:data];
+    } else {
+        profileImage = [UIImage imageNamed:@"logo-summit-flat.png"];
+        
+    }
+    
+    NSLog(@"Add image of %@", [[profileContent objectForKey:@"speaker"]objectForKey:@"first_name"]);
     
     // load speakers images
     for (NSDictionary *speakerContent in [speakersObject objectForKey:@"speakers"]) {
@@ -178,7 +210,7 @@
         NSLog(@"Add image of %@", [[newsContent objectForKey:@"news"]objectForKey:@"title"]);
     }
     
-    // load sponsors images
+        // load sponsors images
     /*for (NSDictionary *sponsorsContent in [sponsorsObject objectForKey:@"sponsors"]) {
         
         NSURL *url = [NSURL URLWithString: [[sponsorsContent objectForKey:@"sponsor"]objectForKey:@"photo_url"] ];
@@ -192,6 +224,13 @@
         NSLog(@"Add image of %@", [[sponsorsContent objectForKey:@"sponsor"]objectForKey:@"name"]);
     }
     */
+    
+    // Load MainViewController once all the data is loaded
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    MainViewController *viewController = [[MainViewController alloc]init];
+    [appDelegate.window setRootViewController:viewController];
+    
+
 }
 
 - (void)dealloc {
