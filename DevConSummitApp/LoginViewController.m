@@ -215,7 +215,7 @@
             UILabel *pleaseWait = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 300, 60)];
             pleaseWait.textAlignment = NSTextAlignmentCenter;
             pleaseWait.center = CGPointMake(viewTmp.frame.size.width/2, 380);
-            pleaseWait.text = @"Hi! I'm Qwerty, hope you can wait a little as we load the app information.";
+            pleaseWait.text = @"Hi! I'm Qwerty, hope you can wait as we load the app information for you.";
             pleaseWait.lineBreakMode = NSLineBreakByWordWrapping;
             pleaseWait.numberOfLines = 0;
             pleaseWait.textColor = UIColorFromRGB(0x83ac25);
@@ -223,6 +223,7 @@
             
             viewTmp.backgroundColor = UIColorFromRGB(0xe9e9e9);
             [self.view addSubview:viewTmp];
+            
             // Change Login View to MainView
             /*MainViewController *mainViewController = [[MainViewController alloc]init];
             mainViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
