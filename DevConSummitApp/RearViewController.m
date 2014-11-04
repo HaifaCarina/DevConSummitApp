@@ -152,7 +152,8 @@
                 location = [profileContent objectForKey:@"location"];
             }
             
-            affiliation.text = [NSString stringWithFormat:@"%@ at %@ \n%@ \n%@", position, company, specialty, location ];
+            //affiliation.text = [NSString stringWithFormat:@"%@ at %@ \n%@ \n%@", position, company, specialty, location ];
+            affiliation.text = [NSString stringWithFormat:@"%@ at %@ \n%@", position, company, location ];
             affiliation.lineBreakMode = NSLineBreakByWordWrapping;
             affiliation.numberOfLines = 0;
             affiliation.textAlignment = NSTextAlignmentCenter;
@@ -170,9 +171,10 @@
                          range:NSMakeRange(position.length+4, company.length)];
             
             // Specialty - Set Font
-            [text addAttribute:NSFontAttributeName
+           /* [text addAttribute:NSFontAttributeName
                          value:[UIFont fontWithName:@"SourceSansPro-SemiBold" size:12]
                          range:NSMakeRange(position.length+ company.length +6, specialty.length)];
+            */
             
             [affiliation setAttributedText: text];
             
@@ -200,20 +202,20 @@
             cell.textLabel.textColor = UIColorFromRGB(0x6A4FFA);
             bgColorView.backgroundColor = UIColorFromRGB(0x6A4FFA);
             break;
-        }
+        } /*
         case 4: {
             text = @"Attendees";
             cell.textLabel.textColor = UIColorFromRGB(0xe6c630);
             bgColorView.backgroundColor = UIColorFromRGB(0xe6c630);
             break;
-        }
-        case 5: {
+        } */
+        case 4: {
             text = @"Sponsors";
             cell.textLabel.textColor = UIColorFromRGB(0x3DA6E5);
             bgColorView.backgroundColor = UIColorFromRGB(0x3DA6E5);
             break;
         }
-        case 6: {
+    /*    case 6: {
             text = @"Leaderboard";
             cell.textLabel.textColor = UIColorFromRGB(0x83ac25);
             bgColorView.backgroundColor = UIColorFromRGB(0x83ac25);
@@ -224,7 +226,7 @@
             cell.textLabel.textColor = UIColorFromRGB(0x83ac25);
             bgColorView.backgroundColor = UIColorFromRGB(0x83ac25);
             break;
-        }
+        } */
     }
     
     cell.textLabel.text = text;
@@ -290,13 +292,13 @@
         SpeakersViewController *speakersController = [[SpeakersViewController alloc]init];
         frontController = [[UINavigationController alloc] initWithRootViewController:speakersController];
         
-    } else if (indexPath.row == 4) {
-        NSLog(@"Should Display Speakers");
+    } /*else if (indexPath.row == 4) {
+        NSLog(@"Should Display Attendees");
         
         AttendeesViewController *attendeesController = [[AttendeesViewController alloc]init];
         frontController = [[UINavigationController alloc] initWithRootViewController:attendeesController];
         
-    } else if (indexPath.row == 5) {
+    } */else if (indexPath.row == 4) {
         NSLog(@"Should Display Sponsors");
         
         SponsorsViewController *sponsorsController = [[SponsorsViewController alloc]init];
