@@ -28,7 +28,10 @@
     
     self.view.backgroundColor = UIColorFromRGB(0xe9e9e9);
     
-    // DevCon Summit Logo View
+    // #########################################
+    //          Set-up Logo
+    // #########################################
+    
     UIImage *logo = [UIImage imageNamed:@"logo.png"];
     UIImageView *logoView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width * 0.95, self.view.frame.size.height * 0.3)];
     logoView.contentMode  = UIViewContentModeScaleAspectFit;
@@ -38,11 +41,14 @@
     
     // DevCon Summit Logo: Centering Horizontally the textfield
     CGRect frame = logoView.frame;
-    frame.origin.y = self.view.frame.size.height * 0.15;
+    frame.origin.y = self.view.frame.size.height * 0.10;
     [logoView setFrame:frame];
     [self.view addSubview:logoView];
     
-    // Email Address TextField
+    // #########################################
+    //          Set-up Email TextField
+    // #########################################
+    
     self.emailInput = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, (self.view.frame.size.width * 0.75), (self.view.frame.size.height * 0.08))];
     self.emailInput.borderStyle = UITextBorderStyleRoundedRect;
     self.emailInput.backgroundColor = [UIColor whiteColor];
@@ -70,10 +76,13 @@
     // Email Address Center Position Horizontally
     self.emailInput.center = self.view.center;
     frame = self.emailInput.frame;
-    frame.origin.y = self.view.frame.size.height * 0.55;
+    frame.origin.y = self.view.frame.size.height * 0.45;
     [self.emailInput setFrame:frame];
     
-    // Password Textfield
+    // #########################################
+    //          Set-up Password TextField
+    // #########################################
+    
     self.passwordInput = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, (self.view.frame.size.width * 0.75), (self.view.frame.size.height * 0.08))];
     self.passwordInput.borderStyle = UITextBorderStyleRoundedRect;
     self.passwordInput.secureTextEntry = YES;
@@ -102,8 +111,12 @@
     // Email Address Center Position Horizontally
     self.passwordInput.center = self.view.center;
     frame = self.passwordInput.frame;
-    frame.origin.y = self.view.frame.size.height * 0.65;
+    frame.origin.y = self.view.frame.size.height * 0.55;
     [self.passwordInput setFrame:frame];
+    
+    // #########################################
+    //          Set-up Login Button
+    // #########################################
     
     
     UIButton *login = [UIButton buttonWithType:UIButtonTypeRoundedRect] ;
@@ -118,7 +131,7 @@
     // Login Center Position Horizontally
     login.center = self.view.center;
     frame = login.frame;
-    frame.origin.y = self.view.frame.size.height * 0.80;
+    frame.origin.y = self.view.frame.size.height * 0.65;
     [login setFrame:frame];
     
     // Initiatlize Keychain for email and authentication token
@@ -194,7 +207,8 @@
             NSLog(@"LOGIN CREDS %@,%@", [self.loginKeychain objectForKey:(__bridge id)kSecAttrAccount], [self.loginKeychain objectForKey:(__bridge id)kSecValueData]);
             
            // Set global variable to use in this viewcontroller
-            MyManager *globals = [MyManager sharedManager];
+            MyManager *globals = [[MyManager alloc]init];
+            globals = [MyManager sharedManager];
             NSLog(@"globals: %@", globals.profileObject);
             
             
