@@ -48,6 +48,10 @@
 		805D891B19D74EE100D2CF32 /* SourceSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 805D891719D74EE100D2CF32 /* SourceSansPro-Regular.otf */; };
 		805D891C19D74EE100D2CF32 /* SourceSansPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 805D891819D74EE100D2CF32 /* SourceSansPro-Semibold.otf */; };
 		805D891E19D74FF600D2CF32 /* myprofile-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 805D891D19D74FF600D2CF32 /* myprofile-background.png */; };
+		806262811A0968B000677F8E /* Copresenter-IBM.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8062627F1A0968B000677F8E /* Copresenter-IBM.jpg */; };
+		806262841A096C9200677F8E /* Copresenter-Klab.png in Resources */ = {isa = PBXBuildFile; fileRef = 806262831A096C9200677F8E /* Copresenter-Klab.png */; };
+		806262871A096EA100677F8E /* Media-Speed.png in Resources */ = {isa = PBXBuildFile; fileRef = 806262851A096EA100677F8E /* Media-Speed.png */; };
+		806262881A096EA100677F8E /* Media-Techtalks.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 806262861A096EA100677F8E /* Media-Techtalks.jpg */; };
 		806B904919F303120091468C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 806B904819F303120091468C /* LoginViewController.m */; };
 		806B904B19F304900091468C /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 806B904A19F304900091468C /* logo.png */; };
 		806B904E19F30A700091468C /* email.png in Resources */ = {isa = PBXBuildFile; fileRef = 806B904C19F30A700091468C /* email.png */; };
@@ -144,6 +148,10 @@
 		805D891719D74EE100D2CF32 /* SourceSansPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.otf"; sourceTree = "<group>"; };
 		805D891819D74EE100D2CF32 /* SourceSansPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Semibold.otf"; sourceTree = "<group>"; };
 		805D891D19D74FF600D2CF32 /* myprofile-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myprofile-background.png"; sourceTree = "<group>"; };
+		8062627F1A0968B000677F8E /* Copresenter-IBM.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Copresenter-IBM.jpg"; sourceTree = "<group>"; };
+		806262831A096C9200677F8E /* Copresenter-Klab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Copresenter-Klab.png"; sourceTree = "<group>"; };
+		806262851A096EA100677F8E /* Media-Speed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Media-Speed.png"; sourceTree = "<group>"; };
+		806262861A096EA100677F8E /* Media-Techtalks.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Media-Techtalks.jpg"; sourceTree = "<group>"; };
 		806B904719F303120091468C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		806B904819F303120091468C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		806B904A19F304900091468C /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
@@ -364,6 +372,10 @@
 		80BB34A519D73ECC00B2C82B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				806262851A096EA100677F8E /* Media-Speed.png */,
+				806262861A096EA100677F8E /* Media-Techtalks.jpg */,
+				806262831A096C9200677F8E /* Copresenter-Klab.png */,
+				8062627F1A0968B000677F8E /* Copresenter-IBM.jpg */,
 				8058DAFA1A01793D00F2D4C1 /* loginmonster.png */,
 				805B1BFE1A00F82B003B393E /* Media-WebGeek.png */,
 				805B1BFF1A00F82B003B393E /* Media-WhenInManila.png */,
@@ -486,12 +498,15 @@
 				805B1BED1A00E2CB003B393E /* CP-Uber.png in Resources */,
 				8032562E19DF398900546426 /* devcon-summit.png in Resources */,
 				808EB02719E2C91D0091AADD /* reveal-icon.png in Resources */,
+				806262841A096C9200677F8E /* Copresenter-Klab.png in Resources */,
 				805D891319D74EC800D2CF32 /* haifa.jpg in Resources */,
 				805B1BE71A00E2CB003B393E /* Copresenter-Accenture.png in Resources */,
 				805B1BFD1A00F385003B393E /* Silver-ChikkaAPI.png in Resources */,
 				8029876519E3286E00B49102 /* website-icon.png in Resources */,
+				806262871A096EA100677F8E /* Media-Speed.png in Resources */,
 				805B1BEA1A00E2CB003B393E /* CP-GitHub.png in Resources */,
 				805B1BFA1A00E2DC003B393E /* Silver-Mozilla.png in Resources */,
+				806262811A0968B000677F8E /* Copresenter-IBM.jpg in Resources */,
 				805B1BF21A00E2D3003B393E /* Gold-Microsoft.png in Resources */,
 				8029876319E3281300B49102 /* twitter-icon.png in Resources */,
 				805D891E19D74FF600D2CF32 /* myprofile-background.png in Resources */,
@@ -505,6 +520,7 @@
 				806B904F19F30A700091468C /* password.png in Resources */,
 				80EA6BC219F2EF1200D3890D /* Merriweather-Regular.ttf in Resources */,
 				805B1C011A00F82B003B393E /* Media-WhenInManila.png in Resources */,
+				806262881A096EA100677F8E /* Media-Techtalks.jpg in Resources */,
 				805B1BE81A00E2CB003B393E /* Copresenter-Deltek.png in Resources */,
 				80BB34A719D73ECC00B2C82B /* navigation-icon.png in Resources */,
 				806B904E19F30A700091468C /* email.png in Resources */,

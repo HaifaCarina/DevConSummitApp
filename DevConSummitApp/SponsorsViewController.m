@@ -111,25 +111,49 @@
                 copresenter1.contentMode  = UIViewContentModeScaleAspectFit;
                 copresenter1.image = [UIImage imageNamed:@"Copresenter-Accenture.png"];
                 copresenter1.frame = CGRectMake(0, 0, logoWidth, logoHeight);
-                copresenter1.center = CGPointMake(cell.contentView.frame.size.width/2 - copresenter1.frame.size.width/2, cell.contentView.frame.size.height/2 + 40 - copresenter1.frame.size.height/2);
+                //copresenter1.center = CGPointMake(cell.contentView.frame.size.width/2 - copresenter1.frame.size.width/3, cell.contentView.frame.size.height/3 + 40 - copresenter1.frame.size.height/3);
+                
+                copresenter1.center = CGPointMake(cell.contentView.frame.size.width/2 - copresenter1.frame.size.width/2 -5, 34);
                 //copresenter1.backgroundColor = [UIColor yellowColor];
                 [cell.contentView addSubview:copresenter1];
                 
                 UIImageView *copresenter2 = [[UIImageView alloc] init];
                 copresenter2.contentMode  = UIViewContentModeScaleAspectFit;
-                copresenter2.image = [UIImage imageNamed:@"Copresenter-Smart.png"];
+                copresenter2.image = [UIImage imageNamed:@"Copresenter-Klab.png"];
                 copresenter2.frame = CGRectMake(0, 0, logoWidth, logoHeight);
-                copresenter2.center = CGPointMake(cell.contentView.frame.size.width - copresenter2.frame.size.width/2, cell.contentView.frame.size.height/2  + 40 - logoHeight/2);
+                //copresenter2.center = CGPointMake(cell.contentView.frame.size.width - copresenter2.frame.size.width/3, cell.contentView.frame.size.height/3  + 40 - logoHeight/3);
+                copresenter2.center = CGPointMake(cell.contentView.frame.size.width - copresenter2.frame.size.width/2-5, 34);
                 //copresenter2.backgroundColor = [UIColor yellowColor];
                 [cell.contentView addSubview:copresenter2];
-                
+             
                 UIImageView *copresenter3 = [[UIImageView alloc] init];
                 copresenter3.contentMode  = UIViewContentModeScaleAspectFit;
                 copresenter3.image = [UIImage imageNamed:@"Copresenter-Deltek.png"];
                 copresenter3.frame = CGRectMake(0, 0, logoWidth, logoHeight);
-                copresenter3.center = CGPointMake(cell.contentView.frame.size.width/2 , (cell.contentView.frame.size.height/2) + 40 + logoHeight/2 );
+                //copresenter3.center = CGPointMake(cell.contentView.frame.size.width/2 - logoWidth/2 + 10, (cell.contentView.frame.size.height/3) + 40 + logoHeight/3);
                 //copresenter3.backgroundColor = [UIColor yellowColor];
+                copresenter3.center = CGPointMake(cell.contentView.frame.size.width/2 - logoWidth/2 + 10 -5 , 100);
                 [cell.contentView addSubview:copresenter3];
+             
+                UIImageView *copresenter4 = [[UIImageView alloc] init];
+                copresenter4.contentMode  = UIViewContentModeScaleAspectFit;
+                copresenter4.image = [UIImage imageNamed:@"Copresenter-IBM.jpg"];
+                copresenter4.frame = CGRectMake(0, 0, logoWidth - 0.3, logoHeight - 0.3);
+                //copresenter4.center = CGPointMake(cell.contentView.frame.size.width - logoWidth/2 + 10, (cell.contentView.frame.size.height/3) + 40 + logoHeight/3);
+                //copresenter4.backgroundColor = [UIColor yellowColor];
+                copresenter4.center = CGPointMake(cell.contentView.frame.size.width - logoWidth/2 + 10 -10, 100);
+                [cell.contentView addSubview:copresenter4];
+                
+             
+                UIImageView *copresenter5 = [[UIImageView alloc] init];
+                copresenter5.contentMode  = UIViewContentModeScaleAspectFit;
+                copresenter5.image = [UIImage imageNamed:@"Copresenter-Smart.png"];
+                copresenter5.frame = CGRectMake(0, 0, logoWidth, logoHeight);
+                //copresenter5.center = CGPointMake(cell.contentView.frame.size.width/2 , (cell.contentView.frame.size.height/3) + 40 + logoHeight/3 );
+                copresenter5.center = CGPointMake(cell.contentView.frame.size.width/2 , 160 );
+                
+                //copresenter3.backgroundColor = [UIColor yellowColor];
+                [cell.contentView addSubview:copresenter5];
                 
                 
                 break;
@@ -238,6 +262,21 @@
                 media2.center = CGPointMake(cell.contentView.frame.size.width - logoWidth/2 , cell.contentView.frame.size.height/2  + 40 - logoHeight/2);
                 [cell.contentView addSubview:media2];
                 
+                
+                UIImageView *media3 = [[UIImageView alloc] init];
+                media3.contentMode  = UIViewContentModeScaleAspectFit;
+                media3.image = [UIImage imageNamed:@"Media-Speed.png"];
+                media3.frame = CGRectMake(0, 0, logoWidth, logoHeight);
+                media3.center = CGPointMake(cell.contentView.frame.size.width/2 - logoWidth/2 + 10, (cell.contentView.frame.size.height/2) + 40 + logoHeight/2);
+                [cell.contentView addSubview:media3];
+                
+                UIImageView *media4 = [[UIImageView alloc] init];
+                media4.contentMode  = UIViewContentModeScaleAspectFit;
+                media4.image = [UIImage imageNamed:@"Media-Techtalks.jpg"];
+                media4.frame = CGRectMake(0, 0, logoWidth, logoHeight);
+                media4.center = CGPointMake(cell.contentView.frame.size.width - logoWidth/2 + 10, (cell.contentView.frame.size.height/2) + 40 + logoHeight/2);
+                [cell.contentView addSubview:media4];
+                
                 break;
             }
         }
@@ -267,6 +306,9 @@
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section == 0) {
+        return 190;
+    }
     
     return 140;
     
