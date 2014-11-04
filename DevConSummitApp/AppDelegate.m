@@ -16,7 +16,6 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     LoginViewController *mainViewController = [[LoginViewController alloc]init];
-    //MainViewController *mainViewController = [[MainViewController alloc]init];
     self.window.rootViewController = mainViewController;
     
     
