@@ -43,7 +43,7 @@
                                                              delegate:self
                                                     cancelButtonTitle:@"Cancel"
                                                destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"Edit My Profile",@"Logout", nil];
+                                                    otherButtonTitles:@"Edit My Profile", nil];
     [actionSheet showInView:self.view];
     
 }
@@ -54,12 +54,6 @@
     if (buttonIndex == 0) {
         EditMyProfileViewController *editMyProfileView = [[EditMyProfileViewController alloc] init];
         [self.navigationController pushViewController:editMyProfileView animated:YES];
-    } else {
-        // Logout and view LoginViewController
-        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-        LoginViewController *viewController = [[LoginViewController alloc]init];
-        //[appDelegate.window setRootViewController:viewController];
-       
     }
     
     

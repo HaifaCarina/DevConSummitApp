@@ -131,7 +131,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return 17;
+    return 13; //17;
     
 }
 
@@ -156,14 +156,15 @@
     switch ( indexPath.row )
     {
         case 0: {
-            text = @"HAIFA CARINA BALUYOS";
+            text = @"";//@"HAIFA CARINA BALUYOS";
             cell.textLabel.textColor = UIColorFromRGB(0x83ac25);
             cell.textLabel.textAlignment = NSTextAlignmentCenter;
             cell.textLabel.font = [UIFont fontWithName:@"SourceSansPro-SemiBold" size:defaultFontSize];
             break;
         }
         case 1: {
-            text = @"Photo";
+            // For the mean time, disable photo selection and replace photo with name
+            text = @"HAIFA CARINA BALUYOS";//@"Photo";
             cell.imageView.image = profileImage.image;
             cell.imageView.layer.cornerRadius = 5.0;
             cell.imageView.layer.masksToBounds = YES;
@@ -238,7 +239,7 @@
             [cell.contentView addSubview:self.aboutField];
             return cell;
             break;
-        }
+        } /*
         case 8: {
             text = @"Technology Stack";
             cell.textLabel.textColor = UIColorFromRGB(0x83ac25);
@@ -254,7 +255,7 @@
             if(![[[profileContent objectForKey:@"primary_technology"]objectForKey:@"name"] isEqual:[NSNull null]]) {
                     self.specialtyField.text = [[profileContent objectForKey:@"primary_technology"]objectForKey:@"name"];
             }
-            */
+            * /
             [self.specialtyField setEnabled:NO];
             [self.specialtyField setFont:[UIFont systemFontOfSize:defaultFontSize]];
             self.specialtyField.delegate = self;
@@ -276,14 +277,14 @@
             return cell;
             break;
             
-        }
-        case 11: {
+        } */
+        case 8: {
             text = @"Social Media Links";
             cell.textLabel.textColor = UIColorFromRGB(0x83ac25);
             break;
             
         }
-        case 12: {
+        case 9: {
             self.websiteField = [[UITextField alloc]initWithFrame:CGRectMake(25, 0, cell.contentView.frame.size.width-35, defaultHeight )];
             [self.websiteField setAutocorrectionType:UITextAutocorrectionTypeNo];
             self.websiteField.placeholder = @"http://yourdomainname.com";
@@ -302,7 +303,7 @@
             return cell;
             break;
         }
-        case 13: {
+        case 10: {
             self.twitterField = [[UITextField alloc]initWithFrame:CGRectMake(25, 0, cell.contentView.frame.size.width-35, defaultHeight )];
             [self.twitterField setAutocorrectionType:UITextAutocorrectionTypeNo];
             self.twitterField.placeholder = @"@username";
@@ -322,7 +323,7 @@
             return cell;
             break;
         }
-        case 14: {
+        case 11: {
             
             
             self.facebookField = [[UITextField alloc]initWithFrame:CGRectMake(25, 0, cell.contentView.frame.size.width-35, defaultHeight )];
@@ -377,7 +378,9 @@
 {
     NSLog(@"did select %@", indexPath);
     if (indexPath.row == 1 ) {
-        [actionSheet showInView:self.view];
+        // TEMPORARILY DISABLE PHOTO SELECTION
+        //[actionSheet showInView:self.view];
+        
     }
     
 }
@@ -390,9 +393,9 @@
         return 50;
     } else if (indexPath.row == 7) {
         return 80;
-    } else if (indexPath.row == 10) {
+    } /*else if (indexPath.row == 10) {
         return 80;
-    } else {
+    } */else {
         return defaultHeight;
     }
     

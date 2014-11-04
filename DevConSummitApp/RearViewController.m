@@ -14,6 +14,8 @@
 #import "SponsorsViewController.h"
 #import "NewsViewController.h"
 #import "AttendeesViewController.h"
+#import "AppDelegate.h"
+#import "LoginViewController.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 #define UIColorFromRGBWithAlpha(rgbValue,a) [UIColor \ colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
@@ -215,6 +217,13 @@
             bgColorView.backgroundColor = UIColorFromRGB(0x3DA6E5);
             break;
         }
+        case 5: {
+            text = @"Sign out";
+            cell.textLabel.textColor = UIColorFromRGB(0x83ac25);
+            bgColorView.backgroundColor = UIColorFromRGB(0x83ac25);
+            break;
+
+        }
     /*    case 6: {
             text = @"Leaderboard";
             cell.textLabel.textColor = UIColorFromRGB(0x83ac25);
@@ -291,6 +300,14 @@
         
         SpeakersViewController *speakersController = [[SpeakersViewController alloc]init];
         frontController = [[UINavigationController alloc] initWithRootViewController:speakersController];
+        
+    } else if (indexPath.row == 5) {
+        NSLog(@"Logout");
+        
+        // Logout and view LoginViewController
+        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        LoginViewController *viewController = [[LoginViewController alloc]init];
+        [appDelegate.window setRootViewController:viewController];
         
     } /*else if (indexPath.row == 4) {
         NSLog(@"Should Display Attendees");
