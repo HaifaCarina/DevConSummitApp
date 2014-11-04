@@ -5,6 +5,8 @@
 //  Created by Haifa Carina Baluyos on 9/28/14.
 //  Copyright (c) 2014 HaifaCarina. All rights reserved.
 //
+#import "AppDelegate.h"
+#import "LoginViewController.h"
 #import "MyManager.h"
 #import "FrontViewController.h"
 #import "SWRevealViewController.h"
@@ -13,9 +15,10 @@
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 #define UIColorFromRGBWithAlpha(rgbValue,a) [UIColor \ colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 
-@interface FrontViewController (){
+@interface FrontViewController () <UIActionSheetDelegate> {
     NSDictionary *object;
     UIImage *profileImage;
+    UILabel *affiliation;
 }
 
 @end
@@ -28,10 +31,7 @@
     if (self) {
         // Custom initialization
         
-        // Set global variable to use in this viewcontroller
-        MyManager *globals = [MyManager sharedManager];
-        object = globals.profileObject;
-        profileImage = globals.profileImage;
+        
     }
     return self;
 }
@@ -39,23 +39,71 @@
 - (void) requestButton {
     NSLog(@"button is pressed!");
     
-    EditMyProfileViewController *editMyProfileView = [[EditMyProfileViewController alloc] init];
-    [self.navigationController pushViewController:editMyProfileView animated:YES];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"Edit My Profile",@"Logout", nil];
+    [actionSheet showInView:self.view];
+    
 }
+
+#pragma mark - UIActionSheet Delegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (buttonIndex == 0) {
+        EditMyProfileViewController *editMyProfileView = [[EditMyProfileViewController alloc] init];
+        [self.navigationController pushViewController:editMyProfileView animated:YES];
+    } else {
+        // Logout and view LoginViewController
+        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        LoginViewController *viewController = [[LoginViewController alloc]init];
+        //[appDelegate.window setRootViewController:viewController];
+       
+    }
+    
+    
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    for(UIButton *view in self.view.subviews)
+    {
+        [view removeFromSuperview];
+    }
+    
+    [self performSelectorOnMainThread:@selector(loadContent) withObject:nil waitUntilDone:NO];
+    
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSLog(@"viewdidload called");
     
+}
+
+- (void) loadContent {
+    [super viewDidLoad];
     
+    // Set global variable to use in this viewcontroller
+    MyManager *globals = [MyManager sharedManager];
+    object = globals.profileObject;
+    profileImage = globals.profileImage;
     
+    NSLog(@"loadContent");
+    NSLog(@"POSITION: %@", affiliation.text);
     self.navigationItem.title = @"My Profile";
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: UIColorFromRGB(0x83ac25)};
     self.view.backgroundColor = UIColorFromRGB(0xfbfaf7);
     
+    
     // #########################################
     //          Set-up Navigation Drawer
     // #########################################
-
+    
     SWRevealViewController *revealController = [self revealViewController];
     [revealController panGestureRecognizer];
     [revealController tapGestureRecognizer];
@@ -83,7 +131,7 @@
     // #########################################
     // Set Image for cell bottom half background
     // #########################################
-    UIImage *image = [UIImage imageNamed:@"haifa.jpg"];
+    UIImage *image = profileImage; //[UIImage imageNamed:@"haifa.jpg"];
     
     // Slice image into half
     CGImageRef imageToSplit = image.CGImage;
@@ -110,7 +158,7 @@
     UIImageView *imageView = [[UIImageView alloc]init];
     imageView.frame = CGRectMake(0, 0, 100, 100);
     imageView.center = CGPointMake(self.view.bounds.size.width/2, 180);
-    imageView.image = [UIImage imageNamed:@"haifa.jpg"];
+    imageView.image = profileImage; //[UIImage imageNamed:@"haifa.jpg"];
     imageView.layer.borderColor = UIColorFromRGB(0xe6c630).CGColor;
     imageView.layer.borderWidth = 2;
     imageView.layer.cornerRadius = 5.0;
@@ -143,9 +191,10 @@
     //              Set Affiliation
     // #########################################
     
-    UILabel *affiliation = [[UILabel alloc]initWithFrame:CGRectMake(28, name.frame.origin.y + name.frame.size.height + 20, 200, 65)];
+    affiliation = [[UILabel alloc]initWithFrame:CGRectMake(28, name.frame.origin.y + name.frame.size.height + 20, 200, 65)];
     affiliation.center = CGPointMake(self.view.bounds.size.width/2, affiliation.frame.origin.y);
-    NSString *position, *company, *specialty,*location = nil;
+    //NSString *position, *company, *specialty,*location = nil;
+    NSString *position, *company, *location = nil;
     
     // set-up position
     if ([profileContent objectForKey:@"position"] == (id)[NSNull null] || [[profileContent objectForKey:@"position"] isEqualToString:@""] ) {
@@ -153,20 +202,25 @@
     } else {
         position = [profileContent objectForKey:@"position"];
     }
-    
+    NSLog(@"Done with position");
     // set-up company
     if ([profileContent objectForKey:@"company"] == (id)[NSNull null] || [[profileContent objectForKey:@"company"] isEqualToString:@""] ) {
         company = @"The Force";
     } else {
         company = [profileContent objectForKey:@"company"];
     }
-    
+    NSLog(@"Done with pcompany");
+   /* //TEMPORARILY DISABLED
     // set-up specialty
-    if ([profileContent objectForKey:@"primary_technology"] == (id)[NSNull null] || [[profileContent objectForKey:@"primary_technology"] isEqualToString:@""]) {
+    if ([[profileContent objectForKey:@"primary_technology"] objectForKey:@"name"] == (id)[NSNull null] || [[[profileContent objectForKey:@"primary_technology"]objectForKey:@"name"] isEqualToString:@""]) {
         specialty = @"Awesome Language";
+        
     } else {
-        specialty = [profileContent objectForKey:@"primary_technology"];
+        specialty = [[profileContent objectForKey:@"primary_technology"]objectForKey:@"name"];
     }
+    */
+   // NSLog(@"Done with specialty %@", [[profileContent objectForKey:@"primary_technology"] objectForKey:@"name"]);
+    
     
     // set-up location
     if ([profileContent objectForKey:@"location"] == (id)[NSNull null] || [[profileContent objectForKey:@"location"] isEqualToString:@""] ) {
@@ -174,9 +228,10 @@
     } else {
         location = [profileContent objectForKey:@"location"];
     }
-
+    NSLog(@"Done with location");
     
-    affiliation.text = [NSString stringWithFormat:@"%@ at %@ \n%@ \n%@", position, company, location, specialty ];
+    //affiliation.text = [NSString stringWithFormat:@"%@ at %@ \n%@ \n%@", position, company, location, specialty ];
+    affiliation.text = [NSString stringWithFormat:@"%@ at %@ \n%@", position, company, location ];
     affiliation.lineBreakMode = NSLineBreakByWordWrapping;
     affiliation.numberOfLines = 0;
     affiliation.textAlignment = NSTextAlignmentCenter;
@@ -215,7 +270,7 @@
     NSString *technologies = nil;
     // Get content for technology stack
     if ([profileContent objectForKey:@"technologies"] == (id)[NSNull null] || [[profileContent objectForKey:@"technologies"] count] == 0 ) {
-        technologies = @"Objective-C • JavaScript • PHP • CSS • MySQL • PostgreSQL • CakePHP";
+        technologies = @" ";//@"Objective-C • JavaScript • PHP • CSS • MySQL • PostgreSQL • CakePHP";
     } else {
         technologies = @"compiled list of technologies";
     }
@@ -240,7 +295,7 @@
     UILabel *aboutHeader = [[UILabel alloc]initWithFrame:CGRectMake(0, 400, 300, 50)];
     aboutHeader.center = CGPointMake(self.view.bounds.size.width/2, aboutHeader.center.y);
     aboutHeader.textAlignment = NSTextAlignmentCenter;
-    aboutHeader.text = @"About Haifa";
+    aboutHeader.text = @"About Me";
     aboutHeader.textColor = UIColorFromRGB(0x83ac25);
     aboutHeader.font = [UIFont fontWithName:@"PTSerif-Italic" size:14];
     [scrollView addSubview:aboutHeader];
@@ -285,9 +340,8 @@
     
     scrollView.contentSize = CGSizeMake(scrollView.frame.size.width, sizeOfContent + 10);
     
-    
-    
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -295,15 +349,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
