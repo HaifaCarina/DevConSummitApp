@@ -156,7 +156,7 @@
     
     NSString *post = [NSString stringWithFormat:@"email=%@&password=%@",[self.emailInput text],[self.passwordInput text]];
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    NSString *postLength = [NSString stringWithFormat:@"%d",[postData length]];
+    NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init] ;
     [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://api.devcon.ph/api/v1/tokens"]]];
     [request setHTTPMethod:@"POST"];
@@ -207,8 +207,12 @@
             NSLog(@"LOGIN CREDS %@,%@", [self.loginKeychain objectForKey:(__bridge id)kSecAttrAccount], [self.loginKeychain objectForKey:(__bridge id)kSecValueData]);
             
            // Set global variable to use in this viewcontroller
-            MyManager *globals = [[MyManager alloc]init];
-            globals = [MyManager sharedManager];
+            MyManager *globals;//
+            
+            [MyManager startManager];
+            globals = [MyManager sharedManager]; //[[MyManager alloc]init];
+            
+          //  globals = [MyManager sharedManager];
             NSLog(@"globals: %@", globals.profileObject);
             
             

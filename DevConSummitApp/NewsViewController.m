@@ -108,7 +108,7 @@
     //  NSLog(@"did select %@", indexPath);
     
     NewsContentViewController *viewController = [[NewsContentViewController alloc]init];
-    viewController.selection = indexPath.row;
+    viewController.selection = (int)indexPath.row;
     [self.navigationController pushViewController:viewController animated:YES];
     
     
