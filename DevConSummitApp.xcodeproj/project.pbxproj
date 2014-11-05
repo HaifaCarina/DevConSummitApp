@@ -459,6 +459,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = HaifaCarina;
 				TargetAttributes = {
+					80B269AF19D73A750012F891 = {
+						DevelopmentTeam = KNW5E4UX9Q;
+					};
 					80B269CA19D73A750012F891 = {
 						TestTargetID = 80B269AF19D73A750012F891;
 					};
@@ -687,6 +690,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Haifa Carina Baluyos (QU2NQ2UQH9)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DevConSummitApp/DevConSummitApp-Prefix.pch";
 				INFOPLIST_FILE = "DevConSummitApp/DevConSummitApp-Info.plist";
@@ -700,6 +704,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Haifa Carina Baluyos (QU2NQ2UQH9)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DevConSummitApp/DevConSummitApp-Prefix.pch";
 				INFOPLIST_FILE = "DevConSummitApp/DevConSummitApp-Info.plist";
