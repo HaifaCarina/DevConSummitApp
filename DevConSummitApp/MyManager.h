@@ -54,4 +54,6 @@
 
 + (id)sharedManager;
 
++ (void)startManager;
+
 @end
