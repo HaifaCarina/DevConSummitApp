@@ -60,10 +60,11 @@
     segmentedControl.selectedSegmentIndex = 0;
     segmentedControl.tintColor = UIColorFromRGB(0x83ac25);
     [segmentedControl addTarget:self action:@selector(valueChanged:) forControlEvents: UIControlEventValueChanged];
-    [self.view addSubview:segmentedControl];
+    //[self.view addSubview:segmentedControl];
     
     // Set-up tableview
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 120, self.view.bounds.size.width, self.view.bounds.size.height - 120)];
+    //self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 120, self.view.bounds.size.width, self.view.bounds.size.height - 120)];
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
@@ -111,7 +112,7 @@
        
         cell.imageView.image =  [speakersImages objectAtIndex:indexPath.row];
 
-        int count = [[speakerContent objectForKey:@"category"] count];
+        int count = (int)[[speakerContent objectForKey:@"category"] count];
         
         if ( count > 1 ) {
             NSMutableString *categorySummary = [[NSMutableString alloc]init];
@@ -156,7 +157,7 @@
     NSLog(@"did select %@", indexPath);
     
     SpeakerProfileViewController *profileView = [[SpeakerProfileViewController alloc] init];
-    profileView.selection = indexPath.row;
+    profileView.selection = (int) indexPath.row;
     [self.navigationController pushViewController:profileView animated:YES];
 
 }
