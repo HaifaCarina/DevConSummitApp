@@ -306,8 +306,7 @@
         
         // Logout and view LoginViewController
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-        LoginViewController *viewController = [[LoginViewController alloc]init];
-        [appDelegate.window setRootViewController:viewController];
+        [appDelegate resetAppToFirstController];
         
     } /*else if (indexPath.row == 4) {
         NSLog(@"Should Display Attendees");

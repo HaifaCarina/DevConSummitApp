@@ -14,14 +14,23 @@
 @synthesize someProperty, profileObject, profileImage, speakersObject, speakersImages, programsObject, programsImages, newsObject, newsImages, sponsorsObject, sponsorsImages;
 
 #pragma mark Singleton Methods
+static MyManager *sharedMyManager = nil;
 
 + (id)sharedManager {
-    static MyManager *sharedMyManager = nil;
-    static dispatch_once_t onceToken;
+    //static MyManager *sharedMyManager = nil;
+   /* static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedMyManager = [[self alloc] init];
-    });
+    }); */
     return sharedMyManager;
+}
++ (void) startManager {
+    //static MyManager *sharedMyManager =  [[self alloc] init];
+    
+    if (self == [MyManager class]) {
+        sharedMyManager = [[self alloc] init];
+    }
+    //return sharedMyManager;
 }
 
 - (id)init {
@@ -43,7 +52,7 @@
     NSString *token = [[NSString alloc] initWithData:[loginKeychain objectForKey:(__bridge id)kSecValueData] encoding:NSUTF8StringEncoding];
     NSString *post = [NSString stringWithFormat:@"authentication_token=%@",token];
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    NSString *postLength = [NSString stringWithFormat:@"%d",[postData length]];
+    NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
     
     //send profile request
     profileData = [[NSMutableData alloc]init];
@@ -252,6 +261,8 @@
         NSLog(@"Add image of %@", [[sponsorsContent objectForKey:@"sponsor"]objectForKey:@"name"]);
     }
     */
+    
+    NSLog(@"done with the images");
     
     // Load MainViewController once all the data is loaded
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];

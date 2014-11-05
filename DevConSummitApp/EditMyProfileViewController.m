@@ -250,7 +250,7 @@
             self.specialtyField = [[UITextField alloc]initWithFrame:CGRectMake(25, 0, cell.contentView.frame.size.width-35, defaultHeight )];
             [self.specialtyField setAutocorrectionType:UITextAutocorrectionTypeNo];
             self.specialtyField.placeholder = @"One Technology Specialty (Ex. Android)";
-            /*
+            / *
              //TEMPORARILY DISABLED
             if(![[[profileContent objectForKey:@"primary_technology"]objectForKey:@"name"] isEqual:[NSNull null]]) {
                     self.specialtyField.text = [[profileContent objectForKey:@"primary_technology"]objectForKey:@"name"];

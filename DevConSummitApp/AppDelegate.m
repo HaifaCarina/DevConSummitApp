@@ -5,7 +5,6 @@
 //  Created by Haifa Carina Baluyos on 9/28/14.
 //  Copyright (c) 2014 HaifaCarina. All rights reserved.
 //
-
 #import "AppDelegate.h"
 #import "MainViewController.h"
 #import "LoginViewController.h"
@@ -21,6 +20,12 @@
     
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void)resetAppToFirstController
+{
+    LoginViewController *mainViewController = [[LoginViewController alloc]init];
+    self.window.rootViewController = mainViewController;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

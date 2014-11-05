@@ -129,7 +129,7 @@
     //              Set Event Role
     // #########################################
     NSString *category, *title;
-    int count = [[speakerContent objectForKey:@"category"] count];
+    int count = (int)[[speakerContent objectForKey:@"category"] count];
     
     if ( count > 1 ) {
         NSMutableString *categorySummary = [[NSMutableString alloc]init];
